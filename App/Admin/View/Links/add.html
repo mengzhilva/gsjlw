@@ -1,0 +1,41 @@
+
+<h2 class="contentTitle">添加友情链接</h2>
+<div class="pageContent">
+
+    <form method="post" action="__URL__/insert/navTabId/listlinks/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return iframeCallback(this,navTabAjaxDone);" enctype="multipart/form-data">
+        <div class="pageFormContent nowrap" layoutH="97">
+            <dl>
+                <dt>链接名：</dt>
+                <dd><input type="text" name="link_name" class="required" value="" ></dd>
+            </dl>
+            
+            <dl>
+                <dt>链接地址</dt>
+                <dd><input type="text" name="url" class="required url" value="http://" ></dd>
+            </dl>
+
+            <dl>
+                <dt>链接类型</dt>
+                <dd>
+                <input type="radio" name="is_pic"  value="0"  checked />文本
+                <input type="radio" name="is_pic" value="1"  />图片
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>链接图片</dt>
+                <dd><input type="file" name="pic" value=""></dd>
+            </dl>       
+            
+            
+        </div>
+        
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>
+

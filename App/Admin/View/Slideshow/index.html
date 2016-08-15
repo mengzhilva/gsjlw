@@ -1,0 +1,115 @@
+<form id="pagerForm" action="__URL__/index" method="post">
+	<input type="hidden" name="pageNum" value="{$currentPage|default='1'}" />
+	<input type="hidden" name="numPerPage" value="{$numPerPage}" /><!--每页显示多少条-->
+	<input type="hidden" name="_order" value="{$Think.request._order}"/>
+	<input type="hidden" name="_sort" value="{$Think.request._sort}"/>
+	<input type="hidden" name="cityID" value="{$cityID}"/>
+	<input type="hidden" name="PID" value="{$PID}"/>
+	<input type="hidden" name="status" value="{$status}"/>
+	<input type="hidden" name="NAME" value="{$s_name}"/>
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+	<input type="hidden" name="numPerPage" value="{$numPerPage}" /><!--每页显示多少条-->
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<b>搜索</b> 
+					 &nbsp; 上传城市：
+						<select name="CID" style="width:145px;height:20px;">
+							<option value="{$CID}">{$s_city}</option>
+							<volist name="city_list" id="vo">
+							<option value="{$vo.ID}">{$vo.NAME}</option>
+							</volist>
+					</select>
+					&nbsp;幻灯片位置：
+					<select name="SID" style="width:145px;height:20px;">
+						<option value="{$SID}">{$s_name}</option>
+						<volist name="slds_list" id="vo">
+						<option value="{$vo.ID}">{$vo.NAME}</option>
+						</volist>
+					</select>
+					&nbsp;状态：
+						<select name="STATUS" style="width:145px;">
+							<option value="{$STATUS}">
+							{$s_status}
+							</option>
+							<option value="0">待审核</option>
+							<option value="1">审核通过</option>
+							<option value="-1">审核不过</option>
+						</select>
+					&nbsp;幻灯片名称：<input type="text" name="NAME" value="{$NAME}"/>
+				</td>
+				<td>
+					<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="navTab" width="550" height="380" rel="addcase" title="添加分类"><span>添加</span></a></li>
+			<li><a class="delete" href="__URL__/del/ID/{$Think.config.TMPL_L_DELIM}item_id{$Think.config.TMPL_R_DELIM}/navTabId/listslideshow" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/ID/{$Think.config.TMPL_L_DELIM}item_id{$Think.config.TMPL_R_DELIM}"  width="550" height="380" target="navTab"><span>修改</span></a></li>
+			<li class="line">line</li>
+			<li><a class="icon"  href="javascript:navTabPageBreak()"><span>刷新</span></a></li>
+			<!--<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>-->
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="112">
+		<thead>
+			<tr align="center">
+				<th width="10%">幻灯片ID</th>
+				<th width="12%">幻灯片名称</th>
+				<th width="7%">上传城市</th>
+				<th width="13%">幻灯片位置</th>
+				<th width="17%">幻灯片链接</th>
+				<th width="7%">幻灯片状态</th>
+				<th width="10%">幻灯片操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<volist name="ss_list" id="vo">
+				<tr target="item_id" rel="{$vo.ID}" align="center">
+					<td>{$vo.ID}</td>
+					<td>{$vo.NAME}</td>
+					<td>{$vo.CID}</td>
+					<td>{$vo.SID}</td>
+					<td>{$vo.URL}</td>
+					<td>
+						<if condition="$vo.STATUS eq 0">
+							<font color="blue">待审核</font>
+						<elseif condition="$vo.STATUS eq 1"/>
+							<font color="green">审核通过</font>
+						<else />
+							<font color="red">审核不通过</font>
+						</if>
+					</td>
+					<td>
+						<a href="__URL__/check/ID/{$vo.ID}" target="navTab">审核</a>
+						<a href="__URL__/edit/ID/{$vo.ID}" target="navTab">编辑</a>
+						<a class="delete" href="__CONTROLLER__/del/ID/{$vo.ID}" target="ajaxTodo" postType="string" title="确定要删除吗?">删除</a>
+					</td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({$Think.config.TMPL_L_DELIM}numPerPage:this.value{$Think.config.TMPL_R_DELIM})">
+				<option value="10" <if condition="$numPerPage eq 10">selected</if>>10</option>
+				<option value="15" <if condition="$numPerPage eq 15">selected</if>>15</option>
+				<option value="20" <if condition="$numPerPage eq 20">selected</if>>20</option>
+				<option value="25" <if condition="$numPerPage eq 25">selected</if>>25</option>
+				<option value="30" <if condition="$numPerPage eq 30">selected</if>>30</option>
+			</select>
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="5" currentPage="{$currentPage}"></div>
+	</div>
+</div>

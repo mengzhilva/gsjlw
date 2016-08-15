@@ -1,0 +1,59 @@
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="app-mobile-web-app-capable" content="yes"> 
+<style>
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > figure {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+#slider {
+	max-width: 650px;/* 设置最大的宽度 */
+	margin: 0px auto; /* 居中对齐 */
+}
+.swimg{
+	height:200px;
+}
+figure {
+	margin: 0;/* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */
+}
+</style>
+
+<div id="slider" class="swipe" style="visibility:visible;">
+	<div class="swipe-wrap">
+		<figure>
+			<div>
+				<img class="swimg" src="{$al.pic1}" width="100%" />
+			</div>
+		</figure>
+		<figure>
+			<div>
+				<img class="swimg" src="{$al.pic2}" width="100%" />
+			</div>			
+		</figure>
+		<figure>
+			<div>
+				<img class="swimg" src="{$al.pic3}" width="100%" />
+			</div>			
+		</figure>
+	</div>
+</div>
+
+<script src="__PUBLIC__/wx/js/swipe.js"></script>
+<script>
+var slider =
+  Swipe(document.getElementById('slider'), {
+    auto: 3000,
+    continuous: true,
+	callback: function(pos) {
+	}
+  });
+</script>

@@ -1,0 +1,140 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<link href="__CSS__/lanrentuku.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/lanrentuku.js" type="text/javascript"><!--当前页面独立js文件--></script>
+<script src="__JS__/jquery-1.4.2.min.js" type="text/javascript"><!--当前页面独立js文件--></script>
+<style>
+.book .zigus{width:100%;height:30px;background:#fff;font-size:14px;text-align:right;line-height:30px;}
+.book .zigus a{margin:0 10px;color: #999;}
+</style>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container" >
+  <div id="storymain">
+  <volist name="info" id="voi"  key="k">  
+    <section class="sc-floor-row section-1 clearfix">
+     <if condition="$k eq 1">
+        <a href="{:U('/index/index')}" class="last"></a>
+        <span class="jz-top-icon"></span>
+     </if>
+        <h3 class="clearfix">
+            <p class="chi-ti detailtitle">{$voi.title}</p>
+        </h3>
+    </section>
+    <section class="clearfix book">
+        <div class="index-classify bookdetail">
+        	{$voi.content}
+        <div class="zigus">
+        <a href="{:U('/story/add?sid='.$voi['sid'].'&fid='.$voi['sid'].'&str='.$voi['str'])}">增加子故事</a>
+        <a href="{:U('/story/detail/id/'.$voi['str'])}">切换子故事</a>
+        <a href="{:U('/story/comment/id/'.$voi['sid'].'/str/'.$str)}">评论({$voi.commentnum})</a>
+        </div>
+        </div>
+    </section>
+    </volist>
+    </div>
+    <section class="clearfix book">
+        <h3 class="simptitle">接龙内容</h3>
+<div id="imgPlay">
+<ul class="imgs" id="actor" style=" margin-left: 0px;">
+                  <volist name="list" id="vo">  
+
+                    <li style="min-height:140px"> 
+                           <div class="xsname"><a href="javascript:addson({$vo['sid']});"><span class="gstitle">{$vo.title} </span></a></div>
+                           
+                          <div class="xscontent"><a href="javascript:addson({$vo['sid']});">{$vo.content}...</a></div>
+					
+					</li>
+                  </volist>
+</ul>
+<div class="num" >
+<p class="lc"></p>
+<p class="mc" style="width: 72px;"></p>
+<p class="rc"></p></div>
+<div class="num" id="numInner" ><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div>
+<div class="prev">上一张</div>
+<div class="next">下一张</div>
+</div>
+        <div style="height:60px;"></div>
+    </section>
+
+  </div>
+  <!--主体内容 end-->
+
+<!--底部悬浮
+-->
+<div class="zoom-bottom-fiexd">
+  <h2 class="z-b-f-l"><a href="{:U('/Story/lists')}" class="free-lf">目录</a></h2>
+  <h2 class="z-b-f-l"><a href="{:U('/Story/detail?sj=1&id='.$infos['sid'].'')}" class="free-lf">随机选</a></h2>
+  <h2 class="z-b-f-l"><a href="javascript:savestory();" class="free-lf">保存阅读</a></h2>
+  
+ 
+  <if condition="$next neq ''">
+  <p class="z-b-f-r"><a href="{:U('/book/detail?id='.$next.'')}" class="free-lf next">下一章</a></p>
+	</if>
+</div>
+<!--底部悬浮 end-->
+
+
+</div>
+<script src="__JS__/lanrentuku.js" type="text/javascript"><!--当前页面独立js文件--></script>
+<script src="__JS__/iepng.js" type="text/javascript"><!--当前页面独立js文件--></script>
+<script type="text/javascript">
+   EvPNG.fix('div ');
+</script>
+<script>
+var str = "{$str}";
+function addson(sid){ 
+	str = str+'-'+sid;
+	var wids = $(".book").width();
+	var zid = "{$id}";
+	  var urls = "{:U('/story/sonstory')}"+'?sid='+sid+'&wids='+wids+'&zid='+zid+'&str='+str;
+		var code = $("#code").val();
+		$.ajax({
+	        type: "get",
+	        url: urls,
+	        async:false,
+	        data: 
+			{
+			},
+	        dataType: "json",
+	        success: function(data){
+	        	if(data != ''){
+	        		$("#storymain").append(data.info);
+	        		$("#actor").html(data.html);
+	        		
+	        	}
+	        }
+		});
+		lbt();//更新轮播图
+} 
+function savestory(){
+
+	  var urls = "{:U('/UserCenter/savestory')}"+'?str='+str;
+		var code = $("#code").val();
+		$.ajax({
+	        type: "get",
+	        url: urls,
+	        async:false,
+	        data: 
+			{
+			},
+	        dataType: "html",
+	        success: function(data){
+	        	if(data != ''){
+	        		alert('保存成功')
+	        		
+	        	}
+	        }
+		});
+}
+</script>
+</body>
+</html>

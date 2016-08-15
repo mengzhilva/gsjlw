@@ -1,0 +1,58 @@
+<include file="utop" />
+
+        <!--客户列表-->
+        <section>
+            <div class="lb-tit2"><span class="lt-l">接龙数目：{$infonum}</span></div>
+            
+            <div class="lb-con" id="khlist">
+            
+            <volist  name="info" id="vo" key="k">
+            	<div class="lb-list">
+                	<table width="0" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="16%"><span class="b1"><a href="{:U('/story/detail?id='.$vo['sid'].'')}">{$vo.title}</a></span></td>
+                        <td width="31%"><span class="b1"></span></td>
+                        <td width="27%"><span class="b1"></span></td>
+                        <td width="19%" rowspan="2"><span class="b4">{$vo.create_date}</span></td>
+                        <td width="4%" rowspan="2"><span class="b3"><a href="{:U('/story/detail?id='.$vo['sid'].'')}"><img src="__PUBLIC__/wx/images/ht-10.png" /></a></span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="b2">点击：{$vo.hits}</span></td>
+                        <td colspan="2"><span class="b2">内容简介：<a href="{:U('/story/detail?id='.$vo['sid'].'')}">{$vo.content|strip_tags}...</a></span></td>
+                      </tr>
+                    </table>
+				</div>
+               </volist>
+            </div>
+           <if condition="$khnum gt 20"> 
+                    <div class="ck-more ck-more2"><a href="javascript:morekh();" class="bor-radius">加载更多 ∨</a></div>                   
+             </if>       
+        </section>
+        <!--客户列表 end-->
+        <script>
+        var p = 0;
+        function morekh(){
+
+        	var urls = "__APP__/{$city}/WxUseradmin/ajaxwdjl/p/"+p;
+			$.ajax({
+		        type: "get",
+		        url: urls,
+		        async:false,
+		        data: 
+				{
+				},
+		        dataType: "json",
+		        success: function(data){
+		        	if(data.html != ''){
+		        		$("#khlist").append(data.html);
+		        		p = data.p;
+		        	}else{
+		        		alert('没有了')
+		        	}
+		        }
+			});
+        }
+        </script>
+     </div>
+</body>
+</html>

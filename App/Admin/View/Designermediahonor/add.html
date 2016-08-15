@@ -1,0 +1,46 @@
+<h2 class="contentTitle">添加设计师荣耀</h2>
+<div class="pageContent">
+    <form method="post" action="__CONTROLLER__/insert/navTabId/listhonor/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+            <dl>
+                <dt>选择设计师：</dt>
+                <dd>
+                    <select name="DID" style="width:150px;">
+                        <volist  name="Designers" id="data">
+                            <option value="{$data.ID}">{$data['NAME']}</option>
+                        </volist>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>荣耀描述:</dt>
+                <dd>
+                    <input type="text" name="DESCRIBE" maxlength="20" class="required" />
+                    <span class="info">请输入荣耀描述</span>
+                </dd>
+            </dl>
+            <dl>
+				<dt>店面照片：</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.Image}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="IMAGE" id="background" class="valid">
+				</dd>
+			</dl>
+       
+        
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+
+ 
+  

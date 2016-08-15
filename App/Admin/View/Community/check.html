@@ -1,0 +1,55 @@
+<h2 class="contentTitle">小区审核</h2>
+
+
+<div class="pageContent">
+    
+    <form method="post" action="__CONTROLLER__/chupdate/navTabId/listcommunity/callbackType/closeCurrent"   class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+            <dl>
+                <dt>审核意见：</dt>
+                <dd>
+                     <input type="hidden" name="ID" value="{$communitystatus.ID}">
+                     <textarea name="STATUSDESCRIPTION"  cols="80" rows="3">{$communitystatus.STATUSDESCRIPTION}</textarea>
+                </dd>
+
+            </dl>
+            <dl>
+                <!-- <h4>{$newsstatus.ID}</h4> -->
+                <dt>审核结果：</dt>
+                <dd>
+                     <label>
+                     <input type="radio" name="STATUS"  value="1" <if condition="$communitystatus.STATUS eq 1">checked</if>>审核通过</label>
+                    <label>
+                    <input type="radio" name="STATUS" value="-1" <if condition="$communitystatus.STATUS eq -1">checked</if>>审核不通过</label>
+                </dd>
+
+            </dl>
+            <dl>
+                <!-- <h4>{$newsstatus.ID}</h4> -->
+                <dt>热点小区页面排序：</dt>
+                <dd>
+                     <label>
+                     <input type="radio" name="indexno"  value="1" <if condition="$communitystatus.indexno eq 1">checked</if>>1</label>
+                    <label>
+                    <input type="radio" name="indexno" value="2" <if condition="$communitystatus.indexno eq 2">checked</if>>2</label>
+                    <label>
+                    <input type="radio" name="indexno" value="3" <if condition="$communitystatus.indexno eq 3">checked</if>>3</label>
+                    <label>
+                    <input type="radio" name="indexno" value="0" <if condition="$communitystatus.indexno eq 3">checked</if>>不显示</label>
+                </dd>
+
+            </dl>
+
+            
+   
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+

@@ -1,0 +1,58 @@
+<include file="Common/top" />
+
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/case.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script type="text/javascript" src="__JS__/case.js"></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="#" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix case-h3">
+        	<p class="chi-ti">案例详情</p>
+            <p class="eng-ti">THE CASE DETAILS</p>
+        </h3>
+        <div class="top-share-cl">
+         <a href="#" class="top-share-btn"><strong class="s-font">分 享</strong><i class="top-share-icon"></i></a>
+        </div>
+    </section>
+    <section class="sc-floor-row designer-1 clearfix">
+        <div class="designer-detail clearfix">
+        	<div class="position-bar">
+            	<span>羡慕他的家，不如让自己家与众不同</span>
+                <a href="#">免费量房</a>
+            </div>
+			<div class="scroll relative">
+            <div class="rightbg"><span>还可以向左划哦</span></div>
+            <div class="scroll_box" id="case_img">
+            <ul class="scroll_wrap">
+            <volist name="cases" id="vo" empty="暂无数据">
+              <li><a href="#"><img src="PC_SITE_URL{$vo.IMAGE}" width="100%" /></a>
+              	<div class="shadow">
+                	<div class="bg"></div>
+                </div>
+              </li>
+            </volist>
+            </ul>
+            </div>
+          <span class="scroll_position_bg opacity6"></span>
+          </div>
+             <!--结束循环-->
+        </div>
+        
+    </section>
+  </div>
+  <!--主体内容 end-->
+<!--footer-->
+<footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer>
+<!--footer end-->
+</div>
+</body>
+</html>

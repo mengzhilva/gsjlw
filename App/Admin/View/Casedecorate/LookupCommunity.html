@@ -1,0 +1,65 @@
+
+<form id="pagerForm" action="__URL__/LookupCommunity">
+	<input type="hidden" name="pageNum" value="{$currentPage|default='1'}" />
+	<input type="hidden" name="numPerPage" value="{$numPerPage}" />
+	<input type="hidden" name="_order" value="{$Think.request._order}"/>
+	<input type="hidden" name="_sort" value="{$Think.request._sort}"/>
+</form>
+
+<div class="pageHeader">
+	<form rel="pagerForm" method="post" action="__URL__/LookupCommunity" onsubmit="return dwzSearch(this, 'dialog');">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>小区ID:</label>
+				<input class="textInput" name="ID" value="{$Think.post.ID}" type="text">
+			</li>	  
+			<li>
+				<label>小区名称:</label>
+				<input class="textInput" name="NAME" value="{$Think.post.NAME}" type="text">
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" multLookup="orgId" warn="请选择部门">选择带回</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+
+	<table class="table" layoutH="118" targetType="dialog" width="100%">
+		<thead>
+			<tr align="center">
+				<th width="20%"><input type="checkbox" class="checkboxCtrl" group="orgId" /></th>
+				<th width="30%" orderfield="orgName">小区ID</th>
+				<th width="50%" orderfield="orgNum">小区名称</th>
+			</tr>
+		</thead>
+		<tbody>
+			<volist name="list" id="c">
+			<tr align="center">
+				<td><input type="checkbox" name="orgId" value="{id:'{$c.ID}', cmName:'{$c.NAME}', cmID:'{$c.ID}'}"/></td>
+				<td>{$c.ID}</td>
+				<td>{$c.NAME}</td>
+			</tr>
+			</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span></span>
+			<select class="combox" name="numPerPage" onchange="dialogPageBreak({$Think.config.TMPL_L_DELIM}numPerPage:this.value{$Think.config.TMPL_R_DELIM})">
+				<option value="10" <if condition="$numPerPage eq 10">selected</if>>10</option>
+				<option value="15" <if condition="$numPerPage eq 15">selected</if>>15</option>
+				<option value="20" <if condition="$numPerPage eq 20">selected</if>>20</option>
+				<option value="25" <if condition="$numPerPage eq 25">selected</if>>25</option>
+				<option value="30" <if condition="$numPerPage eq 30">selected</if>>30</option>
+			</select>
+			<span>共有<font color="red">{$totalCount}</font>条</span>
+		</div>
+		<div class="pagination" targetType="dialog" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="5" currentPage="{$currentPage}"></div>
+</div>

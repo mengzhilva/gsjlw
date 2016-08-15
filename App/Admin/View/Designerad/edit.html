@@ -1,0 +1,85 @@
+<div class="pageContent">
+
+    <form name="form1" method="post" action="__CONTROLLER__/update/navTabId/listad/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+ <input type="hidden" name="ID" value="{$vo.ID}">
+            <dl>
+                <dt>姓名：</dt>
+                <dd>
+                    <input type="text" name="NAME" maxlength="20"  value="{$vo.NAME}" readonly="true" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>城市区域：</dt>
+                <dd>
+                   <select name="CID" style="width:150px;">
+                        <volist  name="cityname" id="data">
+                            <option value="{$data.ID}">{$data['NAME']}</option>
+                        </volist>
+                    </select>
+                <script>
+                    document.form1.CID.value='{$vo.CID}';
+                </script>
+                </dd>
+            </dl>
+ 			<dl>
+                <dt>一行简介：</dt>
+                <dd>
+                    <input type="text" name="RESUME" maxlength="50" class="required" value="{$vo.RESUME}" />
+                    <span class="info">请输入一行简介</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>排序：</dt>
+                <dd>
+                    <input type="text" name="RANK" maxlength="50"  value="{$vo.RANK}"/>
+                </dd>
+            </dl>
+            <dl>
+                <dt>评分：</dt>
+                <select name="STAR"  style="width:150px;">
+                    <option value="1">★</option>
+                    <option value="2">★★</option>
+                    <option value="3">★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="5">★★★★★</option>
+                </select>
+                <script>
+                    document.form1.STAR.value='{$vo.STAR}';
+                </script>
+            </dl>
+            <dl>
+                <dt>状态：</dt>
+                <dd>
+                <select name="STATUS"  style="width:150px;">
+                    <option value="0"checked>关闭</option>
+                    <option value="1">启用</option>
+                </select>
+                <script>
+                    document.form1.STATUS.value='{$vo.STATUS}';
+                </script>
+                </dd>
+            </dl>
+            <dl>
+				<dt>轮播图片：</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.IMAGE}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="IMAGE" id="background" class="valid" value="{$vo.IMAGE}">
+				</dd>
+			</dl>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+
+ 
+  

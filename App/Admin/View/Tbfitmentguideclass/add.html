@@ -1,0 +1,41 @@
+<div class="pageContent">
+	<form method="post" action="__URL__/insert/navTabId/listzguide/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);">
+
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<dl>
+				<dt>分类名称:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="ClassName"/></dd>
+			</dl>
+
+			<dl>
+				<dt>一级分类:</dt>
+				<dd>
+					<select name="ParentID" style="width:150px;">
+						<option value="0">一级</option>
+						<option value="1">二级</option>
+						<option value="2">其他</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>分类排序:</dt>
+				<dd>
+					<select name="OrderID" style="width:150px;">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</dd>
+			</dl>
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

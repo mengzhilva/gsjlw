@@ -1,0 +1,47 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/choose-city.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/index/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+        	<p class="chi-ti">功能菜单</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row city-wrapper clearfix">
+        <div class="floor clearfix">
+            <h1 class=" clearfix">故事接龙</h1>
+                        <a class="city clearfix" href="{:U('/Story/lists')}" style="width:31%;color: #ec4e21; font-weight: bold;">现有接龙</a>
+                        <a class="city clearfix" href="{:U('/Story/hots')}" style="width:31%;color: #ec4e21; font-weight: bold;">热门接龙</a>  
+                        <a class="city clearfix" href="{:U('/UserCenter/wdjl')}" style="width:31%;color: #ec4e21; font-weight: bold;">我的接龙</a>      
+                        <a class="city clearfix" href="{:U('/UserCenter/wdjlin')}" style="width:31%;color: #ec4e21; font-weight: bold;">我参与接龙</a>      
+                        <a class="city clearfix" href="{:U('/UserCenter/history')}" style="width:35%;color: #ec4e21; font-weight: bold;">我的查看历史</a>   
+                        <a class="city clearfix" href="{:U('/Story/add')}" style="width:35%;color: #ec4e21; font-weight: bold;">添加新接龙</a>                               
+        </div> 
+        <div class="floor clearfix">
+            <h1 class=" clearfix">精彩小说</h1>
+                    <volist name="menu" id="vo">
+                        <a class="city clearfix" href="{:U('/book/menulist?id='.$vo['id'])}" style="width:31%;color: #ec4e21; font-weight: bold;">{$vo.name}</a>
+					</volist>
+	        </div>    
+
+    </section>
+   
+  </div>
+  <!--主体内容 end-->
+
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

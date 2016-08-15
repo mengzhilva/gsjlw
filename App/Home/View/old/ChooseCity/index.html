@@ -1,0 +1,116 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/choose-city.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/index/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+        	<p class="chi-ti">选择城市</p>
+            <p class="eng-ti">SELECT THE CITY</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row city-wrapper clearfix">
+    	<div class="floor clearfix">
+            <h1 class=" clearfix">定位城市</h1>
+            <p class="city clearfix">{$cityinfo.NAME}</p>
+        </div>    
+        <div class="floor clearfix">
+            <h1 class=" clearfix">热门城市</h1>
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.IsMSiteHot eq 1">
+                        <a class="city clearfix" href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a>
+                        </if>
+                    </volist>            
+        </div> 
+        <div class="floor clearfix">
+            <h1 class="clearfix">全部城市</h1>
+            <br/>
+            <div class="under clearfix"></div>
+        </div> 
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">东北</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '东北'">
+                        <li><a  href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div> 
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">华北</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '华北'">
+                        <li><a  href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div>  
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">华东</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '华东'">
+                        <li><a  href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div>   
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">中南</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '中南'">
+                        <li><a  href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div>   
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">西南</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '西南'">
+                        <li><a  href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div>   
+        <div class="floor clearfix">
+            <p class="city allcity clearfix">西北</p>
+            <div class="under clearfix"></div>
+            <ul class="city-list">
+                    <volist name="citys" id="vo">
+                        <if condition="$vo.AreaName eq '西北'">
+                        <li><a href="{:U('/index/index?city='.$vo['DOMAIN'])}"  <if condition="$vo.DOMAIN eq $city">style="color: #ec4e21; font-weight: bold;"</if>>{$vo.NAME}</a></li>
+                        </if>
+                    </volist>                  
+            </ul>
+        </div>          
+
+    </section>
+   
+  </div>
+  <!--主体内容 end-->
+
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

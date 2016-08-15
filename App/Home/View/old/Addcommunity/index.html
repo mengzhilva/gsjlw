@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addcomunity</title>
+</head>
+<body>
+<form action="__CONTROLLER__/insert" method="post" enctype="multipart/form-data">
+    小区名称：<input type="text" value=""><br>
+    所在城市：<select name="" id="">
+                    <option value="">-请选择-</option>
+                    <volist name="ctname" id="ctname">
+                    <option value="ctname.id">{$ctname.name}</option>
+                    </volist>
+                </select>
+
+    <br>
+    小区地址：<input type="text" value=""><br>
+    添加图片：<input type="file"><br>
+    <input type="submit" value="提交"><br>
+
+</form>
+    
+</body>
+</html>

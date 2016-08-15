@@ -1,0 +1,99 @@
+
+<div class="pageContent">
+    <form method="post" action="__CONTROLLER__/insert/navTabId/liststore/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+            <dl>
+                <dt>城市区域：</dt>
+                <dd>
+                    <select class="combox" name="CID" ref="w_combox_city" refUrl="__CONTROLLER__/getcitya/cid/{value}">
+                        <option value="">选择城市</option>
+                        <volist name="cityname" id="ctname">
+                        <option value="{$ctname.ID}">{$ctname.NAME}</option>
+                        </volist>
+                    </select>
+                    <select class="combox" name="AID" id="w_combox_city" >
+                        <option value="">选择区域</option>
+                    </select>
+                        
+                </dd>
+            </dl>
+            <dl>
+                <dt>店面名称：</dt>
+                <dd>
+                    <input type="text" name="StoreName" maxlength="20" class="required" />
+                    <span class="info">请输入店面名称</span>
+                </dd>
+            </dl>
+ 			<dl>
+                <dt>店面地址：</dt>
+                <dd>
+                    <input type="text" name="Address" maxlength="50" class="required" />
+                    <span class="info">请输入店面地址</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>店长姓名：</dt>
+                <dd>
+                    <input type="text" name="ShopKeeper" maxlength="50" class="required" />
+                    <span class="info">请输入店长姓名</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>店长电话：</dt>
+                <dd>
+                    <input type="text" name="TelePhone" maxlength="50" class="required" />
+                    <span class="info">请输入店长电话</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>助理姓名：</dt>
+                <dd>
+                    <input type="text" name="AssistantName" maxlength="50" class="required" />
+                    <span class="info">请输入助理姓名</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>店面邮箱：</dt>
+                <dd>
+                    <input type="text" name="Email" maxlength="50" class="required" />
+                    <span class="info">请输入店面邮箱</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>店铺介绍：</dt>
+                <dd><textarea name="ShopIntro" class="required" cols="80" rows="3"></textarea></dd>
+            </dl>
+            <dl>
+				<dt>店面照片：</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.Image}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="Image" id="background" class="valid">
+				</dd>
+			</dl>
+       
+        
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+<script>
+	function fileback(json){
+		if(json.state == 200){
+			$.pdialog.closeCurrent();
+			$("#uploadimg").attr('src',json.msg);
+			$("#background").val(json.msg);
+			alert('上传成功');
+		}
+	}
+	</script>
+ 
+  

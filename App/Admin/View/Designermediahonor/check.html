@@ -1,0 +1,25 @@
+<h2 class="contentTitle">标签审核【审核】</h2>
+<div class="pageContent">
+	<form name="form1" method="post" action="__URL__/checkUp/"  class="pageForm required-validate" 
+		onsubmit="return validateCallback(this,dialogAjaxDone);"><?php  //窗体组件采用这个 iframeCallback(this, navTabAjaxDone); ?>
+		<input type="hidden" name="id" value="{$Tag.ID}"/>
+		<div class="pageFormContent" layoutH="60">
+			
+			<dl>
+				<dt>审核结果：</dt>
+				<dd><input id="STATUS_0" type="radio" name="STATUS" value="1" <?php if($Tag['STATUS']==1){echo "checked";}?> />审核通过
+                  <input id="STATUS_1" type="radio" name="STATUS" value="-1" <?php if($Tag['STATUS']==-1){echo "checked";}?>/>审核不通过
+    			</dd>
+			</dl>
+           
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
+

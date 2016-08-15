@@ -1,0 +1,83 @@
+
+<form id="pagerForm" action="__URL__/index" method="post">
+    <input type="hidden" name="pageNum" value="{$currentPage|default='1'}" />
+    <input type="hidden" name="numPerPage" value="{$numPerPage}" />
+    <input type="hidden" name="_order" value="{$Think.request._order}"/>
+    <input type="hidden" name="_sort" value="{$Think.request._sort}"/>
+</form>
+
+<div class="pageHeader">
+    <form rel="pagerForm" onsubmit="return dwzSearch(this,'dialog');" action="__CONTROLLER__/index" method="post">
+    
+     <!-- <input type="hidden" name="numPerPage" value="{$numPerPage}" /> -->
+    
+    <div class="searchBar">
+        <table class="searchContent">
+            <tr>
+                <td>
+                    <b>搜索</b> &nbsp; 小区名称：<input type="text" size="10" name="comname" value="{$Think.post.comname}" />
+                </td>
+                <td>
+                城市：
+                </td>
+                <td>
+                <select class="combox" name="CID" >
+                    <option value="" >-全部-</option>
+                    <volist name="city" id="citvo">
+                        <option value="{$citvo.ID}" <if condition="$Think.post.CID eq $citvo['ID']">selected</if>>{$citvo.NAME}</option>
+                    </volist>
+                    </select>
+                </td>
+                <td>
+                    <div class="buttonActive"><div class="buttonContent"><button type="submit">搜索</button></div></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</div>
+
+<div class="pageContent">
+    <table class="table" layoutH="118" targetType="dialog" width="100%">
+        <thead>
+            <tr>
+                <th orderfield="CID">城市</th>
+                <th orderfield="NAME">小区名称</th>
+                <th orderfield="IsImportent">是否重点</th>
+                <th orderfield="STATUS">审核状态</th>
+                <th width="80">查找带回</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="comlook">
+            <tr>
+                <td>{$comlook.CID|getcityname}</td>
+                <td>{$comlook.NAME}</td>
+                <td>{$comlook.isimportent}</td>
+                <td>{$comlook.status}</td>
+                <td>
+                    <a class="btnSelect" href="javascript:$.bringBack({ CID:'{$comlook.CID}',AID:'{$comlook.AID}',ID:'{$comlook.ID}', NAME:'{$comlook.NAME}'})" title="查找带回">选择</a>
+                </td>
+            </tr>
+            </volist>
+            
+        </tbody>
+    </table>
+
+
+    <div class="panelBar">
+        <div class="pages">
+            <span>显示</span>
+            <!-- <select class="combox"  name="numPerPage" onchange="dialogPageBreak({numPerPage:this.value})"> -->
+            <select class="combox" name="numPerPage" onchange="dialogPageBreak({$Think.config.TMPL_L_DELIM}numPerPage:this.value{$Think.config.TMPL_R_DELIM})">
+                <option value="10" <if condition="$numPerPage eq 10">selected</if>>10</option>
+                <option value="15" <if condition="$numPerPage eq 15">selected</if>>15</option>
+                <option value="20" <if condition="$numPerPage eq 20">selected</if>>20</option>
+                <option value="25" <if condition="$numPerPage eq 25">selected</if>>25</option>
+                <option value="30" <if condition="$numPerPage eq 30">selected</if>>30</option>
+            </select>
+            <span>共{$totalCount}条</span>
+        </div>
+        <div class="pagination" targetType="dialog" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="5" currentPage="{$currentPage}"></div>
+    </div>
+</div>

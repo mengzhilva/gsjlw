@@ -1,0 +1,46 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/taocan.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+        <a href="{:U('/index/index')}" class="last"></a>
+        <span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+            <p class="chi-ti detailtitle">{$info.title}</p>
+        </h3>
+    </section>
+    <section class="clearfix book">
+        <div class="index-classify bookdetail">
+        	{$info.content}
+        </div>
+    </section>
+
+  </div>
+  <!--主体内容 end-->
+
+<!--底部悬浮
+-->
+<div class="zoom-bottom-fiexd">
+  <h2 class="z-b-f-l"><a href="{:U('/book/lists?id='.$book['id'].'')}" class="free-lf">目录</a></h2>
+  <if condition="$pre neq ''">
+  <p class="z-b-f-r"><a href="{:U('/book/detail?id='.$pre.'')}" class="free-lf">上一章</a></p>
+  </if>
+  <if condition="$next neq ''">
+  <p class="z-b-f-r"><a href="{:U('/book/detail?id='.$next.'')}" class="free-lf next">下一章</a></p>
+	</if>
+</div>
+<!--底部悬浮 end-->
+
+
+</div>
+</body>
+</html>

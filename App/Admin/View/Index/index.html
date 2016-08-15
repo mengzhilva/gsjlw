@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>管理工作平台_实创装饰</title>
+
+<link href="__PUBLIC__/dwz/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="__PUBLIC__/dwz/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="__PUBLIC__/dwz/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+<link href="__PUBLIC__/dwz/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
+<!--[if IE]>
+<link href="__PUBLIC__/dwz/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<![endif]-->
+
+<script src="__PUBLIC__/dwz/js/speedup.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/js/jquery-1.7.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/js/jquery.validate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/js/jquery.bgiframe.js" type="text/javascript"></script>
+
+<script src="__PUBLIC__/dwz/xheditor/xheditor-1.1.12-zh-cn.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/uploadify/scripts/swfobject.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/uploadify/scripts/jquery.uploadify.v2.1.0.js" type="text/javascript"></script>
+
+
+<script src="__PUBLIC__/dwz/js/dwz.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+    DWZ.init("__PUBLIC__/dwz/dwz.frag.xml", {
+        //loginUrl:"login_dialog.html", loginTitle:"登录",    // 弹出登录对话框
+        loginUrl:"__APP__/Public/login",    // 跳到登录页面
+        statusCode:{ ok:200, error:300, timeout:301}, //【可选】
+        pageInfo:{ pageNum:"pageNum", numPerPage:"numPerPage", orderField:"_order", orderDirection:"_sort"}, //【可选】
+        debug:false,    // 调试模式 【true|false】
+        callback:function(){
+            initEnv();
+            $("#themeList").theme({ themeBase:"__PUBLIC__/dwz/themes"}); // themeBase 相对于index页面的主题base路径
+        }
+    });
+});
+
+</script>
+</head>
+
+<body scroll="no">
+    <div id="layout">
+        <!-- 页头信息 -->
+        <div id="header">
+            <div class="headerNav">
+                <a class="logo" href="#">标志</a>
+                <ul class="nav">
+                    <li><a href="__APP__">前台首页</a></li>
+                    <li><a href="#" target="_blank">欢迎您：{$Think.session.scadminuser.username}</a></li>
+                    <li><a href="__MODULE__/Public/password" target="dialog">修改密码</a></li>
+                    <li><a href="__MODULE__/Public/logout">退出</a></li>
+                </ul>
+                
+                <ul class="themeList" id="themeList">
+                    <li theme="default"><div class="selected">蓝色</div></li>
+                    <li theme="green"><div>绿色</div></li>
+                    <li theme="purple"><div>紫色</div></li>
+                    <li theme="silver"><div>银色</div></li>
+                    <li theme="azure"><div>天蓝</div></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 页头信息 -->
+<?php $level = explode(',', $_SESSION['scadminuser']['lid']); ?>
+        <!-- 左侧导航栏开始 -->
+        <div id="leftside">
+            <div id="sidebar_s">
+                <div class="collapse">
+                    <div class="toggleCollapse"><div></div></div>
+                </div>
+            </div>
+            <div id="sidebar">
+                <div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+                <div class="accordion" fillSpace="sidebar">
+<?php if(in_array(1, $level) or in_array(43, $level) or in_array(58, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>系统管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Admin/index" target="navTab" rel="listadmin" title="管理员管理">管理员管理</a></li>
+<?php if(in_array(43, $level)){ ?>
+                            <li><a href="__MODULE__/CityArea/index" target="navTab" rel="listcityarea" title="区县管理">区县管理</a></li>
+<?php } ?>
+<?php if(in_array(58, $level)){ ?>
+                            <li><a href="__MODULE__/City/index" target="navTab"  rel="listcity" title="站点管理">站点管理</a></li>
+<?php } ?>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(49, $level) or in_array(53, $level) or in_array(78, $level) or in_array(81, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>关于企业</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+<?php if(in_array(49, $level)){ ?>
+                            <li><a href="__MODULE__/Tbnewsclass/index" target="navTab" rel="listclass" title="新闻分类管理">新闻分类管理</a></li>
+<?php } ?>
+<?php if(in_array(53, $level)){ ?>
+                            <li><a href="__MODULE__/Tbnews/index" target="navTab" rel="listnews" title="新闻内容管理">新闻内容管理</a></li>
+                            <li><a href="__MODULE__/TbnewsYgfc/index" target="navTab" rel="listnewsyg" title="员工风采管理">员工风采管理</a></li>
+<?php } ?>
+<?php if(in_array(78, $level)){ ?>
+                            <li><a href="__MODULE__/Job/index" target="navTab" rel="listjob" title="招聘管理">招聘管理</a></li>
+<?php } ?>
+<?php if(in_array(81, $level)){ ?>
+                            <li><a href="__MODULE__/JobClass/index" target="navTab" rel="listjobclass" title="招聘类别管理">招聘类别管理</a></li>
+                            <li><a href="__MODULE__/JobType/index" target="navTab" rel="listjobtype" title="招聘职位类别管理">招聘职位类别管理</a></li>
+<?php } ?>
+<?php if(in_array(107,$level)){?>
+
+                            <li><a href="__MODULE__/Links/index" target="navTab" rel="listlinks" title="友情链接">友情链接</a></li>
+<?php }?>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(25, $level) or in_array(26, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>小区管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Community/index" target="navTab" rel="listcommunity" title="浏览小区">小区管理</a>
+                                <ul>
+<?php if(in_array(25, $level)){ ?>
+                                    <li><a href="__MODULE__/Community/index" target="navTab" rel="listcommunity" title="浏览小区">浏览小区</a></li>
+<?php } ?>
+<?php if(in_array(26, $level)){ ?>
+                                    <li><a href="__MODULE__/Community/add" target="navTab"  rel="addcommunity" title="添加小区">添加小区</a></li>
+<?php } ?>
+                                </ul>
+                            </li>
+<?php if(in_array(102,$level) or in_array(103,$level)){?>
+                            <li><a href="__MODULE__/Groupbuy/index" target="navTab" rel="listgroupbuy" title="浏览小区团购">小区团购管理</a>
+                                <ul>
+<?php if(in_array(102,$level)){?>
+                                    <li><a href="__MODULE__/Groupbuy/index" target="navTab" rel="listgroupbuy" title="浏览小区团购">浏览小区团购</a></li>
+<?php } if(in_array(103,$level)){?>
+                                    <li><a href="__MODULE__/Groupbuy/add" target="navTab" rel="addgroupbuy">添加小区团购</a></li>
+<?php } ?>
+                                </ul>
+                            </li>
+<?php }?>
+                            <!-- 
+                            <li><a href="__MODULE__/Communityhlj/index" target="navTab" rel="listhlj" title="浏览好邻居">好邻居管理</a>
+                                <ul>
+                                    <li><a href="__MODULE__/Communityhlj/index" target="navTab" rel="listhlj" title="浏览好邻居">浏览好邻居</a></li>
+                                    <li><a href="__MODULE__/Communityhlj/add" target="dialog" width="550" height="300">添加好邻居</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="__MODULE__/Reservationhlj/index" target="navTab" rel="listreservationhlj" title="浏览留言">好邻居留言管理</a>
+                                <ul>
+                                    <li><a href="__MODULE__/Reservationhlj/index" target="navTab" rel="listreservationhlj" title="浏览留言">浏览留言</a></li>
+
+                                </ul>
+                            </li> -->
+
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(39, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>会员管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Users/index" target="navTab" rel="listuser" title="会员管理">会员管理</a></li>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(6, $level) or in_array(7, $level) or in_array(11, $level) or in_array(72, $level) or in_array(83, $level) or in_array(87, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>设计师管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Designer/index" target="navTab" rel="listshejishi" title="设计师管理">设计师管理</a>
+                            <ul>
+<?php if(in_array(6, $level)){ ?>
+                            <li><a href="__MODULE__/Designer/index" target="navTab" rel="listshejishi" title="设计师列表">设计师列表</a></li>
+<?php } ?>
+                            <?php if(in_array(7, $level)){ ?>
+                                    <li><a href="__MODULE__/Designer/add" target="navTab"  rel="addshejishi" title="添加设计师">添加设计师</a></li>
+                            <?php } ?>
+                                </ul>
+                            </li>
+<?php if(in_array(11, $level)){ ?>
+                            <li><a href="__MODULE__/Designerad/index" target="navTab" rel="listad" title="轮播图管理">轮播图管理</a>
+                                <ul>
+                                    <li><a href="__MODULE__/Designerad/index" target="navTab" rel="listad" title="轮播图管理">轮播图管理</a></li>
+                                </ul>
+                            </li>
+<?php } ?>
+<?php if(in_array(72, $level)){ ?>
+                            <li><a href="__MODULE__/Designertag/index" target="navTab" rel="listtags" title="设计师管理">标签管理</a>
+                            <ul>
+                                <li><a href="__MODULE__/Designertag/index" target="navTab" rel="listtags" title="标签管理">标签管理</a></li>
+                                </ul>
+                            </li>
+<?php } ?>
+<?php if(in_array(83, $level)){ ?>
+                            <li><a href="__MODULE__/Storefront/index" target="navTab" rel="liststore" title="设计师管理">店面管理</a>
+                            <ul>
+                                <li><a href="__MODULE__/Storefront/index" target="navTab" rel="liststore" title="标签管理">店面管理</a></li>
+                                </ul>
+                            </li>
+<?php } ?>
+<?php if(in_array(87, $level)){ ?>
+                            <li><a href="__MODULE__/Designermediahonor/index" target="navTab" rel="listhonor" title="媒体荣耀管理">媒体荣耀管理</a>
+                            <ul>
+                                <li><a href="__MODULE__/Designermediahonor/index" target="navTab" rel="listhonor" title="媒体荣耀管理">媒体荣耀管理</a></li>
+                                </ul>
+                            </li>
+<?php } ?>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(67, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>活动管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Hd/index" target="navTab" rel="listhd" title="活动管理">活动管理</a></li>
+                            <li><a href="__MODULE__/Hd/chajianlist" target="navTab"  rel="listhdcj" title="活动插件管理">活动插件管理</a></li>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(67, $level) or in_array(132, $level) or in_array(138, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>报名管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+							<?php if(in_array(67, $level)){ ?>
+                            <li><a href="__MODULE__/Hd/hdbm" target="navTab" rel="listhdbm" title="活动报名管理">活动报名管理</a></li>
+							<?php } ?>
+							<?php if(in_array(132, $level)){ ?>
+							<li><a href="__MODULE__/Reservedesigner/index" target="navTab" rel="listyudesigner" title="预约设计师管理">预约设计师管理</a></li>
+							<?php } ?>
+							<?php if(in_array(138, $level)){ ?>
+							<li><a href="__MODULE__/Freehousedesign/index" target="navTab" rel="listyfdesign" title="免费户型设计管理">免费户型设计管理</a></li>
+							<?php } ?>
+                        </ul>
+                    </div>
+<?php } ?>
+<?php if(in_array(62, $level) or in_array(63, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>案例管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Casedecorate/index" target="navTab" rel="listcase" title="案例管理">案例管理</a>
+                            <ul>
+<?php if(in_array(62, $level)){ ?>
+                                <li><a href="__MODULE__/Casedecorate/index" target="navTab" rel="listcase" title="案例列表">案例列表</a></li>
+<?php } ?>
+<?php if(in_array(63, $level)){ ?>
+                                    <li><a href="__MODULE__/Casedecorate/add" target="navTab"  rel="addcase" title="添加案例">添加案例</a></li>
+<?php } ?>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+<?php } ?>
+
+<?php if(in_array(94, $level) or in_array(99, $level)){ ?>
+                    <div class="accordionHeader">
+                        <h2><span>Folder</span>装修指南</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Tbfitmentguide/index" target="navTab" rel="listzcontent" title="装修指南">装修指南</a>
+                            <ul>
+							<?php if(in_array(94, $level)){ ?>
+                                <li><a href="__MODULE__/Tbfitmentguideclass/index" target="navTab" rel="listzguide" title="分类管理">分类管理</a></li>
+							<?php } ?>
+							<?php if(in_array(99, $level)){ ?>
+                                <li><a href="__MODULE__/Tbfitmentguide/index" target="navTab"  rel="listzcontent" title="文章管理">文章管理</a></li>
+                            <?php } ?>
+							</ul>
+                            </li>
+                        </ul>
+                    </div>
+<?php } ?>
+
+<?php if(in_array(113, $level) or in_array(118, $level)){ ?>
+					<div class="accordionHeader">
+                        <h2><span>Folder</span>广告管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Activity/index" target="navTab" rel="listzcontent" title="广告管理">广告管理</a>
+                            <ul>
+							<?php if(in_array(113, $level)){ ?>
+                                <li><a href="__MODULE__/Activity/index" target="navTab" rel="listad" title="广告管理">广告管理</a></li>
+							<?php } ?>
+							<?php if(in_array(118, $level)){ ?>
+								<li><a href="__MODULE__/Adposition/index" target="navTab"  rel="listadposition" title="广告位管理">广告位管理</a></li>
+							<?php } ?>
+							</ul>
+                            </li>
+                        </ul>
+                    </div>
+<?php } ?>
+
+<?php if(in_array(122, $level) or in_array(127, $level)){ ?>
+					<div class="accordionHeader">
+                        <h2><span>Folder</span>幻灯片管理</h2>
+                    </div>
+                    <div class="accordionContent">
+                        <ul class="tree treeFolder">
+                            <li><a href="__MODULE__/Slideshow/index" target="navTab" rel="listslideshow" title="幻灯片管理">幻灯片管理</a>
+                            <ul>
+							<?php if(in_array(122, $level)){ ?>
+                                <li><a href="__MODULE__/Slideshow/index" target="navTab" rel="listslideshow" title="幻灯片管理">幻灯片管理</a></li>
+							<?php } ?>
+							<?php if(in_array(127, $level)){ ?>
+								<li><a href="__MODULE__/Slideshowclass/index" target="navTab"  rel="listsposition" title="幻灯片位管理">幻灯片位管理</a></li>
+							<?php } ?>
+							</ul>
+                            </li>
+                        </ul>
+                    </div>
+<?php } ?>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- 左侧导航栏结束-->
+        
+        <div id="container">
+            <div id="navTab" class="tabsPage">
+                <div class="tabsPageHeader">
+                    <div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+                        <ul class="navTab-tab">
+                            <li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">我的主页</span></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="tabsLeft">left</div><!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+                    <div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+                    <div class="tabsMore">more</div>
+                </div>
+                <ul class="tabsMoreList">
+                    <li><a href="javascript:;">主页</a></li>
+                </ul>
+                <div class="navTab-panel tabsPageContent layoutBox">
+                    <div class="page unitBox">
+                        <!-- <div class="accountInfo">
+                        <h1>北京实创装饰CMS管理后台 </h1>
+                        </div> -->
+<style type="text/css">
+    .panel div{height:40px;line-height:40px;}
+    .panel a{font-size: 14px;}
+</style>
+                        <div class="pageFormContent" layoutH="80" >
+                        <div class="panel" defH="40">
+                            <h1>未处理消息</h1>
+                            <div>
+                                <a href="__MODULE__/Tbnews/index" target="navTab" rel="listnews" title="新闻内容管理" <?php if($newsCount){echo "style='color:red'";} ?>>新闻管理（{$newsCount}）</a> |
+                                <a href="__MODULE__/Community/index" target="navTab" rel="listcommunity" title="浏览小区" <?php if($CommunityCount){echo "style='color:red'";} ?>>小区管理（{$CommunityCount}）</a> | 
+                                <a href="__MODULE__/Groupbuy/index" target="navTab" rel="listgroupbuy" title="浏览小区团购" <?php if($GroupbuyCount){echo "style='color:red'";} ?>>小区团购（{$GroupbuyCount}）</a> | 
+                                <a href="__MODULE__/Designer/index" target="navTab" rel="listshejishi" title="设计师列表" <?php if($DesignerCount){echo "style='color:red'";} ?>>设计师管理（{$DesignerCount}）</a> | 
+                                <a href="__MODULE__/Designertag/index" target="navTab" rel="listtags" title="设计师管理" <?php if($DesignertagCount){echo "style='color:red'";} ?>>设计师标签管理（{$DesignertagCount}）</a> | 
+                                <a href="__MODULE__/Storefront/index" target="navTab" rel="liststore" title="设计师管理" <?php if($StorefrontCount){echo "style='color:red'";} ?>>店面管理（{$StorefrontCount}）</a> | 
+                                <a href="__MODULE__/Casedecorate/index" target="navTab" rel="listcase" title="案例管理" <?php if($CasedecorateCount){echo "style='color:red'";} ?>>案例管理（{$CasedecorateCount}）</a> | 
+                                <a href="__MODULE__/Tbfitmentguide/index" target="navTab"  rel="listzcontent" <?php if($TbfitmentguideCount){echo "style='color:red'";} ?>>装修指南文章管理（{$TbfitmentguideCount}）</a> 
+                            </div>
+                        </div>
+                            <!-- <h3>PUBLIC:__PUBLIC__</h3>  
+                            <h3>APP:__APP__</h3>  
+                            <h3>URL:__URL__</h3>  
+                            <h3>URL:__UPLOAD__  {$Think.config.TMPL_L_DELIM}{$Think.config.TMPL_R_DELIM}</h3>   -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer">Copyright &copy; 2012 <a href="demo_page2.html" target="dialog">开发团队</a><!-- Tel：--></div>
+</div>
+</body>
+	<script>
+	function fileback(json){
+		if(json.state == 200){
+			$.pdialog.closeCurrent();
+			$(".unitBox").each(function(){
+				if($(this).css('display') == 'block'){
+					$(this).find("#uploadimg").attr('src',json.msg);
+					$(this).find("#background").val(json.msg);
+					alert('上传成功');
+				}
+				
+			});
+		}else{
+			alert(json.err);
+		}
+	}
+	</script>
+</html>

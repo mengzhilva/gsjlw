@@ -1,0 +1,281 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/taocan.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script type="text/javascript" src="__JS__/hhSwipe.js"><!--手机幻灯滑屏js文件--></script>
+<script src="__JS__/sc-index2015.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/index/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+        	<p class="chi-ti">精装报价</p>
+            <p class="eng-ti">ETHNIC GROUPS</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row index-slide clearfix">
+		<!--scroll-->
+          <div class="scroll relative">
+
+            <div class="scroll_box" id="scroll_img">
+                <ul class="scroll_wrap">
+                  <volist name="hdp" id="vo">  
+                    <li><a href="{$vo.URL}" target="_blank"><img src="PC_SITE_URL{$vo.IMAGE}" width="100%" /></a></li>
+                  </volist>
+                </ul>
+            </div>
+          <span class="scroll_position_bg opacity6"></span>
+              <ul class="scroll_position" id='scroll_position'>
+                  <volist name="hdp" id="vo">  
+                    <li <eq name="i" value="1">class="on"</eq>><a href="javascript:void(0);">{$i}</a></li>
+                  </volist>    
+              </ul>
+          </div>
+	  <!--scroll-->
+    </section>
+    <section class="sc-floor-row section-3 clearfix">
+		<ul class="clearfix">
+        	<li>
+            	<a href="{:U('/package/index?city='.$city.'&ptype=3')}" class="sec3"><img src="__IMG__/<eq name='cityinfo.PTYPE' value='2'>s</eq>3.png"/></a>
+                <p><a href="{:U('/package/index?city='.$city.'&ptype=3')}">实用至上</a></p>
+                <p>{$price.p3}万起</p>
+            </li>
+            <li>
+            	<a href="{:U('/package/index?city='.$city.'&ptype=6')}" class="sec6"><img src="__IMG__/<eq name='cityinfo.PTYPE' value='2'>s</eq>6.png"/></a>
+                <p><a href="{:U('/package/index?city='.$city.'&ptype=6')}">品质至上</a></p>
+                <p>{$price.p6}万起</p>
+            </li>
+            <li cl>
+            	<a href="{:U('/package/index?city='.$city.'&ptype=9')}" class="sec9"><img src="__IMG__/<eq name='cityinfo.PTYPE' value='2'>s</eq>9.png"/></a>
+                <p><a href="{:U('/package/index?city='.$city.'&ptype=9')}">格调至上</a></p>
+                <p>{$price.p9}万起</p>
+            </li>
+        </ul>
+    </section>
+    <section class="sc-floor-row section-4 clearfix">
+		<h3>整体空间都包含</h3>
+        <img src="__PUBLIC__/Home/temp/img01.png"/>
+    </section>
+    <section class="sc-floor-row section-5 clearfix">
+		<h3>最精细的项目设计</h3>
+        <div class="bg-wrap">
+        	<!--scroll-->
+          <div class="scroll relative">
+            <div class="scroll_box" id="scroll_img1">
+            <ul class="scroll_wrap">
+              <volist name="pccrp3" id="vo">  
+              <li><a href="javascript:;"><if condition="$vo.MSitePhoto eq ''"><img src="__PUBLIC__/Home/images/3dt.jpg" width="100%" /><else/><img src="PC_SITE_URL{$vo.MSitePhoto}" width="100%" /></if></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p> {$vo.DESCRIPTION} </p>
+                </div>
+              </li>                    
+              </volist>              
+            </ul>
+            </div>
+          <span class="scroll_position_bg opacity6"></span>
+          <ul class="scroll_position" id='scroll_position1'>
+              <volist name="pccrp3" id="vo">  
+                <li <eq name="i" value="1">class="on"</eq>><a href="javascript:void(0);">{$i}</a></li>
+              </volist>    
+          </ul>
+          </div>
+	  <!--scroll-->
+        </div>
+    </section>
+    <section class="sc-floor-row section-5 clearfix">
+		<h3>最耐用的环保主材</h3>
+        <div class="bg-wrap">
+        	<!--scroll-->
+          <div class="scroll relative">
+            <div class="scroll_box" id="scroll_img2">
+            <ul class="scroll_wrap">
+              <volist name="pccbp3" id="vo">  
+              <li><a href="javascript:;"><if condition="$vo.MSitePhoto eq ''"><img src="__PUBLIC__/Home/images/hbzc.jpg" width="100%" /><else/><img src="PC_SITE_URL{$vo.MSitePhoto}" width="100%" /></if></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>{$vo.DESCRIPTION}</p>
+                </div>
+              </li>                    
+              </volist>  
+            </ul>
+            </div>
+          <span class="scroll_position_bg opacity6"></span>
+          <ul class="scroll_position" id='scroll_position2'>
+              <volist name="pccbp3" id="vo">  
+                <li <eq name="i" value="1">class="on"</eq>><a href="javascript:void(0);">{$i}</a></li>
+              </volist>  
+          </ul>
+          </div>
+	  <!--scroll-->
+        </div>
+    </section>
+    <section class="sc-floor-row section-5 clearfix">
+		<h3>最严谨的装修工艺</h3>
+        <div class="bg-wrap">
+        	<!--scroll-->
+          <div class="scroll relative">
+            <div class="scroll_box" id="scroll_img3">
+            <ul class="scroll_wrap">
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy1.jpg" width="100%" /></a>
+              	<div class="shadow" >
+                	<div class="bg"></div>
+                    <p>• 粘贴更牢固，避免瓷砖的空鼓</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy2.jpg" width="100%" /></a>
+              		<div class="shadow">
+                	<div class="bg"></div>
+                    <p>• 浸润、清洁并保护水泥基层材料表面</p>
+                    <p>• 防止地面起砂起尘</p>
+                    <p>• 中国十环认证，环保性能高</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy3.jpg" width="100%" /></a>
+              		<div class="shadow">
+                	<div class="bg"></div>
+                    <p>• 电路流畅、电阻小</p>
+                    <p>• PBT外壳材料采用</p>
+                    <p>• 耐热性强</p>
+                    <p>• 大功率电器使用更安全</p>
+                    <p>• 极佳韧性及电绝缘性</p>
+
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy4.jpg" width="100%" /></a>
+              		<div class="shadow">
+                	<div class="bg"></div>
+                    <p>• 具有广谱抗菌性能）</p>
+                    <p>• 耐热、耐日照、不会分解失效</p>
+                    <p>• 安全性好，对健康无害</p>
+                    <p>▪ 对菌体细胞不产生耐药性</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy5.jpg" width="100%" /></a>
+              		<div class="shadow">
+                	<div class="bg"></div>
+                    <p>• 多重隔音材料和吸音材料包裹下水管</p>
+                    <p>• 密闭式降噪空间，隔绝冲水噪音</p>
+                    <p>• 有效降噪35分</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy6.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 避免用电安全隐患</p>
+                    <p>• 保持水温恒定</p>
+                    <p>• 节能环保</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy7.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 避免电话、电脑、电视的信号干扰</p>
+                    <p>• 弱电信号更稳定</p>
+                    <p>• 持久耐用</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy8.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 防老化、寿命可达100年以上</p>
+                    <p>• 符合欧盟及日本环保标准</p>
+                    <p>• 抗高温、耐腐蚀、耐老化、耐紫外线</p>
+                    <p>▪ 不含任何有毒物质</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy9.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• “冬暖夏凉”空调效应</p>
+                    <p>• 减少一半的二氧化碳含量</p>
+                    <p>• 环保、节能、自检、减少开裂</p>
+                    <p>▪ 隔热保温</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy10.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 不再担心墙角被磕碰</p>
+                    <p>• 精密安装工艺</p>
+                    <p>• 保证家人安全</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy11.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 具超强防水性</p>
+                    <p>• 干燥时间短，可缩短工期</p>
+                    <p>• 全球顶级材料供应商</p>
+                    <p>• 防水可达5年以上</p>
+                </div>
+              </li>
+              <li><a href="javascript:;"><img src="__PUBLIC__/Home/temp/gy12.jpg" width="100%" /></a>
+                  <div class="shadow">
+                  <div class="bg"></div>
+                    <p>• 避免门套吸水导致霉变</p>
+                </div>
+              </li>
+            </ul>
+            </div>
+          <span class="scroll_position_bg opacity6"></span>
+          <ul class="scroll_position" id='scroll_position3'>
+              <li class="on"><a href="javascript:void(0);">1</a></li>
+              <li><a href="javascript:void(0);">2</a></li>
+              <li><a href="javascript:void(0);">3</a></li>
+              <li><a href="javascript:void(0);">4</a></li>
+              <li><a href="javascript:void(0);">5</a></li>
+              <li><a href="javascript:void(0);">6</a></li>
+              <li><a href="javascript:void(0);">7</a></li>
+              <li><a href="javascript:void(0);">8</a></li>
+              <li><a href="javascript:void(0);">9</a></li>
+              <li><a href="javascript:void(0);">10</a></li>
+              <li><a href="javascript:void(0);">11</a></li>
+              <li><a href="javascript:void(0);">12</a></li>
+          </ul>
+          </div>
+	  <!--scroll-->
+        </div>
+    </section>
+    <section class="sc-floor-row section-5 clearfix">
+		<h3>最科学的标准工期</h3>
+        <div class="bg-wrap">
+        	<img src="__IMG__/gongqi.png"/>
+        </div>
+    </section>
+    <section class="sc-floor-row section-5 clearfix">
+		<h3>最贴心的全程服务</h3>
+        	<img class="ftBgImg" src="__IMG__/zhangcheng.png"/>
+            <a href="{:U('/order/index?type=11&city='.$city.'')}" class="chizi">免费量房</a>
+    </section>
+  </div>
+  <!--主体内容 end-->
+<script type="text/javascript">
+  $(function(){
+    $(".shadow").hide();
+  });
+  $(".shadow").click(function(){
+  	$(this).hide();
+  });
+
+$(document).bind("click",function(e){ 
+	var target = $(e.target); 
+  
+	if(target.closest(".shadow").length == 0 ){ 
+	   $(".shadow").show();
+	} 
+})
+</script>
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

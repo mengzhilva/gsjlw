@@ -1,0 +1,132 @@
+<include file="Common/top" />
+
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/case.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<link href="__CSS__/share.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="__JS__/case.js"></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/index/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix case-h3">
+        	<p class="chi-ti">案例列表</p>
+            <!--<p class="eng-ti">CASE</p>-->
+        </h3>
+        <div class="top-share-cl" style="width:9em;">
+         <a href="#" class="top-share-btn"><strong class="s-font share-wenzi"></strong><!--<i class="top-share-icon"></i>--></a>
+         <div class="fx">
+          <div class="bdsharebuttonbox"><a href="#" data-cmd="more"></a><!--<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>--></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+         </div>
+    </section>
+    <section class="sc-floor-row designer-1 clearfix">
+    
+    	<ul class="case-nav clearfix">
+        	<li class="list1">
+              <strong class="fg-down">{$housestyletitle}</strong>
+                <ul class="pdown clearfix">
+                  <li><a  href="{:U('/cases/index?city='.$city.'&housestyle=&housetype='.$_REQUEST['housetype'].'&housearea='.$_REQUEST['housearea'].'&package='.$_REQUEST['package'])}">全部</a></li>
+                  <volist name="housestyle" id="vo">
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$vo['ID'].'&housetype='.$_REQUEST['housetype'].'&housearea='.$_REQUEST['housearea'].'&package='.$_REQUEST['package'])}">{$vo.BACKNAME}</a></li>
+                  </volist>  
+                    <li class="last-btm"><b></b></li>
+                </ul>
+            </li>
+            <li class="list2">
+              <strong class="fg-down">{$housetypetitle}</strong>
+                <ul class="pdown clearfix">
+                  <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype=&housearea='.$_REQUEST['housearea'].'&package='.$_REQUEST['package'])}">全部</a></li>
+                  <volist name="housetype" id="vo">
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$vo['ID'].'&housearea='.$_REQUEST['housearea'].'&package='.$_REQUEST['package'])}">{$vo.NAME}</a></li>
+                  </volist>  
+                    <li class="last-btm"><b></b></li>
+                </ul>
+            </li>
+            <li class="list3">
+              <strong class="fg-down">{$houseareatitle}</strong>
+                <ul class="pdown clearfix">
+                  <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=&package='.$_REQUEST['package'])}">全部</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=60&package='.$_REQUEST['package'])}">60㎡以下</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=60-90&package='.$_REQUEST['package'])}">60-90㎡</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=90-120&package='.$_REQUEST['package'])}">90-120㎡</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=120-160&package='.$_REQUEST['package'])}">120-160㎡</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=160-200&package='.$_REQUEST['package'])}">160-200㎡</a></li>
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea=200&package='.$_REQUEST['package'])}">200㎡以上</a></li>
+                    <li class="last-btm"><b></b></li>
+                </ul>
+            </li>
+            <li class="list4">
+            	<strong class="fg-down">{$packagetitle}</strong>
+                <ul class="pdown clearfix">
+                  <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housetype'].'&housearea='.$_REQUEST['housearea'].'&package=')}">全部</a></li>
+                	<volist name="package" id="vo">
+                        <li><a  href="{:U('/cases/index?city='.$city.'&housestyle='.$_REQUEST['housestyle'].'&housetype='.$_REQUEST['housestyle'].'&housearea='.$_REQUEST['housearea'].'&package='.$vo['HTYPE'])}">{$vo.NAME}</a></li>
+                  </volist> 
+                    <li class="last-btm"><b></b></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="designer-list clearfix">
+            <!--开始循环-->
+          <volist name="lists" id="cases" empty="暂无数据">
+        	<div class="case-row relative">
+                 <div class="img-wrap">
+                   <div class="i-sc-kt-img">
+                      <a target="_blank" href="{:U('/cases/info?city='.$city.'&id='.$cases['ID'])}"><img src="PC_SITE_URL{$cases.IMAGE}"/></a>
+                      <div class="kt-text clearfix">
+                          <span class="kt-img-c"></span>
+                          <span class="kt-text-i">{$cases.NAME}</span>
+                      </div>
+                   </div>
+                   <!--end-->
+                 </div>
+                 <!--img-wrap-->
+                 <h2 class="case-name clearfix">
+                 <strong class="c-tn f-l">{$cases.cname}</strong>
+                 <p class="c-tt f-r">{$cases.AREA}M<sup>2</sup><span class="c-sub-t">{$cases.tname}</span></p>
+                 </h2>
+            </div>
+          </volist>
+            <!--case-row end-->
+
+            <!--case-row end-->
+            
+           
+            
+             <!--结束循环-->
+        </div>
+        
+        <!--分页-->
+            <p class="nex-page">
+ <!--              <a href="#" class="gray-bg">上一页</a>
+              <a href="#" class="page-active">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+              <a href="#">6</a>
+              <a href="#">7</a>
+              <a href="#">8</a>
+              <a href="#">9</a>
+              <a href="#">下一页</a> -->
+               {$page}
+            </p>
+            <!--分页 end-->
+    </section>
+  </div>
+  <!--主体内容 end-->
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

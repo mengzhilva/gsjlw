@@ -1,0 +1,149 @@
+<h2 class="contentTitle">添加小区</h2>
+
+
+<div class="pageContent">
+    
+    <form method="post" action="__CONTROLLER__/insert/navTabId/listcommunity/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+           
+            <dl>
+                <dt>城市区域：</dt>
+                <dd>
+                        <select class="combox required" name="CID" ref="w_combox_city" refUrl="__CONTROLLER__/getcitya/cid/{value}">
+                            <option value="">选择城市</option>
+                            <volist name="city" id="ctname">
+                            <option value="{$ctname.ID}">{$ctname.NAME}</option>
+                            </volist>
+                        </select>
+                        <select class="combox required" name="AID" id="w_combox_city" >
+                            <option value="">选择区域</option>
+                        </select>
+                        
+                </dd>
+            </dl>
+
+            
+
+            <dl>
+                <dt>小区名称：</dt>
+                <dd>
+                    <input type="text" name="NAME" maxlength="20" class="required" />
+                    <span class="info" >请输入小区名称</span>
+                </dd>
+            </dl>
+<script>
+ 
+</script>
+            <dl>
+                <dt>是否重点小区：</dt>
+                <dd>
+                    <label><input type="radio" name="IsImportent" value="1"/>是</label>
+                    <label><input type="radio" name="IsImportent" checked value="0"/>否</label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>竣工时间：</dt>
+                <dd>
+                    <input type="text" name="COMPLETEDATE" class="date" readonly="true"/>
+                    <span class="info">请点击选择时间</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>楼盘地址：</dt>
+                <dd>
+                    <input type="text" name="ADDRESS" maxlength="80" size="70" class="required" />
+                    <span class="info">请输入楼盘地址</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>物业类型：</dt>
+                <dd>
+                    <input type="text" name="PROPERTY" maxlength="80" size="30" class="required" />
+                    <span class="info">请输入物业类型</span>
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>小区户型：</dt>
+                <dd>
+                    <volist name="housetype" id="houname">
+                        <label><input type="checkbox" name="HOUSETYPES[]" value="{$houname.ID}" />{$houname.NAME}</label>
+                    </volist>
+                </dd>
+            </dl>
+            <dl>
+                <dt>小区概述：</dt>
+                <dd><textarea name="DESCRIPTION" class="required" cols="80" rows="3"></textarea></dd>
+            </dl>
+            <dl>
+                <dt>小区详情：</dt>
+                <dd>
+                    <textarea class="editor" upImgUrl="__CONTROLLER__/doUpload" upImgExt="jpg,jpeg,gif,png" name="list" rows="15" cols="100"></textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>QQ群：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="addupqq" style="display:blodk;float:left;width:200px;height:100px;" src=""/>
+                        <a class="button"  href="__CONTROLLER__/upindex/type/qq"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="QQ" id="addqq" class="valid">
+                </dd>
+            </dl>
+            <dl>
+                <dt>微信群：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="addupweixin" style="display:blodk;float:left;width:200px;height:100px;" src=""/>
+                        <a class="button"  href="__CONTROLLER__/upindex/type/weixin"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="Weixin" id="addweixin" class="valid">
+                </dd>
+            </dl>
+            <dl>
+                <dt>封面照片：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="addupimage" style="display:blodk;float:left;width:200px;height:100px;" src=""/>
+                        <a class="button"  href="__CONTROLLER__/upindex/type/image"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="Image" id="addimage" class="valid">
+                </dd>
+            </dl>
+        
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+<script>
+    function fileback(json){
+        if(json.state == 200){
+            switch(json.type){
+                case "qq":
+                    $.pdialog.closeCurrent();
+                    $("#addupqq").attr('src',json.msg);
+                    $("#addqq").val(json.msg);
+                    break;
+                case "weixin":
+                    $.pdialog.closeCurrent();
+                    $("#addupweixin").attr('src',json.msg);
+                    $("#addweixin").val(json.msg);
+                    break;
+                case "image":
+                    $.pdialog.closeCurrent();
+                    $("#addupimage").attr('src',json.msg);
+                    $("#addimage").val(json.msg);
+                    break;
+            }
+        }
+    }
+</script>
+
+  

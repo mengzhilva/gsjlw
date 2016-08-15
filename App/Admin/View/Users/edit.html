@@ -1,0 +1,82 @@
+
+<div class="pageContent">
+	<form name="form1" method="post" action="__URL__/update/navTabId/listuser/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+		<input type="hidden" name="id" value="{$vo.id}"/>
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<dl>
+				<dt>用户名：</dt>
+				<dd>{$vo.username}</dd>
+			</dl>
+			<dl>
+				<dt>手机号：</dt>
+				<dd><input type="text" style="width:70%" class="phone" name="mobile" value="{$vo.mobilephone}"/></dd>
+			</dl>
+			<dl>
+				<dt>密码：</dt>
+				<dd><input type="text" style="width:70%" name="newpassword" value=""/>(此处不修改不用操作)</dd>
+			</dl>
+			<dl>
+				<dt>真实姓名：</dt>
+				<dd><input type="text" style="width:70%" name="truename" value="{$vo.truename}"/></dd>
+			</dl>
+			<dl>
+				<dt>用户类型：</dt>
+				<dd>
+				<select name="usertype"  style="width:150px;">
+              		<option value="0"checked>普通用户</option>
+              		<option value="1">设计师</option>
+            	</select>
+            	<script>
+            		document.form1.usertype.value='{$vo.usertype}';
+           		</script>
+            	</dd>
+			</dl>
+			<dl>
+				<dt>优惠券：</dt>
+				<dd><input type="text"  style="width:70%" name="coupon" value="{$vo.coupon}"/></dd>
+			</dl>
+            <dl>
+				<dt>注册状态：</dt>
+				<dd>
+				<select name="registstatus" style="width:150px;">
+              		<option value="0"checked>新房不着急装修</option>
+              		<option value="1">新房着急装修</option>
+              		<option value="2">老房不着急装修</option>
+              		<option value="3">老房着急装修</option>
+            	</select>
+            	<script>
+            		document.form1.registstatus.value='{$vo.registstatus}';
+           		</script>
+            	</dd>
+			</dl>
+			<dl>
+				<dt>性别：</dt>
+				<dd>
+				<select name="sex" style="width:150px;">
+              		<option value="True" checked>男</option>
+            		<option value="False">女</option>
+            	</select>
+            	<script>
+            		document.form1.sex.value='{$vo.sex}';
+           		</script>
+            	</dd>
+			</dl>
+			<dl>
+				<dt>面积：</dt>
+				<dd><input type="text" style="width:70%" name="area" value="{$vo.area}"/></dd>
+			</dl>
+			<dl>
+				<dt>地址：</dt>
+				<dd><input type="text" style="width:70%" name="Address" value="{$vo.Address}"/></dd>
+			</dl>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
+

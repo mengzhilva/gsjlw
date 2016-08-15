@@ -1,0 +1,178 @@
+<?php 
+session_start();
+require("./config/db_config.php");
+require("./config/functions.php");
+$uid = $_SESSION["uid"];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绑定合同</title>
+<link href="__CSS__/order.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/global.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/top-footer.css" type="text/css" rel="stylesheet">
+<script src="__JS__/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__JS__/config.js" type="text/javascript"></script>
+</head>
+<body>
+	<!--*********************header 引入区*********************-->
+<div class="header-wrap clearfix">
+   <div class="sc-ui-topbar">
+      <div class="layout clearfix">
+          <div class="sc-ui-topbar-l f_l">
+             <span class="sc-page" onclick="addCookie();"><i></i>收藏实创3</span>
+             <span class="sc-location"><i></i><strong class="pr-address">北京</strong></span>
+          </div>
+          <!--left end-->
+          <div class="sc-ui-topbar-r f_r">
+            <span class="sc-wel">欢迎来到实创！</span>
+            <span class="sc-t-login"><i></i><a href="#">[登录]</a> <a href="#">[免费注册]</a></span>
+            <span class="sc-t-gj"><a href="#">家装管家</a></span>
+          </div>
+          <!--right end-->
+      </div>
+   </div>
+   <!--sc-ui-topbar end-->
+   <div class="sc-ui-header-bg">
+       <div class="sc-logo-wrap">
+          <div class="sc-logo-alpha opcity50"><!--背景颜色是否透明，如果透明添加 样式 opcity50--></div>
+          <div class="sc-logo-container">
+             <div class="layout clearfix">
+               <a href="../index.html" class="sc-logo"><img src="__IMG__/logo.png" width="220" height="26"></a>
+               <div class="sc-main-nav">
+                 <a href="#" class="zx-start">[开始装修]</a>
+                 <a href="../index.html">首  页</a>
+                 <a href="../decoration/decoration-index.html">我要装修</a>
+                 <a href="../drawing/special-photo-list.html">看效果图</a>
+                 <a href="../hotcommunity/diary-index.html">我的小区</a>
+                 <a href="../guide/renovation-index.html" target="_blank">装修攻略</a>
+                 <a href="../characteristic/tese-index.html">实创特色</a>
+               </div>
+               <!--sc-main-nav end-->
+               <h2 class="sc-call"><i></i><strong>400-03-28800</strong></h2>
+             </div>
+             <!--end-->
+          </div>
+       </div>
+       <!--about-banner-->
+       <div class="header-step-box">
+         <h1 class="h-s-title">会员中心</h1>
+       </div>
+       <!--about-banner end-->
+   </div>
+   <!--sc-logo end-->
+</div>
+<!--*********************header 引入区 end*********************-->
+<!--*********************contanier 内容区 *********************-->
+<div class="layout container-minheight clearfix">
+    <div class="web-step">
+         <a href="#">首页 ></a>
+         <a href="#">会员中心 > </a>
+         <a>全过程管理</a>
+     </div>
+     <div class="scMain clearfix">
+
+<include file="leftmenu" bdht='id="current"' />
+
+		<div class="scMRight">
+			<div class="scMRTit"><h3>绑定合同</h3></div>
+			<div class="scMRCon">
+				<div class="scMRYbd">
+					<div class="scMRYbdTit">目前已绑定的合同</div>
+
+    <?php
+    $result = $GLOBALS["db"]->getall("select * from process_manage where uid = $uid order by id asc");
+    if(mysql_num_rows($result)==0) echo "<div class=\"r_con_ht radius\">您还没有绑定过合同！</div>";
+    while ($r = mysql_fetch_array($result))
+    {
+    ?>
+
+					<div class="scMRYbdBar">
+						<div class="scMRYbdL">
+							<input name="isdefault" type="radio" class="ht_xd left" onfocus="defaultcon('<?php echo $r["id"]?>');" <?php if($r["isdefault"]=="1"){echo "checked=checked";}?>>
+						</div>
+						<div class="scMRYbdC">
+							<h3>合同编号：<span><?php echo $r["connumber"]?></span></h3>
+							<p>姓名：<?php echo $r["truename"]?>  </p>
+							<p>手机：<?php echo $r["mobile"]?>  </p>
+							<p>工地地址：<?php echo $r["address"]?>  </p>
+						</div>
+      <?php
+      if($r["isdefault"]=="1")
+      {
+        echo "<input type='hidden' id='t_isdefault' name='t_isdefault' value='".$r["id"]."'><a href=\"javascript:void(0);\" ><div class=\"scMRYbdR\">默认合同</div></a>"; 
+      }
+      ?>
+					</div>
+					<div class="scMRYbdLine"></div>
+
+        <?php
+    }
+    ?>
+
+				</div>
+
+    <?php
+    if(mysql_num_rows($result)!=0)
+    {
+    ?> 
+            <div class="scHtbdLine">
+          <a href="javascript:void(0);" onclick="defaultcon('');"><div class="scBtn scQdhtBtn btn-animate">确定</div></a>
+        </div>
+        <?php
+    }
+    ?>        
+				<div class="scMRYbdLine"></div>
+				<div class="scBdhtQd">
+					<p>请输入您的合同号和手机号</p>
+          <form name="formbind" id="formbind" action="/config/submit.php?act=2" method="post"  onkeydown="if(event.keyCode==13) check_connumber();" >
+          <input name="mobile" type="text"  class="al_text" id="mobile" onfocus="if(value=='请输入您的手机号码'){value=''}" onblur="if(value==''){value='请输入您的手机号码'}"  value="请输入您的手机号码" maxlength="11" />
+            <input name="connumber" type="text"  class="al_text" id="connumber" onfocus="if(value=='请输入您的合同号'){value=''}" onblur="if(value==''){value='请输入您的合同号'}"  value="请输入您的合同号" />
+        </form>
+					<a href="javascript:void(0);" onclick="check_connumber();"><div class="scBtn scBdhtQdBtn btn-animate">确认绑定</div></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--*********************footer 引入区*********************-->
+<div class="footer-wrap">
+    <div class="layout clearfix footer-sub-nav-c">
+       <dl class="footer-sub-nav-dl">
+          <dt>服务支持</dt>
+          <dd><a href="designer.html">设计师团队</a></dd>
+          <dd><a href="#">实创展厅</a></dd>
+          <dd><a href="#">企业客户入口</a></dd>
+          <dd><a href="#">网站地图</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关于实创</dt>
+          <dd><a href="#">独家优势</a></dd>
+          <dd><a href="#">加入我们</a></dd>
+          <dd><a href="#">责任声明</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关注我们</dt>
+          <dd><a href="#"><i class="zhu-icon01"></i>新浪微博</a></dd>
+          <dd><a href="#"><i class="zhu-icon02"></i>QQ空间</a></dd>
+          <dd><a href="#"><i class="zhu-icon03"></i>官方微信</a></dd>
+          <dd><a href="#"><i class="zhu-icon04"></i>天猫商城</a></dd>
+       </dl>
+       <div class="footer-call">
+         <h2>400-03-28800</h2>
+         <p class="f-day">周一至周日 8:00-18:00<br/>（仅收市话费）</p>
+         <p class="f-btn-c"><a href="#" class="yellow-btn btn-animate w-200">在线咨询</a></p>
+       </div>
+    
+    </div>
+    
+    <div class="ui-copyright">
+      <p class="layout clearfix"><span class="f_l">Copyright @ 1997-2014北京实创装饰工程有限公司</span> <span class="f_r">京ICP备09034105号 京公网安备110102000606</span></p>
+    </div>
+</div>
+<!--*********************footer 引入区 end*********************-->
+
+	
+</body>
+</html>

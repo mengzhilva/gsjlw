@@ -1,0 +1,76 @@
+<style>
+.input{
+width: 135px;
+height: 24px;
+line-height: 24px;
+border: 0px;
+padding: 0px 0px 0px 6px;
+background: url(__PUBLIC__/images/Home/input.jpg) no-repeat;
+}
+.linkbmk tr td{font-size:12px;}
+</style>
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<form id="form9999990" name="form9999990" method="post" action="__URL__/send/">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody class="linkbmk"><tr>
+      <td height="15" colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="30">&nbsp;&nbsp;&nbsp;姓名：</td>
+      <td height="30"><input name="UserName" type="text" id="UserName" size="10" maxlength="4" onblur="check()">
+  <select name="Sex" id="Sex">
+    <option>先生</option>
+    <option>女士</option>
+  </select>
+  <span id="text"></span></td>
+    </tr>
+    <tr>
+      <td height="30">&nbsp;&nbsp;&nbsp;电话：</td>
+      <td height="30"><input name="TelePhone" id="TelePhone" maxlength="11" onblur="shouji()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="tt"> 
+  <span id="text2">*请输入11位的手机号码</span>
+        <!--<input name="Sex" type="hidden" id="Sex" value="未知" />-->
+            <input type="hidden" name="ClassRoomID" value="{$id}">
+            <input type="hidden" name="ClassRoomName" value="{$list['Title']}">
+            <input type="hidden" name="qudao" value="{$utm_source}">
+            <input type="hidden" value="add" name="action">
+            <input type="hidden" value="{$Promoterid}" name="Promoterid">
+            <input type="hidden" value="{$PromoterName}" name="PromoterName">
+            <input type="hidden" value="{$utm_term}" name="utm_term">
+            <input name="CityID" type="hidden" id="CityID" value="{$list['CityID']}">
+            <input name="CityName" type="hidden" id="CityName" value="{$list['CityID']}">
+            <input name="renshu" type="hidden" id="renshu" value="1">
+  </td>
+    </tr>
+    <tr>
+      <td height="30">&nbsp;</td>
+      <td height="30">
+      <input type="button" name="ok" onclick="tijiaos(9999990);" id="ok" value="免费发送短信" >
+      </td>
+    </tr>
+    <tr>
+      <td height="30">&nbsp;</td>
+      <td height="30"><span style="color:#900">*温馨提示：获取活动地址短信是免费的</span></td>
+    </tr>
+  </tbody></table>
+</form>
+<script type="text/javascript">
+<!--
+
+//-->
+function tijiaos(i){
+	if(i!=0){
+		var form = $("#form"+i);
+		var UserName = $('#form'+i+' input[name="UserName"]').val();
+		var TelePhone = $('#form'+i+' input[name="TelePhone"]').val();
+		//alert(UserName);
+		if(UserName == ''){
+			alert('请填写姓名!');
+		}else if (TelePhone == ''){
+			alert('请填写电话!');
+		}else{
+			form.submit();
+		}
+	}
+}
+</script>

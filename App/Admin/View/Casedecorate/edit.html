@@ -1,0 +1,146 @@
+
+<div class="pageContent">
+	<form method="post" action="__URL__/update/navTabId/listcase/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);">
+		<input type="hidden" name="ID" value="{$vo.ID}" />
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<input type="hidden" name="ID" value="{$vo.ID}"/>
+			<dl>
+				<dt>案例名称:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="NAME" value="{$vo.NAME}"/></dd>
+			</dl>
+			<dl>
+				<dt>案例标签:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="TAG" value="{$vo.TAG}"/></dd>
+			</dl>
+			<dl>
+				<dt>上传城市:</dt>
+				<dd>
+					<select name="cityID" style="width:150px;">
+					<option value="{$vo.cityID}">{$vo.cityName}<option>
+					<volist  name="city_list" id="val">
+						<option value="{$val.ID}">{$val.NAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>套餐类型:</dt>
+				<dd>
+					<select name="PID" style="width:150px;">
+					<option value="{$vo.PID}">{$vo.PNAME}<option>
+					<volist  name="package_list" id="p">
+						<option value="{$p.HTYPE}">{$p.NAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>案例风格:</dt>
+				<dd>
+					<select name="SID" style="width:150px;">
+					<option value="{$vo.SID}">{$vo.SNAME}<option>
+					<volist  name="style_list" id="s">
+						<option value="{$s.ID}">{$s.BACKNAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl><dl>
+				<dt>案例色系:</dt>
+				<dd>
+					<select name="COLO_ID" style="width:150px;">
+					<option value="{$vo.COLO_ID}">{$vo.CNAME}<option>
+					<volist  name="color_list" id="c">
+						<option value="{$c.COLO_ID}">{$c.NAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>案例户型:</dt>
+				<dd>
+					<select name="TYPEID" style="width:150px;">
+					<option value="{$vo.TYPEID}">{$vo.TYPENAME}<option>
+					<volist  name="hu_list" id="h">
+						<option value="{$h.ID}">{$h.NAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>面积(平米):</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="AREA" value="{$vo.AREA}"/></dd>
+			</dl>
+			
+			<dl>
+				<dt>所属设计师:</dt>
+				<dd>
+				<input type="hidden" name="orgLookup.dgID" value="{$vo.DID}"/>
+				<input type="text" class="required" name="orgLookup.dgName" value="{$vo.DNAME}" suggestFields="dgID,dgName" suggestUrl="__URL__/LookupDesigner" lookupGroup="orgLookup" />
+				<a class="btnLook" href="__URL__/LookupDesigner" lookupGroup="orgLookup">查找带回</a>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>所属小区:</dt>
+				<dd>
+				<input type="hidden" name="orgLookup.cmID" value="{$vo.CID}"/>
+				<input type="text" class="required" name="orgLookup.cmName" value="{$vo.QUNAME}" suggestFields="cmID,cmName" suggestUrl="__URL__/LookupCommunity" lookupGroup="orgLookup" />
+				<a class="btnLook" href="__URL__/LookupCommunity" lookupGroup="orgLookup">查找带回</a>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>是否3D{$vo.IS3D}:</dt>
+				<dd>
+					<select name="IS3D" style="150px;">
+						<option value="1" <if condition="$vo.IS3D eq 1">selected</if>>是</option>
+						<option value="0" <if condition="$vo.IS3D eq 0">selected</if>>否</option>
+					</select>
+				</dd>
+			</dl>
+            <dl>
+				<dt>3D链接:</dt>
+				<dd><input type="text"  style="width:70%" name="URL3D" value="{$vo.URL3D}"/></dd>
+			</dl>
+
+			<dl>
+				<dt>案例简述:</dt>
+				<dd style="height:auto;">
+					<table  border="0" width="600" style="font-size:12px;">
+					<tr>
+		                <td>
+			                <div class="pageFormContent" layoutH="300">
+								<div class="unit">
+								<textarea class="editor" name="DESCRIPTION" rows="20" cols="100">{$vo.DESCRIPTION}</textarea>
+								</div>
+							</div>
+						</td>
+	                </tr>
+	              	</table>	
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>案例封面:</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.IMAGE}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="IMAGE" id="background" class="valid" value="{$vo.IMAGE}">
+				</dd>
+
+			</dl>
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>
+

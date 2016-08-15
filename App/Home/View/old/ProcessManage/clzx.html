@@ -1,0 +1,318 @@
+<?php 
+session_start();
+require("./config/db_config.php");
+require("./config/functions.php");
+$uid = $_SESSION["uid"];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全国过程管理_材料中心</title>
+<link href="__CSS__/order.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/global.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/top-footer.css" type="text/css" rel="stylesheet">
+</head>
+<!--材料中心选项卡js-->
+<script type="text/javascript">
+function nTabs(thisObj,Num){
+if(thisObj.className == "active")return;
+var tabObj = thisObj.parentNode.id;
+var tabList = document.getElementById(tabObj).getElementsByTagName("a");
+for(i=0; i <tabList.length; i++)
+{
+  if (i == Num)
+  {
+   thisObj.className = "active"; 
+      document.getElementById(tabObj+"_Content"+i).style.display = "block";
+  }else{
+   tabList[i].className = "normal"; 
+   document.getElementById(tabObj+"_Content"+i).style.display = "none";
+  }
+} 
+}
+function toover(id,c)
+{
+	for(var i=0;i<c;i++)
+	{
+		document.getElementById('myTab0_Content2td'+i).style.position='';			
+	}
+	document.getElementById('myTab0_Content2td'+id).style.position='relative';	
+	document.getElementById('myTab0_Content2'+id).style.display='';	
+}
+</script>
+<!--材料中心选项卡js END-->
+
+
+<body>
+<div class="header-wrap clearfix">
+   <div class="sc-ui-topbar">
+      <div class="layout clearfix">
+          <div class="sc-ui-topbar-l f_l">
+             <span class="sc-page" onclick="addCookie();"><i></i>收藏实创3</span>
+             <span class="sc-location"><i></i><strong class="pr-address">北京</strong></span>
+          </div>
+          <!--left end-->
+          <div class="sc-ui-topbar-r f_r">
+            <span class="sc-wel">欢迎来到实创！</span>
+            <span class="sc-t-login"><i></i><a href="#">[登录]</a> <a href="#">[免费注册]</a></span>
+            <span class="sc-t-gj"><a href="#">家装管家</a></span>
+          </div>
+          <!--right end-->
+      </div>
+   </div>
+   <!--sc-ui-topbar end-->
+   <div class="sc-ui-header-bg">
+       <div class="sc-logo-wrap">
+          <div class="sc-logo-alpha opcity50"><!--背景颜色是否透明，如果透明添加 样式 opcity50--></div>
+          <div class="sc-logo-container">
+             <div class="layout clearfix">
+               <a href="../index.html" class="sc-logo"><img src="__IMG__/logo.png" width="220" height="26"></a>
+               <div class="sc-main-nav">
+                 <a href="#" class="zx-start">[开始装修]</a>
+                 <a href="../index.html">首  页</a>
+                 <a href="../decoration/decoration-index.html">我要装修</a>
+                 <a href="../drawing/special-photo-list.html">看效果图</a>
+                 <a href="../hotcommunity/diary-index.html">我的小区</a>
+                 <a href="../guide/renovation-index.html" target="_blank">装修攻略</a>
+                 <a href="../characteristic/tese-index.html">实创特色</a>
+               </div>
+               <!--sc-main-nav end-->
+               <h2 class="sc-call"><i></i><strong>400-03-28800</strong></h2>
+             </div>
+             <!--end-->
+          </div>
+       </div>
+       <!--about-banner-->
+       <div class="header-step-box">
+         <h1 class="h-s-title">会员中心</h1>
+       </div>
+       <!--about-banner end-->
+   </div>
+   <!--sc-logo end-->
+</div>
+ 
+<div class="layout container-minheight clearfix">
+    <div class="web-step">
+         <a href="#">首页 ></a>
+         <a href="#">会员中心 > </a>
+         <a>全过程管理</a>
+     </div>
+     <div class="order_con">
+
+<include file="leftmenu" clzx='id="current"' />
+<?php
+$connumber = $GLOBALS["db"]->getone("select connumber from process_manage where uid = $uid and isdefault = 1");
+if($connumber=="")
+{
+  echo writescript("alert('您还没有绑定合同或没有选择默认合同号！');location.href='$BindUrl';");  
+  exit();
+}
+//基材
+$client = webservice();
+$result=$client->DSBaseMaterial(array('pactnumber'=>$connumber));
+$xml = simplexml_load_string($result-> DSBaseMaterialResult);
+foreach($xml->material as $a) 
+{ 
+  $actualarea = $actualarea. $a->actualarea."|";
+  $brand = $brand . $a->brand."|";
+  $matertype = $matertype . $a->matertype."|";
+  $spec = $spec . $a->spec."|";
+} 
+$actualareaarr = explode("|",$actualarea);
+$brandarr = explode("|",$brand);
+$matertypearr = explode("|",$matertype);
+$specarr = explode("|",$spec);
+?>
+  <div class="order_right right">
+    	<div class="scMRTit"><h3>材料中心</h3></div>
+        <div class="cl_fl" id="myTab0">
+        	<a href="#" class="active" onmouseover="nTabs(this,0)">基材</a>
+               <a href="#" class="normal" onmouseover="nTabs(this,1);">主材</a>
+             <a href="#" class="normal" onmouseover="nTabs(this,2);">变更单</a>
+           
+        	<div class="clear"></div>
+        </div>
+        
+        <div class="zp_tab" id="myTab0_Content0">
+        	<table width="879" border="0"  cellspacing="0" cellpadding="0">
+          <tr class="clzx_tr">
+            <td width="25%">项目</td>
+            <td width="25%">品牌</td>
+            <td width="25%">规格</td>
+            <td width="25%">实际面积</td>
+          </tr>
+                  <?php
+                  for($i=0;$i<count($matertypearr)-1;$i++)
+          {
+          ?>
+                  <tr height="26"  bgcolor="#f7f8f8" >
+                    <td><?php echo $matertypearr[$i];?></td>
+                    <td><?php echo $brandarr[$i];?></td>
+                    <td><?php echo $specarr[$i];?></td>
+                    <td><?php echo $actualareaarr[$i];?></td>
+                  </tr>
+                  <?php
+          }
+          ?>
+         
+</table>
+        </div>
+        
+        <div class="zp_tab none" id="myTab0_Content1">
+        	<table width="879" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                  <tr class="clzx_tr">
+            <td width="25%">项目</td>
+            <td width="25%">品牌</td>
+            <td width="25%">规格</td>
+            <td width="25%">实际面积</td>
+          </tr>
+<?php
+//基材
+$client = webservice();
+$result=$client->DSMainMaterial(array('pactnumber'=>$connumber));
+$xml = simplexml_load_string($result-> DSMainMaterialResult);
+foreach($xml->material as $a) 
+{ 
+  $actualarea = $actualarea. $a->actualarea."|";
+  $brand = $brand . $a->brand."|";
+  $matertype = $matertype . $a->matertype."|";
+  $spec = $spec . $a->spec."|";
+} 
+$actualareaarr = explode("|",$actualarea);
+$brandarr = explode("|",$brand);
+$matertypearr = explode("|",$matertype);
+$specarr = explode("|",$spec);
+?>
+<?php
+                  for($i=0;$i<count($matertypearr)-1;$i++)
+          {
+          ?>
+                  <tr height="26"  bgcolor="#f7f8f8" >
+                    <td><?php echo $matertypearr[$i];?></td>
+                    <td><?php echo $brandarr[$i];?></td>
+                    <td><?php echo $specarr[$i];?></td>
+                    <td><?php echo $actualareaarr[$i];?></td>
+                  </tr>
+                  <?php
+          }
+          ?>
+</table>
+            </tbody>
+            </table>
+        </div>
+        <div class="zp_tab none" id="myTab0_Content2" style=" width:760px;" >
+        <table width="99%" border="0" cellspacing="0"  cellpadding="0">
+            <tbody>
+                 <tr class="clzx_tr">
+               <td  width="20%">类型</td>
+                    <td  width="20%">金额</td>
+                    <td  width="20%">日期</td>
+                    <td  width="15%">管理费</td>
+                    <td  width="15%">税金</td>
+                    <td  width="10%">详细</td>
+          </tr>
+
+<?php
+//基材
+$client = webservice();
+$result=$client->DSChangeOrder(array('pactnumber'=>$connumber));
+$xml = simplexml_load_string($result-> DSChangeOrderResult);
+foreach($xml->APPOrderChange as $a) 
+{ 
+  $fID = $fID. $a->fID."|";
+  $OcType = $OcType . $a->OcType."|";
+  $OcChangeCount = $OcChangeCount . $a->OcChangeCount."|";
+  $OcCreateDate = $OcCreateDate . $a->OcCreateDate."|";
+  $OcManageFee = $OcManageFee . $a->OcManageFee."|";
+  $OcTaxes = $OcTaxes . $a->OcTaxes."|";
+} 
+$fIDarr = explode("|",$fID);
+$OcTypearr = explode("|",$OcType);
+$OcChangeCountarr = explode("|",$OcChangeCount);
+$OcCreateDatearr = explode("|",$OcCreateDate);
+$OcManageFeearr = explode("|",$OcManageFee);
+$OcTaxesarr = explode("|",$OcTaxes);
+?>
+<?php
+                  for($i=0;$i<count($fIDarr)-1;$i++)
+          {
+          ?>
+                  <tr>
+                    <td><?php echo $OcTypearr[$i];?></td>
+                    <td><?php echo $OcChangeCountarr[$i];?></td>
+                    <td><?php echo $OcCreateDatearr[$i];?></td>
+                    <td><?php echo $OcManageFeearr[$i];?></td>
+                    <td><?php echo $OcTaxesarr[$i];?></td>
+                    <td class="cl_f2" id="myTab0_Content2td<?php echo $i;?>" style="margin:0px;padding:0px;position:relative;" onmouseover="toover('<?php echo $i;?>','<?php echo count($OcSerialIDarr)-1;?>');" onmouseout="document.getElementById('myTab0_Content2<?php echo $i;?>').style.display='none';"><a href="#" style="margin:0px;padding:0px;" class="normal">详细</a>
+                    <table width="121" border="0" cellspacing="2" bgcolor="#ffffff" cellpadding="0" id="myTab0_Content2<?php echo $i;?>" style="display:none;position:absolute;left:115px;top:-2px;">
+                    <tbody>
+                        <tr height="26"  bgcolor="#e6e6e6" >
+                            <td><a href="clzx_clbgd.html?id=<?php echo $fIDarr[$i];?>" style="padding:0px;margin:0px;">材料变更单</a></td>
+                          </tr>
+                          <tr height="26"  bgcolor="#e6e6e6" >
+                            <td><a href="clzx_gybgd.html?id=<?php echo $fIDarr[$i];?>" style="padding:0px;margin:0px;">工艺变更单</a></td>
+                          </tr>
+                          <tr height="26"  bgcolor="#e6e6e6" >
+                            <td><a href="clzx_cxnr.html?id=<?php echo $fIDarr[$i];?>" style="padding:0px;margin:0px;">拆项内容</a></td>
+                          </tr>
+                    </tbody>
+                    </table>
+                    </td>
+                  </tr>
+                  <?php
+          }
+          ?>
+                    
+            </tbody>
+            </table>
+        	
+        </div>
+        
+    </div>
+  
+  </div>
+     
+</div>
+
+<!--*********************footer 引入区*********************-->
+<div class="footer-wrap">
+    <div class="layout clearfix footer-sub-nav-c">
+       <dl class="footer-sub-nav-dl">
+          <dt>服务支持</dt>
+          <dd><a href="designer.html">设计师团队</a></dd>
+          <dd><a href="#">实创展厅</a></dd>
+          <dd><a href="#">企业客户入口</a></dd>
+          <dd><a href="#">网站地图</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关于实创</dt>
+          <dd><a href="#">独家优势</a></dd>
+          <dd><a href="#">加入我们</a></dd>
+          <dd><a href="#">责任声明</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关注我们</dt>
+          <dd><a href="#"><i class="zhu-icon01"></i>新浪微博</a></dd>
+          <dd><a href="#"><i class="zhu-icon02"></i>QQ空间</a></dd>
+          <dd><a href="#"><i class="zhu-icon03"></i>官方微信</a></dd>
+          <dd><a href="#"><i class="zhu-icon04"></i>天猫商城</a></dd>
+       </dl>
+       <div class="footer-call">
+         <h2>400-03-28800</h2>
+         <p class="f-day">周一至周日 8:00-18:00<br/>（仅收市话费）</p>
+         <p class="f-btn-c"><a href="#" class="yellow-btn btn-animate w-200">在线咨询</a></p>
+       </div>
+    
+    </div>
+    
+    <div class="ui-copyright">
+      <p class="layout clearfix"><span class="f_l">Copyright @ 1997-2014北京实创装饰工程有限公司</span> <span class="f_r">京ICP备09034105号 京公网安备110102000606</span></p>
+    </div>
+</div>
+<!--*********************footer 引入区 end*********************-->
+
+  
+</body>
+</html>

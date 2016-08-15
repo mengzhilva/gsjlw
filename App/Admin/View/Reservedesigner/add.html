@@ -1,0 +1,63 @@
+<div class="pageContent">
+	<form method="post" action="__URL__/insert/navTabId/listyudesigner/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);">
+
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<dl>
+				<dt>预约人名:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="NAME"/></dd>
+			</dl>
+
+			<dl>
+				<dt>预约设计师:</dt>
+				<dd>
+				<input type="hidden" name="orgLookup.dgID" value=""/>
+				<input type="text" class="required" name="orgLookup.dgName" value="" suggestFields="dgID,dgName" suggestUrl="__URL__/LookupDesigner" lookupGroup="orgLookup" />
+				<a class="btnLook" href="__MODULE__/Casedecorate/LookupDesigner" lookupGroup="orgLookup">查找带回</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>预约小区:</dt>
+				<dd>
+				<input type="hidden" name="orgLookup.cmID" value=""/>
+				<input type="text" class="required" name="orgLookup.cmName" value="" suggestFields="cmID,cmName" suggestUrl="__URL__/LookupCommunity" lookupGroup="orgLookup" />
+				<a class="btnLook" href="__MODULE__/Casedecorate/LookupCommunity" lookupGroup="orgLookup">查找带回</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>所属城市:</dt>
+				<dd>
+					<select name="CID" style="width:150px;">
+						<volist name="city_list" id="c">
+						<option value="{$c.ID}">{$c.NAME}</option>
+						</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>预约面积:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="AREA"/></dd>
+			</dl>
+			<dl>
+				<dt>预约电话:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="PHONE"/></dd>
+			</dl>
+			<dl>
+				<dt>预约时间：</dt>
+				<dd>
+					<input type="text"style="width:35%" name="UPDATETIME" class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" readonly="true"/>
+					<a class="inputDateButton" href="javascript:;">选择</a>
+					<span class="info">请选择时间</span>
+				</dd>
+			</dl>
+			
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

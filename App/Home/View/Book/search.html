@@ -1,0 +1,99 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/taocan.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+  <!--
+    <section class="sc-floor-row section-1 clearfix">
+        <a href="{:U('/index/index?city='.$city)}" class="last"></a>
+        <span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+            <p class="chi-ti">{$key}</p>
+        </h3>
+    </section>-->
+    <section class="clearfix book">
+        <h3 class="simptitle">搜索{$key}的结果</h3>
+      <ul class="index-classify clearfix" id="searchres">
+                  <volist name="booklist" id="vo">  
+
+                    <li> <div class="xsimg"><img src="{$imgurl}{$vo.img}" /></div>
+                           <div class="xsname"><a href="{:U('/book/index?id='.$vo['id'].'')}"><span class="gstitle">{$vo.name} </span></a></div>
+                           
+                          <div class="xscontent"><a href="{:U('/book/index?id='.$vo['id'].'')}">{$vo.description}...</a></div>
+					
+					</li>
+                  </volist>
+                  
+		  <if condition="$booklist eq ''">
+		  	&nbsp;&nbsp;没有找到有关{$key}的结果，试试其他吧！
+		  </if>
+      </ul>
+  <if condition="$booklist neq ''">
+        <a href="javascript:searchmore();" class="simptitlemore">加载更多</a>
+        </if>
+    </section>
+  <if condition="$booklist eq ''">
+    <section class="clearfix book">
+        <h3 class="simptitle">猜您喜欢</h3>
+      <ul class="index-classify clearfix">
+                  <volist name="xstj" id="vo">  
+
+                    <li> <div class="xsimg"><img src="{$imgurl}{$vo.img}" /></div>
+                           <div class="xsname"><a href="{:U('/book/index?id='.$vo['id'].'')}"><span class="gstitle">{$vo.name} </span></a></div>
+                           
+                          <div class="xscontent"><a href="{:U('/book/index?id='.$vo['id'].'')}">{$vo.description}...</a></div>
+					
+					</li>
+                  </volist>
+      </ul>
+        <a href="" class="simptitlemore">查看更多</a>
+    </section>
+</if>
+  </div>
+  <!--主体内容 end-->
+
+  <script type='text/javascript'>
+  var start = 1;
+  function searchmore(){
+	  var se = "{$key}";
+	  var urls = "{:U('/book/searchmore')}"+'?key='+se+'&start='+start;
+		var code = $("#code").val();
+		$.ajax({
+	        type: "get",
+	        url: urls,
+	        async:false,
+	        data: 
+			{
+			},
+	        dataType: "html",
+	        success: function(data){
+	        	if(data != ''){
+	        		$("#searchres").append(data);
+	        		  start++;
+	        	}else{
+	        		alert('没有了')
+	        	}
+	        }
+		});
+  }
+</script>
+<!--底部悬浮
+<div class="zoom-bottom-fiexd">
+  <h2 class="z-b-f-l">我喜欢，就要这一套</h2>
+  <p class="z-b-f-r"><a href="{:U('/order/index?type=11&city='.$city.'')}" class="free-lf">免费量房</a></p>
+</div>
+-->
+<!--底部悬浮 end-->
+
+
+</div>
+</body>
+</html>

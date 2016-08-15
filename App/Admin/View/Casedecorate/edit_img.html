@@ -1,0 +1,69 @@
+<h2 class="contentTitle">修改【案例效果图】</h2>
+
+
+<div class="pageContent">
+
+		<form method="post" action="__URL__/update_img/navTabId/luru/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);" >
+			<div class="pageFormContent nowrap" layoutH="97">
+
+				<input type="hidden" name="ID" value="{$id}"/>
+				<dl>
+					<dt>案例名称：</dt>
+					<dd>
+						{$casename}
+					</dd>
+				</dl>
+				<input type="hidden" name="DID" value="{$DID}">
+				<dl>
+				<dt>空间类型:</dt>
+				<dd>
+					<select name="HID" style="width:150px;">
+					<option value="{$img_info.HID}">{$img_info.Kong}<option>
+					<volist  name="kong_list" id="h">
+						<option value="{$h.ID}">{$h.BACKNAME}</option>
+					</volist>
+						<option value="0">设计图</option>
+					</select>
+				</dd>
+				</dl>
+
+				<dl>
+					<dt>设计概述：</dt>
+					<dd><textarea name="DESCRIPTION" cols="80" rows="3">{$img_info.DESCRIPTION}</textarea></dd>
+				</dl>
+
+				<dl>
+					<dt>材料概述：</dt>
+					<dd><textarea name="MATERIAL" cols="80" rows="3">{$img_info.MATERIAL}</textarea></dd>
+				</dl>
+
+				<dl>
+					<dt>工程概述：</dt>
+					<dd><textarea name="PROJECT" cols="80" rows="3">{$img_info.PROJECT}</textarea></dd>
+				</dl>
+
+				
+				<dl>
+					<dt>效果图片:</dt>
+
+					<dd>
+						<div style="display:blodk;width:500px;">
+							<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$img_info.IMAGE}"/>
+							<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+							</div>
+						<input type="hidden" style="width:100%" name="IMAGE" id="background" class="valid" value="{$img_info.IMAGE}">
+					</dd>
+				</dl>
+
+
+			
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+					<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+				</ul>
+			</div>
+		</form>
+
+</div>

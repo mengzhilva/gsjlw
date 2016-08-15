@@ -1,0 +1,162 @@
+<?php 
+session_start();
+require("./config/db_config.php");
+require("./config/functions.php");
+$uid = $_SESSION["uid"];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全国过程管理_材料中心_拆项内容</title>
+<link href="__CSS__/order.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/global.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/top-footer.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="header-wrap clearfix">
+   <div class="sc-ui-topbar">
+      <div class="layout clearfix">
+          <div class="sc-ui-topbar-l f_l">
+             <span class="sc-page" onclick="addCookie();"><i></i>收藏实创3</span>
+             <span class="sc-location"><i></i><strong class="pr-address">北京</strong></span>
+          </div>
+          <!--left end-->
+          <div class="sc-ui-topbar-r f_r">
+            <span class="sc-wel">欢迎来到实创！</span>
+            <span class="sc-t-login"><i></i><a href="#">[登录]</a> <a href="#">[免费注册]</a></span>
+            <span class="sc-t-gj"><a href="#">家装管家</a></span>
+          </div>
+          <!--right end-->
+      </div>
+   </div>
+   <!--sc-ui-topbar end-->
+   <div class="sc-ui-header-bg">
+       <div class="sc-logo-wrap">
+          <div class="sc-logo-alpha opcity50"><!--背景颜色是否透明，如果透明添加 样式 opcity50--></div>
+          <div class="sc-logo-container">
+             <div class="layout clearfix">
+               <a href="../index.html" class="sc-logo"><img src="__IMG__/logo.png" width="220" height="26"></a>
+               <div class="sc-main-nav">
+                 <a href="#" class="zx-start">[开始装修]</a>
+                 <a href="../index.html">首  页</a>
+                 <a href="../decoration/decoration-index.html">我要装修</a>
+                 <a href="../drawing/special-photo-list.html">看效果图</a>
+                 <a href="../hotcommunity/diary-index.html">我的小区</a>
+                 <a href="../guide/renovation-index.html" target="_blank">装修攻略</a>
+                 <a href="../characteristic/tese-index.html">实创特色</a>
+               </div>
+               <!--sc-main-nav end-->
+               <h2 class="sc-call"><i></i><strong>400-03-28800</strong></h2>
+             </div>
+             <!--end-->
+          </div>
+       </div>
+       <!--about-banner-->
+       <div class="header-step-box">
+         <h1 class="h-s-title">会员中心</h1>
+       </div>
+       <!--about-banner end-->
+   </div>
+   <!--sc-logo end-->
+</div>
+<div class="layout container-minheight clearfix">
+    <div class="web-step">
+         <a href="#">首页 ></a>
+         <a href="#">会员中心 > </a>
+         <a>全过程管理</a>
+     </div>
+  <div class="order_con">
+
+<include file="leftmenu" clzx='id="current"' />
+
+  <div class="order_right right">
+    <p class="p_clzx">材料中心---拆项内容</p>
+     <div class="zp_tab cl_bgd_table">
+     <table width="100%" border="0"  cellspacing="0" cellpadding="0">
+      <tr class="clzx_tr">
+            <td width="33%">类型</td>
+            <td width="33%">明细</td>
+            <td width="34%">小计</td>
+          </tr>
+          <tr>
+<?php
+$id = $_REQUEST["id"];
+$client = webservice();
+$result=$client->DSChangeOrderWithDisCount(array('changeorderid'=>$id));
+$xml = simplexml_load_string($result-> DSChangeOrderWithDisCountResult);
+foreach($xml->material as $a) 
+{ 
+  $dptype = $dptype. $a->dptype."|";
+  $dpinfo = $dpinfo . $a->dpinfo."|";
+  $odpamount = $odpamount . $a->odpamount."|";
+} 
+$dptypearr = explode("|",$dptype);
+$dpinfoarr = explode("|",$dpinfo);
+$odpamountarr = explode("|",$odpamount);
+?>
+<?php
+                  for($i=0;$i<count($dptypearr)-1;$i++)
+          {
+          ?>
+                    <td><?php echo $dptypearr[$i];?></td>
+                    <td><?php echo $dpinfoarr[$i];?></td>
+                    <td><?php echo $odpamountarr[$i];?></td>
+<?php
+          }
+          ?>
+            
+          </tr>
+
+
+</table>
+    <div class="clbg cl_bgd_sp">
+      <span class="clzx_sp clzx_result"><a href="clzx.html">返回</a></span>
+      
+    </div>
+</div>   
+  </div> 
+  </div>
+  </div>
+  
+  
+<!--*********************footer 引入区*********************-->
+<div class="footer-wrap">
+    <div class="layout clearfix footer-sub-nav-c">
+       <dl class="footer-sub-nav-dl">
+          <dt>服务支持</dt>
+          <dd><a href="designer.html">设计师团队</a></dd>
+          <dd><a href="#">实创展厅</a></dd>
+          <dd><a href="#">企业客户入口</a></dd>
+          <dd><a href="#">网站地图</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关于实创</dt>
+          <dd><a href="#">独家优势</a></dd>
+          <dd><a href="#">加入我们</a></dd>
+          <dd><a href="#">责任声明</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关注我们</dt>
+          <dd><a href="#"><i class="zhu-icon01"></i>新浪微博</a></dd>
+          <dd><a href="#"><i class="zhu-icon02"></i>QQ空间</a></dd>
+          <dd><a href="#"><i class="zhu-icon03"></i>官方微信</a></dd>
+          <dd><a href="#"><i class="zhu-icon04"></i>天猫商城</a></dd>
+       </dl>
+       <div class="footer-call">
+         <h2>400-03-28800</h2>
+         <p class="f-day">周一至周日 8:00-18:00<br/>（仅收市话费）</p>
+         <p class="f-btn-c"><a href="#" class="yellow-btn btn-animate w-200">在线咨询</a></p>
+       </div>
+    
+    </div>
+    
+    <div class="ui-copyright">
+      <p class="layout clearfix"><span class="f_l">Copyright @ 1997-2014北京实创装饰工程有限公司</span> <span class="f_r">京ICP备09034105号 京公网安备110102000606</span></p>
+    </div>
+</div>
+<!--*********************footer 引入区 end*********************-->
+
+
+</body>
+</html>

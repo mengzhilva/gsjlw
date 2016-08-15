@@ -1,0 +1,189 @@
+
+<div class="pageContent">
+	<form method="post" action="__URL__/insertadd/navTabId/listshejishi/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+
+		<div class="pageFormContent nowrap" layoutH="60" >
+			<dl>
+				<dt>城市</dt>
+				<dd>
+				<select name="CID" style="width:150px;">
+				<volist  name="cityname" id="data">
+					<option value="{$data.ID}">{$data['NAME']}</option>
+				</volist>
+				</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>店铺</dt>
+				<dd>
+				<select name="SID" style="width:150px;">
+				<volist  name="store" id="stores">
+					<option value="{$stores.ID}">{$stores['StoreName']}</option>
+				</volist>
+				</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>级别</dt>
+				<dd>
+					<select name="LID" style="width:150px;">
+					<volist  name="levelname" id="level">
+						<option value="{$level.ID}">{$level['NAME']}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>设计师真实姓名：</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="NAME"/></dd>
+			</dl>
+			
+			<dl>
+				<dt>用户名：</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="username"/>（用于前台网站登录）</dd>
+			</dl>
+			<dl>
+				<dt>手机号：</dt>
+				<dd><input type="text" class="required phone"  style="width:70%" name="mobilephone"/>（用于前台网站登录）</dd>
+			</dl>
+            <dl>
+				<dt>密码：</dt>
+				<dd><input type="password" id="password" class="required"  style="width:70%" name="password"/></dd>
+			</dl>
+            <dl>
+				<dt>密码确认：</dt>
+				<dd><input type="password" class="required" equalto="#password"  style="width:70%" name="reuserpass"/></dd>
+			</dl>
+			<dl>
+				<dt>工作年限：</dt>
+				<dd><input type="text" style="width:70%" name="WORKINGLIFE"/></dd>
+			</dl>
+			<dl>
+				<dt>入职时间：</dt>
+				<dd>
+					<input type="text"style="width:35%" name="ENTRYTIME" class="date textInput readonly valid required" dateFmt="yyyy-MM-dd" readonly="true"/>
+					<a class="inputDateButton" href="javascript:;">选择</a>
+					<span class="info">yyyy-MM-dd</span>
+				</dd>
+			</dl>
+			<dl>
+				<dt>访问量：</dt>
+				<dd><input type="text" style="width:70%" name="VISITS"/></dd>
+			</dl>
+			<dl>
+				<dt>预约量：</dt>
+				<dd><input type="text" style="width:70%" name="RESERVATIONS"/></dd>
+			</dl>
+			<dl>
+				<dt>好评指数：</dt>
+				<dd><input type="text" style="width:70%" name="GOOD"/>(%)</dd>
+			</dl>
+			<dl>
+				<dt>排序：</dt>
+				<dd><input type="text" style="width:70%" name="RANK"/></dd>
+			</dl>
+			<dl>
+				<dt>网上签约：</dt>
+				<dd>
+				<select name="ISVIP"  style="width:150px;">
+              		<option value="0"checked>否</option>
+              		<option value="1">是</option>
+            	</select>
+            	</dd>
+			</dl>
+			<dl>
+				<dt>评价：</dt>
+				<dd>
+				<select name="STAR"  style="width:150px;">
+              		<option value="1"checked>★</option>
+              		<option value="2">★★</option>
+              		<option value="3">★★★</option>
+              		<option value="4">★★★★</option>
+              		<option value="5">★★★★★</option>
+            	</select>
+            	</dd>
+			</dl>
+			<dl>
+				<dt>设计理念/风格：</dt>
+				<dd><textarea name="IDEA" cols="80" rows="2"></textarea></dd>
+			</dl>
+			<dl style="height:auto;" >
+				<dt>设计师标签：</dt>
+				<dd style="height:auto;">
+					<table  border="0" width="600" style="font-size:12px;">
+		                <tr>
+			                <td>
+				                <div class="pageFormContent" >
+					                <div class="unit">
+					                 	<label style="float:left"><input type="checkbox" class="checkboxCtrl" group="TAGS[]" />全选</label>
+										<volist  name="tagname" id="tag">
+										<label><input type="checkbox" name="TAGS[]" value="{$tag.ID}" />{$tag.TAG}</label>
+										</volist>
+									</div>
+								</div>
+							</td>
+		                </tr>
+	              	</table>
+				</dd>
+			</dl>
+			<dl style="height:auto;" >
+				<dt>擅长风格：</dt>
+				<dd style="height:auto;">
+					<table  border="0" width="600" style="font-size:12px;">
+		                <tr>
+			                <td>
+				                <div class="pageFormContent" >
+					                <div class="unit">
+					                 	<label style="float:left"><input type="checkbox" class="checkboxCtrl" group="HID[]" />全选</label>
+										<volist  name="housestyle" id="style">
+										<label><input type="checkbox" name="HID[]" value="{$style.ID}" />{$style.BACKNAME}</label>
+										</volist>
+									</div>
+								</div>
+							</td>
+		                </tr>
+	              	</table>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>简历：</dt>
+				<dd style="height:auto;">
+					<table  border="0" width="600" style="font-size:12px;">
+					<tr>
+		                <td>
+			                <div class="pageFormContent" layoutH="300">
+								<div class="unit">
+								<textarea class="editor" name="RESUME" rows="20" cols="100"></textarea>
+								</div>
+							</div>
+						</td>
+	                </tr>
+	              	</table>	
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>设计师头像：</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.PHOTE}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="PHOTE" id="background" class="valid">
+				</dd>
+			</dl>
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+
+</div>
+

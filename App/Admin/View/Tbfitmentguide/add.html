@@ -1,0 +1,161 @@
+
+<div class="pageContent">
+	<form method="post" action="__URL__/insert/navTabId/listzcontent/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);">
+
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<dl>
+				<dt>文章标题:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="Title"/></dd>
+			</dl>
+			<dl>
+				<dt>文章作者:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="Author"/></dd>
+			</dl>
+			<dl>
+				<dt>文章标签:</dt>
+				<dd><input type="text"  style="width:70%" name="Tag"/></dd>
+			</dl>
+			<dl>
+				<dt>文章来源:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="CopyFrom"/></dd>
+			</dl>
+			<dl>
+				<dt>文章类型:</dt>
+				<dd>
+					<select name="ClassID" style="width:150px;">
+					<volist  name="wc_list" id="val">
+						<option value="{$val.ClassID}">{$val.ClassName}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+			
+			<dl>
+				<dt>上传城市:</dt>
+				<dd>
+					<select name="CityId" style="width:150px;">
+					<volist  name="city_list" id="val">
+						<option value="{$val.ID}">{$val.NAME}</option>
+					</volist>
+					</select>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>审核状态:</dt>
+				<dd>
+					<select name="Status" style="150px;">
+						<option value="0">待审核</option>
+						<option value="1">审核通过</option>
+						<option value="-1">审核不过</option>
+					</select>
+				</dd>
+			</dl>
+			
+			
+			<dl>
+				<dt>首页显示:</dt>
+				<dd>
+					<select name="InIndex" style="150px;">
+						<option value="0">否</option>
+						<option value="1">是</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>热点新闻:</dt>
+				<dd>
+					<select name="Hot" style="150px;">
+						<option value="0">否</option>
+						<option value="1">是</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>文章等级:</dt>
+				<dd>
+					<select name="Stars" style="150px;">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>是否外链:</dt>
+				<dd>
+					<select name="IsLink" style="150px;">
+						<option value="0">否</option>
+						<option value="1">是</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>外链地址:</dt>
+				<dd><input type="text"  style="width:70%" name="LinkUrl"/></dd>
+			</dl>
+			<dl>
+				<dt>视频链接:</dt>
+				<dd><input type="text"  style="width:70%" name="VideoUrl"/></dd>
+			</dl>
+			<dl>
+				<dt>SEO标题:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="SeoTitle"/></dd>
+			</dl>
+			<dl>
+				<dt>SEO关键字:</dt>
+				<dd><input type="text"  style="width:70%" name="SeoKeywords"/></dd>
+			</dl>
+			<dl>
+				<dt>HTML地址:</dt>
+				<dd><input type="text"  style="width:70%" name="HtmlFileUrl"/></dd>
+			</dl>
+			<dl>
+				<dt>文章简介:</dt>
+				<dd>
+					<textarea name="Intro" rows="5" cols="61"></textarea>
+				</dd>
+			</dl>
+			<dl>
+				<dt>文章内容:</dt>
+				<dd style="height:auto;">
+					<table  border="0" width="600" style="font-size:12px;">
+					<tr>
+		                <td>
+			                <div class="pageFormContent" layoutH="300">
+								<div class="unit">
+								<textarea class="editor" name="Content" rows="20" cols="100"></textarea>
+								</div>
+							</div>
+						</td>
+	                </tr>
+	              	</table>	
+				</dd>
+			</dl>
+
+			
+			<dl>
+				<dt>文章附图:</dt>
+
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src=""/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="DefaultPicUrl" id="background" class="valid">
+				</dd>
+			</dl>
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="pageContent">
+	<form method="post" action="__URL__/update/navTabId/listslideshow/callbackType/closeCurrent"  class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone);">
+		<input type="hidden" name="ID" value="{$sl.ID}"/>
+		<div class="pageFormContent nowrap" layoutH="50" >
+			<dl>
+				<dt>幻灯片名称:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="NAME" value="{$sl.NAME}"/></dd>
+			</dl>
+
+			<dl>
+				<dt>幻灯片位置:</dt>
+				<dd>
+					<select name="SID" style="width:150px;">
+						<option value="{$sl.SID}">{$sl.SNAME}</option>
+						<volist name="slds_list" id="p">
+						<option value="{$p.ID}">{$p.NAME}</option>
+						</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>上传城市:</dt>
+				<dd>
+					<select name="CID" style="width:150px;">
+						<option value="{$sl.CID}">{$sl.CNAME}</option>
+						<volist name="city_list" id="c">
+						<option value="{$c.ID}">{$c.NAME}</option>
+						</volist>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>幻灯片链接:</dt>
+				<dd><input type="text" class="required"  style="width:70%" name="URL" value="{$sl.URL}"/></dd>
+			</dl>
+
+			<dl>
+				<dt>幻灯片图片:</dt>
+				<dd>
+					<div style="display:blodk;width:500px;">
+						<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$sl.IMAGE}"/>
+						<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+						</div>
+					<input type="hidden" style="width:100%" name="IMAGE" id="background" class="valid" value="{$sl.IMAGE}">
+				</dd>
+			</dl>
+
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

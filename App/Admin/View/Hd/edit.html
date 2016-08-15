@@ -1,0 +1,54 @@
+
+<div class="pageContent">
+	<form method="post" action="__URL__/update/navTabId/listhd/callbackType/closeCurrent"  class="pageForm required-validate" 
+		onsubmit="return validateCallback(this,navTabAjaxDone);"><?php  //窗体组件采用这个 iframeCallback(this, navTabAjaxDone); ?>
+		<input type="hidden" name="id" value="{$vo.ID}"/>
+		<div class="pageFormContent nowrap" layoutH="60" >
+			<dl>
+				<dt>城市：</dt>
+				<dd><select name="CityID">
+					<volist name="city" id="vos">
+						<option value="{$vos['ID']}" <if condition="$vo['CityID'] eq $vos['ID']">selected</if>>{$vos['NAME']}</option>
+					</volist>
+ 				</select></dd>
+			</dl>
+			<dl>
+				<dt>标题：</dt>
+				<dd><input type="text" class="required"  style="width:100%" name="Title" value="{$vo.Title}"/></dd>
+			</dl>
+			<dl>
+				<dt>短信内容：</dt>
+				<dd><input type="text"  style="width:100%" name="phonecontent" value="{$vo.phonecontent}"/></dd>
+			</dl>
+			<dl>
+				<dt>结束时间：</dt>
+				<dd><p>
+				<input type="text" name="EndTime" class="date textInput readonly valid" value="{$vo.endtimes}" readonly="true">
+				<a class="inputDateButton" href="javascript:;">选择</a>
+				<span class="info">yyyy-MM-dd</span>
+				</p>
+			</dl>
+			<dl>
+				<dt>背景图片：</dt>
+				<dd>
+				
+		    
+				<div style="display:blodk;width:500px;">
+				<img id="uploadimg" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.background}"/>
+				<a style="display:blodk;float:left;width:100px;height:50px;padding-top:50px;padding-left:20px;" href="__MODULE__/Demo/add"  target="dialog">上传图片</a>
+				</div>
+				
+				
+				<input type="hidden" style="width:100%" name="background" value="{$vo.background}" id="background" class="valid">
+			</dl>
+		</div>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
+

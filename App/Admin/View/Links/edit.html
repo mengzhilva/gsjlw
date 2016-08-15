@@ -1,0 +1,42 @@
+<h2 class="contentTitle">编辑友情链接</h2>
+
+<div class="pageContent">
+    <form method="post" action="__URL__/update/navTabId/listlinks/callbackType/closeCurrent"  class="pageForm required-validate" 
+        onsubmit="return iframeCallback(this,navTabAjaxDone);" enctype="multipart/form-data">
+        <input type="hidden" name="link_id" value="{$vo.link_id}"/>
+        <div class="pageFormContent nowrap" layoutH="97">
+            <dl>
+                <dt>链接名：</dt>
+                <dd><input type="text" name="link_name"  value="{$vo.link_name}" class="required"></dd>
+            </dl>
+            
+            <dl>
+                <dt>链接地址</dt>
+                <dd><input type="text" name="url" value="{$vo.url}" class="url required"></dd>
+            </dl>
+
+            <dl>
+                <dt>链接类型</dt>
+                <dd>
+                <input type="radio" name="is_pic"  value="0"  <if condition="$vo.is_pic eq 0">checked</if>/>文本
+                <input type="radio" name="is_pic" value="1"  <if condition="$vo.is_pic eq 1">checked</if>/>图片
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>链接图片</dt>
+                <dd><input type="file" name="pic" value="{$vo.pic}"></dd>
+            </dl>       
+          
+            
+        </div>
+        
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>
+

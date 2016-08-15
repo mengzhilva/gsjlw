@@ -1,0 +1,95 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<script type="text/javascript" src="__JS__/designer.js"></script>
+<link href="__CSS__/designer.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script type="text/javascript" src="__JS__/hhSwipe.js"><!--手机幻灯滑屏js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/index/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+        	<p class="chi-ti">设计师列表</p>
+            <p class="eng-ti">THE LIST OF DESIGNERS</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row designer-1 clearfix">
+    
+    	<ul class="designer-nav clearfix">
+        	<li class="list1">
+            	
+            <if condition="$_REQUEST['order'] eq 'yeardesc'"><a style="color:white;"  href="{:U('/designer/index?city='.$city.'&order=yearasc')}">从业年限<i class="down"></i></a>
+            <elseif condition="$_REQUEST['order'] eq 'yearasc'"/><a style="color:white;" href="{:U('/designer/index?city='.$city)}">从业年限<i class="up"></i></a>
+            <else /><a style="color:white;" href="{:U('/designer/index?city='.$city.'&order=yeardesc')}">从业年限<i class="up"></i><i class="down"></i></a>
+            </if>
+                
+            </li>
+            <li class="list2">
+            <if condition="$_REQUEST['order'] eq 'jobsdesc'"><a style="color:white;" href="{:U('/designer/index?city='.$city.'&order=jobsasc')}">作品数量<i class="down"></i></a>
+            <elseif condition="$_REQUEST['order'] eq 'jobsasc'"/><a style="color:white;" href="{:U('/designer/index?city='.$city)}">作品数量<i class="up"></i></a>
+            <else /><a style="color:white;" href="{:U('/designer/index?city='.$city.'&order=jobsdesc')}">作品数量<i class="up"></i><i class="down"></i></a>
+            </if>
+            </li>
+            <li class="list3">
+            <if condition="$_REQUEST['order'] eq 'hitsdesc'"><a style="color:white;" href="{:U('/designer/index?city='.$city.'&order=hitsasc')}">总访问量<i class="down"></i></a>
+            <elseif condition="$_REQUEST['order'] eq 'hitsasc'"/><a style="color:white;" href="{:U('/designer/index?city='.$city)}">总访问量<i class="up"></i></a>
+            <else /><a style="color:white;" href="{:U('/designer/index?city='.$city.'&order=hitsdesc')}">总访问量<i class="up"></i><i class="down"></i></a>
+            </if>                
+            </li>
+            <li class="list4">
+            	<strong class="fg-down">{$leveltitle}</strong>
+                <ul class="pdown clearfix">
+                    <li><a  href="{:U('/designer/index?city='.$city)}">全部</a></li>
+                    <volist name="level" id="vo">
+                        <li><a  href="{:U('/designer/index?city='.$city.'&level='.$vo['ID'])}">{$vo.NAME}</a></li>
+                    </volist>  
+                    <li class="last-btm"><b></b></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="designer-list clearfix">
+            <volist name="lists" id="vo" empty="暂无数据">
+            <div class="list-wrap clearfix">
+                <dl>
+                    <dt>
+                        <a href="{:U('/Designer/info?city='.$city.'&id='.$vo['ID'])}"  target="_blank"><img src="PC_SITE_URL{$vo.PHOTE}"></a>
+                    </dt>
+                    <dd class="list-top">
+                        <span class="designer-name">{$vo.NAME}</span>    <eq name="vo['ISVIP']" value="1"><img src="__CSS__/images/tuijian.png"/></eq><span class="tips">{$vo.levelname}</span>
+                    </dd>
+                    <dd class="touxian">
+                        Designer
+                    </dd>
+                    <dd class="jieshao">
+                        <span>从业年限:{$vo.WORKINGLIFE}年</span>
+                        <span>好评指数：{$vo.GOOD}%</span>
+                    </dd>
+                    <dd class="jieshao">
+                        <span>作品数量：{$vo.cc}</span>
+                        <span>总访问量：{$vo.VISITS}</span>
+                    </dd>
+                </dl>
+            </div>                
+            </volist>
+
+        </div>
+        <p class="nex-page">
+            {$page}
+        </p>
+    </section class="sc-floor-row clearfix">
+  </div>
+  <!--主体内容 end-->
+
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

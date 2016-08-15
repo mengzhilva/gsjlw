@@ -1,0 +1,43 @@
+<include file="utop" />
+
+        <!--后台-个人资料-->
+        <section>
+        <form action="{:U('/UserCenter/wdjlin')}" method="post" id="wdzlform">
+            <div class="ht-designer-card ht-tx">
+            	<span class="fl">头像</span>
+        <if condition="$wxuserinfo.img eq '' or $wxuserinfo.img eq '0'"> 
+            	<div class="designer-pic fr"><a href="{:U('/UserCenter/tx')}"><img src="/Public/user/img/mrtx.jpg" width="71" height="71" /></a></div>
+        <else/>
+            	<div class="designer-pic fr"><a href="{:U('/UserCenter/tx')}"><img src="{$wxuserinfo.img}" width="71" height="71" /></a></div>
+        </if>
+                <div class="clear"></div>
+            </div>
+            
+           	<div class="ht-add ht-add2">
+            	<div class="add-con add-con2">用户名:{$wxuserinfo.username}</div>
+                <div class="add-con add-con2">昵称:<input type="text" name="nickname" value="{$wxuserinfo.nickname}" class="ht-infor"></div>
+                <div class="add-con add-con2">邮箱:<input type="text" name="email" value="{$wxuserinfo.email}" class="ht-infor"></div>
+                <div class="add-con add-con2">性别:<input name="sex" type="radio" <if condition="$kh.sex eq 1">checked</if> value="1" class="a3">男<input name="" type="radio" <if condition="$kh.sex eq 2">checked</if>  value="2" class="a3">女<input name="" type="radio" <if condition="$kh.sex eq 0">checked</if>  value="0" class="a3">保密</div>
+                <div class="add-con add-con2">手机:<input type="text" name="mobile" value="{$wxuserinfo.mobile}" class="ht-infor"></div>
+                <div class="add-con add-con2">真实姓名:<input type="text" name="realname" value="{$wxuserinfo.realname}" class="ht-infor"></div>
+                <div class="add-con add-con2">联系地址:<input type="text" name="address" value="{$wxuserinfo.address}" class="ht-infor"></div>
+                
+                
+            </div>
+            
+                    <div class="ck-more ck-more2"><a href="javascript:morekh();" class="bor-radius">保存</a></div>                   
+                    
+            </form>
+        </section>
+        <!--后台-个人资料 end-->
+        <script>
+        function morekh(){
+        	$("#wdzlform").submit();
+        }
+        </script>
+       
+        
+        
+    </div>
+</body>
+</html>

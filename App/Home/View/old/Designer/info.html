@@ -1,0 +1,80 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/designer.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<link href="__CSS__/zss.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="__JS__/hhSwipe.js"><!--手机幻灯滑屏js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+    	<a href="{:U('/designer/index?city='.$city)}" class="last"></a>
+    	<span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+        	<p class="chi-ti">设计师详情</p>
+            <p class="eng-ti">DESIGNER DETAILS</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row designer-1 clearfix">
+    	<div class="designer-wrapper">
+        	<img src="PC_SITE_URL{$vo.PHOTE}">
+            <p>{$vo.NAME}</p>
+            <!--<p>Designer</p>-->
+        </div>
+        <ul class="designer-ul clearfix">
+        	<li><a href="#sjs_1">个人简介</a></li>
+            <li><a href="#sjs_2">设计理念</a></li>
+            <li><a href="#sjs_3">代表作品</a></li>
+        </ul>
+        <div class="designer-big clearfix">
+        	<img src="__PUBLIC__/Home/temp/designer-img01.png"/>
+            <div class="bookit">
+<!--             	<div class="bg"></div>
+                <div class="book-p">
+                	<p>喜欢{$vo.NAME}的设计，马上预约</p>
+                    <a href="#">戳我预约</a>
+                </div> 
+            </div>-->
+        </div>
+        <div class="designer-intro" id="sjs_1">
+        	<h3>{$vo.NAME}</h3>
+            <p>{$vo.RESUME|htmlspecialchars_decode}</p>
+        </div>
+        <div class="designer-intro" id="sjs_2">
+        	<h3>设计理念</h3>
+            <p>{$vo.IDEA}</p>
+        </div>
+        <div class="zuopin-list clearfix" id="sjs_3">
+        	<ul>
+                <volist name="cases" id="cases" empty="暂无数据">
+            	<li>
+                	<a  href="{:U('/cases/info?city='.$city.'&id='.$cases['ID'])}"><img src="PC_SITE_URL{$cases.IMAGE}"/></a>
+                    <p>
+                    	<span class="mianji">{$cases.AREA}m²</span>
+                        <span class="name">{$cases.cname}</span>
+                    </p>
+                </li>
+                </volist>
+            </ul>
+        </div>
+        <div class="more">
+        	<a href="{:U('/cases/index?city='.$city.'&did='.$vo['ID'])}">更多案例</a>
+        </div>
+    </section class="sc-floor-row clearfix">
+  </div>
+  <!--主体内容 end-->
+          <div class="positionBar">
+            <span class="position-mflf">喜欢{$vo.NAME}的设计，马上预约</span>
+            <a href="{:U('/order/index?type=10&city='.$city.'&id='.$vo['ID'])}" class="position-mflfA">戳我预约</a>
+          </div>
+<!--footer-->
+<!-- <footer class="sc-view-footer clearfix">页脚内容正在设计中....</footer> -->
+<!--footer end-->
+</div>
+</body>
+</html>

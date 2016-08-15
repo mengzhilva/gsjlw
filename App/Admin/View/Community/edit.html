@@ -1,0 +1,173 @@
+<h2 class="contentTitle">编辑小区</h2>
+
+
+<div class="pageContent">
+    
+    <form method="post" action="__CONTROLLER__/update/navTabId/listcommunity/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+
+            <dl>
+                <dt>城市区域：</dt>
+                <dd>
+                        <select class="combox" name="CID" ref="w_combox_city" refUrl="__CONTROLLER__/getcitya/cid/{value}">
+                            <volist name="city" id="ctname">
+                            <option value="{$ctname.ID}" <if condition="$ctname['ID'] eq $vo['CID']">selected</if> >{$ctname.ID|getcityname}</option>
+                            </volist>
+                        </select>
+                        <select class="combox" name="AID" id="w_combox_city" >
+                           <option value="{$vo.AID}">{$vo.AID|getcityareaname}</option> 
+                        </select>
+                        
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>小区名称：</dt>
+                <dd>
+                    <input type="hidden" name="ID" value="{$vo.ID}">
+                    <input type="text" name="NAME" maxlength="50" size="30" class="required" value="{$vo.NAME}"/>
+                    <span class="info">请输入小区名称</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否重点小区：</dt>
+                <dd>
+                    <label><input type="radio" name="IsImportent" <eq name="vo.IsImportent" value="1">checked</eq> value="1"/>是</label>
+                    <label><input type="radio" name="IsImportent" <eq name="vo.IsImportent" value="0">checked</eq> value="0"/>否</label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>竣工时间：</dt>
+                <dd>
+                    <input type="text" name="COMPLETEDATE" class="date" readonly="true" value="{$vo.COMPLETEDATE|strtotime=###|date="Y-m-d",###}"/>
+                    <span class="info">请点击选择时间</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>楼盘地址：</dt>
+                <dd>
+                    <input type="text" name="ADDRESS" maxlength="80" size="70" class="required" value="{$vo.ADDRESS}"/>
+                    <span class="info">请输入楼盘地址</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>物业类型：</dt>
+                <dd>
+                    <input type="text" name="PROPERTY" maxlength="80" size="30" class="required" value="{$vo.PROPERTY}"/>
+                    <span class="info">请输入物业类型</span>
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>小区户型：</dt>
+                <dd>
+                    <volist name="housetype" id="houname">
+                        <label><input type="checkbox" name="HOUSETYPES[]" value="{$houname.ID}" 
+                        <?php 
+                            $p = stripos($vo['HOUSETYPES'], $houname['ID']);
+                            if($p !== false){
+                               echo 'checked'; 
+                            }
+                        ?>
+                        
+                        />{$houname.NAME}</label>
+                    </volist>
+                </dd>
+            </dl>
+            <dl>
+                <dt>小区概述：</dt>
+                <dd>
+                    <textarea name="DESCRIPTION" class="required" cols="80" rows="3">{$vo.DESCRIPTION}</textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>小区详情：</dt>
+                <dd>
+                    <textarea class="editor" upImgUrl="__CONTROLLER__/doUpload" upImgExt="jpg,jpeg,gif,png" name="list" rows="15" cols="100">{$vo.list}</textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>QQ群：</dt>
+                <dd>
+                    <div style="display:blodk;width:500px;">
+                        <img id="editupqq" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.QQ}"/>
+                        <a class="button"  href="__CONTROLLER__/upindex/type/qq"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="QQ" id="editqq" class="valid">
+                </dd>
+            </dl>
+            <dl>
+                <dt>微信群：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="editupweixin" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.Weixin}"/>
+                        <a class="button"  href="__CONTROLLER__/upindex/type/weixin"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="Weixin" id="editweixin" class="valid">
+                </dd>
+            </dl>
+            <dl>
+                <dt>封面照片：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="editupimage" style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.Image}"/>
+                        <a class="button" href="__CONTROLLER__/upindex/type/image"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="Image" id="editimage" class="valid">
+                </dd>
+            </dl>
+        
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+<script>
+    function fileback(json){
+        if(json.state == 200){
+            switch(json.type){
+                case "qq":
+                    $.pdialog.closeCurrent();
+                    $("#editupqq").attr('src',json.msg);
+                    $("#editqq").val(json.msg);
+                    break;
+                case "weixin":
+                    $.pdialog.closeCurrent();
+                    $("#editupweixin").attr('src',json.msg);
+                    $("#editweixin").val(json.msg);
+                    break;
+                case "image":
+                    $.pdialog.closeCurrent();
+                    $("#editupimage").attr('src',json.msg);
+                    $("#editimage").val(json.msg);
+                    break;
+            }
+        }
+    }
+</script>
+ <!--    <script>
+    function fileback(json){
+        if((json.state == 200) && (json.type == "qq") ){
+            $.pdialog.closeCurrent();
+            $("#upqq").attr('src',json.msg);
+            $("#qq").val(json.msg);
+            alert('上传成功');
+        }
+    }
+    </script>
+       <script>
+    function fileback(json){
+        if((json.state == 200) && (json.type == "weixin")){
+            $.pdialog.closeCurrent();
+            $("#upweixin").attr('src',json.msg);
+            $("#weixin").val(json.msg);
+            alert('上传成功');
+        }
+    }
+    </script> -->
+  

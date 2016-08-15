@@ -1,0 +1,40 @@
+<include file="UserCenter/utop" />
+
+        <!--后台-个人资料-->
+        <section>
+        <form action="{:U('/user/insert')}" method="post" id="wdzlform">
+            <div class="ht-designer-card ht-tx">
+            	<span class="fl" style="test-align:center">用户登陆</span>
+            	<div class="designer-pic fr">
+            	
+            	</div>
+        
+                <div class="clear"></div>
+            </div>
+            
+           	<div class="ht-add ht-add2">
+                <div class="add-con add-con2">用户名:<input type="text" id="username" name="username" value="" class="ht-infor"></div>
+                <div class="add-con add-con2">密码:<input type="password" id="userpass" name="userpass" value="" class="ht-infor"></div>
+                <div class="add-con add-con2">重复密码:<input type="password" id="ruserpass" name="ruserpass" value="" class="ht-infor"></div>
+                <div class="add-con add-con2">邮箱:<input type="text" id="email" name="email" value="" class="ht-infor"></div>
+
+                
+            </div>
+            
+                    <div class="ck-more ck-more2" style="width: 60%;float:left;"><a href="javascript:morekh();" style="background:greenyellow" class="bor-radius">注册</a></div>  
+                    <div class="ck-more ck-more2" style="width: 30%;float:left;"><a href="{:U('/user/login')}" class="bor-radius">登陆</a></div>                  
+                    
+            </form>
+        </section>
+        <!--后台-个人资料 end-->
+        <script>
+        function morekh(){
+        	$("#wdzlform").submit();
+        }
+        </script>
+       
+        
+        
+    </div>
+</body>
+</html>

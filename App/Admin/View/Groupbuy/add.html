@@ -1,0 +1,144 @@
+<h2 class="contentTitle">添加小区团购</h2>
+
+
+<div class="pageContent">
+    
+    <form method="post" action="__CONTROLLER__/insert/navTabId/listgroupbuy/callbackType/closeCurrent"  enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this,navTabAjaxDone);">
+        <div class="pageFormContent nowrap" layoutH="97">
+           
+            <dl>
+                <dt>小区名称：</dt>
+                <dd>
+                    <input type="hidden" name="obj.CID" value="" >
+                    <input type="hidden" name="obj.AID" value="" >
+                    <input name="obj.ID" value="" type="hidden" />
+                    <input class="required " name="obj.NAME" type="text" suggestFields="ID,NAME" suggestUrl="" lookupGroup="obj" lookupPk="ID"  value=""   readonly/>
+                    <a class="btnLook" href="__MODULE__/Lookup/index" lookupGroup="obj" lookupPk="ID">查找带回</a>
+                    <span class="info">请点击搜索小区名称</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>所属设计师：</dt>
+                <dd>
+                    <input name="objdes.ID" value="" type="hidden" placeholder="id"/>
+                    <input class="required" name="objdes.NAME" type="text" suggestFields="" suggestUrl="" lookupGroup="obj" lookupPk="ID"  value=""   readonly/>
+                    <a class="btnLook" href="__MODULE__/Lookdesigner/index" lookupGroup="objdes" lookupPk="ID">查找带回</a>
+                    <span class="info">请点击搜索设计师</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>团购名称：</dt>
+                <dd>
+                    <input type="text" name="name" maxlength="20" class="required" />
+                    <span class="info">请输入团购名称</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>人数上限：</dt>
+                <dd>
+                    <input type="text" name="number" maxlength="20" class="digits required" />
+                    <span class="info">请输入人数上限--整数</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>结束时间：</dt>
+                <dd>
+                    <input type="text" name="endtime" class="date" readonly="true"/>
+                    <span class="info">请点击选择时间</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>设置团购价格级别：</dt>
+                <dd>
+                    <table width="100" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce"    id="theObjTable">
+                        <tr>
+                          <td  width="30" height="20"  bgcolor="d3eaef" class="style6"><div align="center"><span class="style10">级别名</span></div></td>
+                          <td width="30" height="20"  bgcolor="d3eaef" class="style6"><div align="center"><span class="style10">人数</span></div></td>
+                          <td width="30" height="20" bgcolor="d3eaef" class="style6"><div align="center"><span class="style10">级别</span></div></td>
+                          <td width="30" height="20" bgcolor="d3eaef" class="style6"><div align="center"><span class="style10">价格</span></div></td>
+                          <td width="30" height="20" bgcolor="d3eaef" class="style6"><div align="center"><span class="style10">操作</span></div></td>
+                        </tr>
+                        <tr>
+                            <td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="pricelevelname" id="cls1"  value="" placeholder="name"></div></td>
+                            <td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="pricelevelnumber" id="cls2" class="digits" value="" placeholder="请输入数字"></div></td>
+                            <td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="pricelevellevel" id="cls3"  value="" placeholder="level"></div></td>
+                            <td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="pricelevelprice" id="cls4" class="digits" value="" placeholder="请输入数字"></div></td>
+                            <td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="button"  name="pladd" value="添加"></div></td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>小区户型：</dt>
+                <dd>
+                    <volist name="housetype" id="houname">
+                        <label><input type="radio" name="houid" value="{$houname.ID}" />{$houname.NAME}</label>
+                    </volist>
+                </dd>
+            </dl>
+            <dl>
+                <dt>分析：</dt>
+                <dd><textarea name="content" class="required" cols="80" rows="3"></textarea></dd>
+            </dl>
+            <dl>
+                <dt>团购详情：</dt>
+                <dd>
+                    <textarea class="editor" upImgUrl="__CONTROLLER__/doUpload" upImgExt="jpg,jpeg,gif,png" name="list" rows="15" cols="100"></textarea>
+                </dd>
+            </dl>
+                        
+            <dl>
+                <dt>封面照片：</dt>
+                <dd>
+                     <div style="display:blodk;width:500px;">
+                        <img id="groupbuyadduploadimg" style="display:blodk;float:left;width:200px;height:100px;" src=""/>
+                        <a class="button" href="__CONTROLLER__/upindex/"  target="dialog"><span>上传图片</span></a>
+                    </div>
+                    <input type="hidden" style="width:100%" name="picurl" id="groupbuyaddpicurl" class="valid">
+                </dd>
+            </dl>
+        
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+    
+</div>
+<script>
+    function fileback(json){
+        if(json.state == 200){
+            $.pdialog.closeCurrent();
+            $("#groupbuyadduploadimg").attr('src',json.msg);
+            $("#groupbuyaddpicurl").val(json.msg);
+            alert('上传成功');
+        }
+    }
+</script>
+<script>
+    $(function(){
+        $("input[name=pladd]").click(function(){
+            var nameval = $("input[name='pricelevelname']").val();
+                var numberval = $("input[name='pricelevelnumber']").val();
+                var levelval = $("input[name='pricelevellevel']").val();
+                var priceval = $("input[name='pricelevelprice']").val();
+
+                $('<tr><td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input size="20" type="text" name="llname[]" class="required" value="'+nameval+'" ></div></td><td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20"  name="llnumber[]" class="digits required" value="'+numberval+'" ></div></td><td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="lllevel[]" class="required" value="'+levelval+'" ></div></td><td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="text" size="20" name="llprice[]" class="digits required" value="'+priceval+'" ></div></td><td height="20" width="30" bgcolor="#FFFFFF"><div align="center"><input type="button"  size="20"  name="pldel" value="删除" onClick="getdel(this)"></div></td></tr>').appendTo("#theObjTable");
+                    $("#cls1").val("");
+                    $("#cls2").val("");
+                    $("#cls3").val("");
+                    $("#cls4").val("");
+        })
+    }) 
+    function getdel(k){
+        $(k).parent().parent().parent().remove();
+    }
+</script>

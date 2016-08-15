@@ -1,0 +1,53 @@
+<?php
+//学生信息控制器
+namespace Admin\Controller;
+use Think\Controller;
+class StuController extends Controller {
+    public function index(){
+        //处理页码
+        $p=1;
+        if(!empty($_POST['pageNum'])){
+            $p=$_POST['pageNum'];
+        }
+        $_GET['p']=$p;
+        
+        //处理每页条数：
+        $numPerPage=10;
+         if(!empty($_POST['numPerPage'])){
+            $numPerPage=$_POST['numPerPage'];
+        }
+        
+        //排序处理
+        $order="id";
+        $sort="asc";
+        if(!empty($_POST["_order"])){
+            $order=$_POST["_order"];
+            $sort=$_POST["_sort"];
+        }
+        
+    
+        $mod = M("Stu");
+        $total = $mod->count(); //获取总数据条数
+        $page = new \Think\Page($total,$numPerPage);
+    
+        $this->assign("list",$mod->order($order." ".$sort)->limit($page->firstRow.','.$page->listRows)->select());
+        
+        //页码信息的设置
+        $this->assign("totalCount",$total); //总数据条数
+        $this->assign("numPerPage",$numPerPage); //每页数据条数
+        $this->assign("currentPage",$p); //当前页码
+        
+        $this->display("index");
+    }
+    
+    
+    //执行删除
+    public function del(){
+        $m = M("Stu")->delete($_GET['id']+0);
+        if($m>0){
+            $this->success("删除成功");
+        }else{
+            $this->error("删除失败！");
+        }
+    }
+}

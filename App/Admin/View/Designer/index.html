@@ -1,0 +1,117 @@
+<form id="pagerForm" action="__URL__/index" method="post">
+	<input type="hidden" name="pageNum" value="{$currentPage|default='1'}" />
+	<input type="hidden" name="numPerPage" value="{$numPerPage}" /><!--每页显示多少条-->
+	<input type="hidden" name="_order" value="{$Think.request._order}"/>
+	<input type="hidden" name="_sort" value="{$Think.request._sort}"/>
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+	<input type="hidden" name="numPerPage" value="{$numPerPage}" /><!--每页显示多少条-->
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					<b>搜索</b> 
+					&nbsp;&nbsp;城市：
+					<select name="CID" style="width:150px;">
+					<?php if(empty($cityna)) { ?>
+						<option value="">请选择</option>
+					<?php }else{ ?>
+						<option value="{$MCID}">{$cityna}</option>
+					<?php } ?>
+						<volist  name="cityname" id="data">
+						<option value="{$data.ID}">{$data['NAME']}</option>
+						</volist>	
+					</select>
+					&nbsp;&nbsp;状态
+					<select name="STATUS" style="width:150px;">
+					<?php if(empty($STATUS)) { ?>
+						<option value="">请选择</option>
+					<?php }else{ ?>
+						<option value="{$STATUSID}">{$STATUS}</option>
+					<?php } ?>
+						<option value="0">待审核</option>
+						<option value="1">审核通过</option>
+						<option value="-1">审核不过</option>
+					</select>
+						&nbsp;&nbsp;姓名：<input size="10" type="text" name="SNAME" value="{$Think.post.SNAME}"/>
+				</td>
+				<td>
+					<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="navTab" width="550" height="380" rel="user_msg" title="添加设计师"><span>添加设计师</span></a></li>
+			<li><a class="edit" href="__URL__/edit/ID/{$Think.config.TMPL_L_DELIM}item_id{$Think.config.TMPL_R_DELIM}"  width="550" height="380" target="dialog"><span>修改</span></a></li>
+			<li><a class="delete" href="__CONTROLLER__/del" target="selectedTodo" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
+			<li class="line">line</li>
+			<li><a class="icon"  href="javascript:navTabPageBreak()"><span>刷新</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="112">
+		<thead>
+			<tr>
+				<th width="22"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th width="100">城市</th>
+				<th width="150">姓名</th>
+				<th width="150">级别</th>
+				<th width="150">入职时间</th>
+				<th width="150">从业年限</th>
+				<th width="150">预约量</th>
+				<th width="150">人气</th>
+				<th width="150">评分</th>
+				<th width="150">更新时间</th>
+				<th width="150">状态</th>
+				<th width="150">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<volist name="list" id="vo">
+				<tr target="item_id" rel="{$vo.ID}">
+					<td><input name="ids" value="{$vo.ID}" type="checkbox"></td>
+					<td>{$vo.CID|getcityname}</td>
+					<td>{$vo.NAME}</td>
+					<td>{$vo.LID|getdesignerlevel}</td>
+					<td>{$vo.ENTRYTIME}</td>
+					<td>{$vo.WORKINGLIFE}年</td>
+					<td>{$vo.RESERVATIONS}</td>
+					<td>{$vo.VISITS}</td>
+					<td>{$vo.STAR|getdesignerstar}</td>
+					<td>{$vo.UPDATETIME}</td>
+					<if condition="$vo.STATUS eq 0 ">
+				    <td>待审核</td>
+				    <elseif condition="$vo.STATUS eq 1 "/>
+				    <td>审核通过</td>
+				    <elseif  condition="$vo.STATUS eq -1 "/>
+				    <td>审核不通过</td>
+					</if>
+					<td>
+					<a class="edit" href="__URL__/check/id/{$vo.ID}"  width="550" height="380" target="navTab"><span>审核</span></a>&nbsp;|&nbsp;
+					<a class="edit" href="__URL__/edit/id/{$vo.ID}"  width="550" height="380" target="navTab"><span>编辑</span></a>&nbsp;|&nbsp;
+					<a class="delete" href="__CONTROLLER__/del/ids/{$vo.ID}" target="ajaxTodo" postType="string" title="确定要删除吗?">删除</a>
+					</td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({$Think.config.TMPL_L_DELIM}numPerPage:this.value{$Think.config.TMPL_R_DELIM})">
+				<option value="10" <if condition="$numPerPage eq 10">selected</if>>10</option>
+				<option value="15" <if condition="$numPerPage eq 15">selected</if>>15</option>
+				<option value="20" <if condition="$numPerPage eq 20">selected</if>>20</option>
+				<option value="25" <if condition="$numPerPage eq 25">selected</if>>25</option>
+				<option value="30" <if condition="$numPerPage eq 30">selected</if>>30</option>
+			</select>
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="5" currentPage="{$currentPage}"></div>
+	</div>
+</div>

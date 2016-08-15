@@ -1,0 +1,321 @@
+<?php 
+session_start();
+require("./config/db_config.php");
+require("./config/functions.php");
+$uid = $_SESSION["uid"];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>装修进度</title>
+<link href="__CSS__/order.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/global.css" type="text/css" rel="stylesheet">
+<link href="__CSS__/top-footer.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<!--*********************header 引入区*********************-->
+<div class="header-wrap clearfix">
+   <div class="sc-ui-topbar">
+      <div class="layout clearfix">
+          <div class="sc-ui-topbar-l f_l">
+             <span class="sc-page" onclick="addCookie();"><i></i>收藏实创3</span>
+             <span class="sc-location"><i></i><strong class="pr-address">北京</strong></span>
+          </div>
+          <!--left end-->
+          <div class="sc-ui-topbar-r f_r">
+            <span class="sc-wel">欢迎来到实创！</span>
+            <span class="sc-t-login"><i></i><a href="#">[登录]</a> <a href="#">[免费注册]</a></span>
+            <span class="sc-t-gj"><a href="#">家装管家</a></span>
+          </div>
+          <!--right end-->
+      </div>
+   </div>
+   <!--sc-ui-topbar end-->
+   <div class="sc-ui-header-bg">
+       <div class="sc-logo-wrap">
+          <div class="sc-logo-alpha opcity50"><!--背景颜色是否透明，如果透明添加 样式 opcity50--></div>
+          <div class="sc-logo-container">
+             <div class="layout clearfix">
+               <a href="../index.html" class="sc-logo"><img src="__IMG__/logo.png" width="220" height="26"></a>
+               <div class="sc-main-nav">
+                 <a href="#" class="zx-start">[开始装修]</a>
+                 <a href="../index.html">首  页</a>
+                 <a href="../decoration/decoration-index.html">我要装修</a>
+                 <a href="../drawing/special-photo-list.html">看效果图</a>
+                 <a href="../hotcommunity/diary-index.html">我的小区</a>
+                 <a href="../guide/renovation-index.html" target="_blank">装修攻略</a>
+                 <a href="../characteristic/tese-index.html">实创特色</a>
+               </div>
+               <!--sc-main-nav end-->
+               <h2 class="sc-call"><i></i><strong>400-03-28800</strong></h2>
+             </div>
+             <!--end-->
+          </div>
+       </div>
+       <!--about-banner-->
+       <div class="header-step-box">
+         <h1 class="h-s-title">会员中心</h1>
+       </div>
+       <!--about-banner end-->
+   </div>
+   <!--sc-logo end-->
+</div>
+<!--*********************header 引入区 end*********************-->
+<!--*********************contanier 内容区 *********************-->
+<div class="layout container-minheight clearfix">
+    <div class="web-step">
+         <a href="#">首页 ></a>
+         <a href="#">会员中心 > </a>
+         <a>全过程管理</a>
+     </div>
+     <div class="scMain clearfix">
+
+<include file="leftmenu" zxjd='id="current"' />
+
+		<div class="scMRight">
+			<div class="scMRTit"><h3>装修进度</h3></div>
+			<div class="scMRCon">
+				<div class="scCwxf">
+<?php
+  /*
+  退单  -1
+  产品验收  0
+  新创建 0
+  等待店面审核  0
+  店面审核通过  0
+  已交部分首期款 3
+  首期已交齐 3
+  等待派单  3
+  派单等待审核  3
+  派单审核通过  4
+  待材料验收 4
+  待交底   4
+  待隐蔽施工 5
+  待中期验收 6
+  中期验收  7
+  待竣工验收 7
+  竣工验收成功  8
+  确认竣工  9
+  */
+  $connumber = $GLOBALS["db"]->getone("select connumber from process_manage where uid = $uid and isdefault = 1");
+  $mobile = $GLOBALS["db"]->getone("select mobile from process_manage where uid = $uid and isdefault = 1");
+  if($connumber=="")
+  {
+    echo writescript("alert('您还没有绑定合同或没有选择默认合同号！');location.href='$BindUrl';");  
+    exit();
+  }
+  
+  //读取手机状态
+  $client = webservice();
+  $result=$client->GetUser(array('phone'=>$mobile,'password'=>'e10adc3949ba59abbe56e057f20f883e'));//查询中国郑州的天气，返回的是一个结构体
+  $xml = simplexml_load_string($result-> GetUserResult);
+  foreach($xml->Customer as $a) 
+  { 
+    if($a->PactNumber==$connumber)
+    {
+      $status = $a->AppState;
+      break;
+    }
+  } 
+  ?>          
+          <p>合同号：<?php echo $connumber;?>&nbsp;&nbsp;&nbsp;&nbsp;状态：<?php
+  switch ($status)
+  {
+    case -1:
+      echo "退单";
+      break;  
+    case 0:
+      echo "新创建";
+      break;
+    case 3:
+      echo "等待派单";
+      break;
+    case 4:
+      echo "待交底";
+      break;
+    case 5:
+      echo "待隐蔽施工";
+      break;
+    case 6:
+      echo "待中期验收";
+      break;
+    case 7:
+      echo "中期验收";
+      break;
+    case 8:
+      echo "竣工验收成功";
+      break;
+    case 9:
+      echo "确认竣工";
+      break;              
+    default:
+      echo "";
+  }
+  //装修进度
+  $client = webservice();
+  $result=$client->APPDecorationProgress(array('pactnumber'=>$connumber));
+  $xml = simplexml_load_string($result-> APPDecorationProgressResult);
+
+  //现计划日期
+  $PlanDate = "";
+  //实际日期
+  $ActualDate = "";
+  //原计划日期
+  $OriginalDate = "";
+  
+  foreach($xml->DecorationProgress as $a) 
+  { 
+    //echo $a->Type;
+    //echo $a->OriginalDate."|";
+    $OriginalDate  = $OriginalDate.$a->OriginalDate."|";
+    $PlanDate = $PlanDate.$a->PlanDate."|";
+    $ActualDate = $ActualDate.$a->ActualDate."|";
+    
+  }
+  
+
+  $oarr =  explode("|",$OriginalDate);
+  $parr = explode("|",$PlanDate);
+  $aarr = explode("|",$ActualDate);
+  $str1 = "";
+  $nowstatus = 0;
+  for($i=0;$i<5;$i++)
+  {
+    //实际工期
+    if($aarr[$i]!="")
+    {
+      
+      $str1=$str1."已完成|";
+      $nowstatus = $i+1;
+    }
+    else
+    {
+      
+      //现计划
+      if($parr[$i].""!="")
+      {
+        $str1=$str1."预计完成时间".datediff(formattime($time),$parr[$i])."天后|";
+        
+      }
+      //原计划
+      else
+      {
+        
+        if($oarr[$i].""!="")
+        {
+          $str1=$str1."预计完成时间".datediff(formattime($time),$oarr[$i])."天后|";
+        }
+        else
+        {
+          $str1=$str1."|";
+        }
+      }
+    }
+    
+  }
+  
+  $str1arr = explode("|",$str1);
+  $str2arr = explode("|",$str2);
+  $namearr = array("开工", "交底", "隐蔽验收", "中期验收" , "尾期验收");
+   ?></p>    
+        </div>
+        <div class="scJdt">
+          <div class="scJdtOver<?php if($nowstatus<0){echo " scWjx";}elseif($nowstatus==0){echo " scZqys";}?>">
+            <span>开工</span>
+            <p><?php echo $str1arr[0];?></p>
+          </div>
+          <div class="scJdtOver<?php if($nowstatus<1){echo " scWjx";}elseif($nowstatus==1){echo " scZqys";}?>">
+            <span>交底</span>
+            <p><?php echo $str1arr[1];?></p>
+          </div>
+          <div class="scJdtOver<?php if($nowstatus<2){echo " scWjx";}elseif($nowstatus==2){echo " scZqys";}?>">
+            <span>隐蔽验收</span>
+            <p><?php echo $str1arr[2];?></p>
+          </div>
+          <div class="scJdtOver<?php if($nowstatus<3){echo " scWjx";}elseif($nowstatus==3){echo " scZqys";}?>">
+            <span>中期验收</span>
+            <p><?php echo $str1arr[3];?></p>
+          </div>
+          <div class="scJdtOver<?php if($nowstatus<4){echo " scWjx";}elseif($nowstatus==4){echo " scZqys";}?>">
+            <span>尾期验收</span>
+            <p><?php echo $str1arr[4];?></p>
+          </div>
+        </div>
+			</div>
+      <div class="scJdxmlb">
+        <h2>装修进度列表</h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="25%">预计完成时间</th>
+                <th width="25%">实际完成时间</th>
+                <th width="25%">处理信息</th>
+                <th width="25%">是否完成</th>
+            </tr>
+<?php
+for($ii=0;$ii<5;$ii++)
+{
+?>
+            <tr>
+              <td><?php 
+  if($parr[$ii].""=="")
+  {
+    echo $oarr[$ii];
+  }
+  else
+  {
+    echo $parr[$ii] ;
+  }
+  ?></td>
+              <td><?php echo $aarr[$ii];?></td>
+              <td><?php echo $namearr[$ii];?></td>
+              <td><?php if($nowstatus>$ii){echo "已完成";}if($nowstatus==$ii){echo "进行中";}if($nowstatus<$ii){echo "未完成";}?></td>
+            </tr>
+<?php
+}
+?>            
+        </table>
+      </div>
+		</div>
+	</div>
+</div>
+<!--*********************footer 引入区*********************-->
+<div class="footer-wrap">
+    <div class="layout clearfix footer-sub-nav-c">
+       <dl class="footer-sub-nav-dl">
+          <dt>服务支持</dt>
+          <dd><a href="designer.html">设计师团队</a></dd>
+          <dd><a href="#">实创展厅</a></dd>
+          <dd><a href="#">企业客户入口</a></dd>
+          <dd><a href="#">网站地图</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关于实创</dt>
+          <dd><a href="#">独家优势</a></dd>
+          <dd><a href="#">加入我们</a></dd>
+          <dd><a href="#">责任声明</a></dd>
+       </dl>
+       <dl class="footer-sub-nav-dl">
+          <dt>关注我们</dt>
+          <dd><a href="#"><i class="zhu-icon01"></i>新浪微博</a></dd>
+          <dd><a href="#"><i class="zhu-icon02"></i>QQ空间</a></dd>
+          <dd><a href="#"><i class="zhu-icon03"></i>官方微信</a></dd>
+          <dd><a href="#"><i class="zhu-icon04"></i>天猫商城</a></dd>
+       </dl>
+       <div class="footer-call">
+         <h2>400-03-28800</h2>
+         <p class="f-day">周一至周日 8:00-18:00<br/>（仅收市话费）</p>
+         <p class="f-btn-c"><a href="#" class="yellow-btn btn-animate w-200">在线咨询</a></p>
+       </div>
+    
+    </div>
+    
+    <div class="ui-copyright">
+      <p class="layout clearfix"><span class="f_l">Copyright @ 1997-2014北京实创装饰工程有限公司</span> <span class="f_r">京ICP备09034105号 京公网安备110102000606</span></p>
+    </div>
+</div>
+<!--*********************footer 引入区 end*********************-->
+
+	
+</body>
+</html>

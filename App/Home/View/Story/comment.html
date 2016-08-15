@@ -1,0 +1,68 @@
+<include file="Common/top" />
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/taocan.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<style>
+.ainput{width: 80%;
+float: left;margin:10px 0;}
+.atitle{float: left;
+width: 20%;line-height: 31px;font-size:14px;}
+.input{width: 60px;
+float: left;}
+.inputs{
+float: left;width:95%}
+
+.yzm{width: 50%;}
+.abutton{float: left;
+width: 100%;
+margin-top: 15px;
+}
+.closeform{margin-left: 15px}
+</style>
+<body>
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+<div class="cs-view-wrap clearfix">
+    <section class="sc-floor-row section-1 clearfix">
+        <a href="{:U('/index/index')}" class="last"></a>
+        <span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+            <p class="chi-ti detailtitle">评论：{$title}</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row section-1 clearfix">
+      <ul class="index-classify clearfix">
+                  <volist name="comments" id="vo">  
+
+                    <li>
+                           <a href="{:U('/story/detail?id='.$vo['sid'].'')}"><span class="gstitle">{$vo.user_id|getusername}说： </span><span class="gstitle" style="float: right;font-weight: normal;">{$vo.create_time} </span></a>
+                           
+                           <div class="gscontent"><a href="{:U('/story/detail?id='.$vo['sid'].'')}">{$vo.content|msubstr=0,60,'utf-8',false}...</a></div>
+					
+					</li>
+                  </volist>
+      </ul>
+<form action="{:U('/story/commentinsert')}" method="post">
+	<div class="atitle">评论内容：</div>
+	   <div class="ainput"> 
+		<textarea name="content" id="content" class="ckeditor inputs"  rows="7"></textarea>
+		</div>	    
+	    <input type="hidden" name="sid" id="sid" value="{$sid}">
+	    <input type="hidden" name="str" id="str" value="{$str}">
+	    <div class="abutton">
+	    <input class="abuttons" type="submit" value="提交">
+	    <input class="abuttons closeform"  type="button" value="关闭">
+	    </div>
+	    
+     </form>
+    </section>
+<script type="text/javascript">
+$(".closeform").click(function(){
+	document.location.href="/index.php/story/detail/id/"+"{$str}";
+})
+</script>
+  </div>
+  <!--主体内容 end-->

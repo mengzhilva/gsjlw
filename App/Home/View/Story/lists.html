@@ -1,0 +1,75 @@
+<include file="Common/top" />
+
+
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/taocan.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<body>
+<div class="cs-view-wrap clearfix">
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+    <section class="sc-floor-row section-1 clearfix">
+        <a href="{:U('/index/index?city='.$city)}" class="last"></a>
+        <span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+            <p class="chi-ti">{$title}</p>
+        </h3>
+    </section>
+    <section class="clearfix book" >
+        <div class="index-classify clearfix" id="khlist">
+                  <volist name="list" id="vo">  
+
+                    <li>
+                           <a href="{:U('/story/detail?id='.$vo['sid'].'')}"><span class="gstitle">{$vo.title} </span></a>
+                           <div class="gscontent"><a href="{:U('/story/detail?id='.$vo['sid'].'')}">{$vo.content|msubstr=0,60,'utf-8',false}...</a></div>
+                           
+					</li>
+                  </volist>
+        </div>
+           <if condition="$khnum gt 20"> 
+                    <div class="ck-more ck-more2"><a href="javascript:morekh();" class="bor-radius">加载更多 ∨</a></div>                   
+             </if>  
+    </section>
+
+        <script>
+        var p = 0;
+        function morekh(){
+			var purl = "{$purl}";
+        	var urls = "__APP__/index.php/Story/ajaxlists/p/"+p+"/purl/"+purl;
+			$.ajax({
+		        type: "get",
+		        url: urls,
+		        async:false,
+		        data: 
+				{
+				},
+		        dataType: "json",
+		        success: function(data){
+		        	if(data.html != ''){
+		        		$("#khlist").append(data.html);
+		        		p = data.p;
+		        	}else{
+		        		alert('没有了')
+		        	}
+		        }
+			});
+        }
+        </script>
+  </div>
+  <!--主体内容 end-->
+
+<!--底部悬浮
+<div class="zoom-bottom-fiexd">
+  <h2 class="z-b-f-l">我喜欢，就要这一套</h2>
+  <p class="z-b-f-r"><a href="{:U('/order/index?type=11&city='.$city.'')}" class="free-lf">免费量房</a></p>
+</div>
+-->
+<!--底部悬浮 end-->
+
+
+</div>
+</body>
+</html>

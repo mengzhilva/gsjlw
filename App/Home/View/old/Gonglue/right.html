@@ -1,0 +1,121 @@
+<div class="video-right">
+        	<div class="book-area">
+            	<h3>
+                	预约装修专家
+                </h3>
+                <div class="demo-TabName">
+                	<ul>
+                    	<li class="t-active">设计专家</li>
+                        <li>工程专家</li>
+                        <li>风水大师</li>
+                    </ul>
+                </div>
+                <div class="demo-TabWrap">
+                	<div class="demo-TabBody" style="display:block;">
+                    	<h3>设计师也要精挑细选，没有最好，只有更适合您的。</h3>
+                        <form>
+                            <div class="radio-area">
+                                <input type="radio" name="house" id="new-house"/><label for="new-house">新房</label>
+                                <input type="radio" name="house" id="old-house"/><label for="old-house">老房</label>
+                            </div>
+                            <div class="aside-select-list">
+                               <input type="text" value="请选择风格" class="aside-select select-input"></i>
+                               <!--下拉选择-->
+                                  <p class="select-down-list">
+                                    <span>地中海风格11</span>
+                                    <span>欧美</span>
+                                    <span>现代简约</span>
+                                    <span>田园风格</span>
+                                    <span>复古中式风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                  </p>
+                             </div>
+                            <input class="ninput" type="text" placeholder="请输入您的房屋建筑面积"/>
+                            <input class="ninput" type="text" placeholder="请输入您的姓名"/>
+                            <input class="ninput" type="text" placeholder="请输入您的电话"/>
+                            <a class="nsubmit" href="#">提交</a>
+                        </form>
+                    </div>
+                    <div class="demo-TabBody" style="display:none;">
+                    	<h3>222设计师也要精挑细选，没有最好，只有更适合您的。</h3>
+                        <form>
+                            <div class="radio-area">
+                                <input type="radio" name="house" id="new-house"/><label for="new-house">新房</label>
+                                <input type="radio" name="house" id="old-house"/><label for="old-house">老房</label>
+                            </div>
+                            <div class="aside-select-list">
+                               <input type="text" value="请选择风格" class="aside-select select-input"></i>
+                               <!--下拉选择-->
+                                  <p class="select-down-list">
+                                    <span>地中海风格11</span>
+                                    <span>欧美</span>
+                                    <span>现代简约</span>
+                                    <span>田园风格</span>
+                                    <span>复古中式风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                  </p>
+                             </div>
+                            <input class="ninput" type="text" placeholder="请输入您的房屋建筑面积"/>
+                            <input class="ninput" type="text" placeholder="请输入您的姓名"/>
+                            <input class="ninput" type="text" placeholder="请输入您的电话"/>
+                            <a class="nsubmit" href="#">提交</a>
+                        </form>
+                    </div>
+                    <div class="demo-TabBody" style="display:none;">
+                    	<h3>333设计师也要精挑细选，没有最好，只有更适合您的。</h3>
+                        <form>
+                            <div class="radio-area">
+                                <input type="radio" name="house" id="new-house"/><label for="new-house">新房</label>
+                                <input type="radio" name="house" id="old-house"/><label for="old-house">老房</label>
+                            </div>
+                            <div class="aside-select-list">
+                               <input type="text" value="请选择风格" class="aside-select select-input"></i>
+                               <!--下拉选择-->
+                                  <p class="select-down-list">
+                                    <span>地中海风格11</span>
+                                    <span>欧美</span>
+                                    <span>现代简约</span>
+                                    <span>田园风格</span>
+                                    <span>复古中式风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                    <span>地中海风格</span>
+                                  </p>
+                             </div>
+                            <input class="ninput" type="text" placeholder="请输入您的房屋建筑面积"/>
+                            <input class="ninput" type="text" placeholder="请输入您的姓名"/>
+                            <input class="ninput" type="text" placeholder="请输入您的电话"/>
+                            <a class="nsubmit" href="#">提交</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="r-list">
+            	<div class="list-title">
+                	最新文章
+                </div>
+                <div class="scroll-list">
+                	<ul>
+                        <volist name="zxfz" id="vo" empty="暂时没有数据"> 
+                        <li><a href="{:U('/gonglue-article/' . $vo['ID'])}">[{$vo.ClassName}] {$vo.Title|mb_substr=0,39}</a></li>
+                        </volist>                        
+                    </ul>
+                </div>
+                <div class="focus">
+                    <div class="list-title">
+                        专题
+                    </div>
+                    <div class="focus-link clearfix">
+                      <volist name="zt" id="vo" empty="暂时没有数据">  
+                        <a href="{$vo.LinkUrl}" class="clearfix"><img src="{$vo.DefaultPicUrl}"/></a>             
+                      </volist>                          
+                    </div>
+                </div>
+            </div>

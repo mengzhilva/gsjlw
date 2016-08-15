@@ -1,0 +1,42 @@
+<table class="table" width="100%" layoutH="112">
+        <thead>
+            <tr align="center">
+                <th width="9%">设计师名字</th>
+                <th width="5%">所在城市</th>
+                <th width="12%">服务星级</th>
+                <th width="8%">访问量</th>
+                <th width="3%">擅长户型</th>
+                <th width="6%">设计理念</th>
+                <th width="5%">设计作品</th>
+                <th width="10%">预约人数</th>
+                <th width="10%">头像</th>
+                <th width="10%">对应案例</th>
+            </tr>
+        </thead>
+        <tbody>
+        <volist name="Designerlists" id="vo">
+        <tr target="item_id" rel="{$vo.ID}" align="center">
+            <td>{$vo.NAME}</td>
+            <td>{$vo.CID|getcityname}</td>
+            <td>{$vo.STAR|getdesignerstar}</td>
+            <td>{$vo.VISITS}</td>
+            <td>{:VHID($vo['HID'])}</td>
+            <td>{$vo.IDEA}</td>
+            <td>{$vo.ID|casenum}</td>
+            <td>{$vo.ID|reservationnum}</td>
+            <td><img style="display:blodk;float:left;width:200px;height:100px;" src="{$vo.PHOTE}"/></td>
+            <td><?php 
+            $ID=$vo['ID'];
+            $Img = M('Case_image');
+            $CaseImg =  $Img->query("select IMAGE from case_image where DID ='$ID'");
+            foreach ($CaseImg as $k => $value) {
+               print_r($value['IMAGE']);echo',';
+            }
+            ?></td>
+         </tr>
+        </volist>
+        </tbody>
+</table>
+
+ <div>{$page}</div>
+

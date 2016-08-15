@@ -1,0 +1,64 @@
+<include file="Common/top" />
+<!--页面独立js和css区-->
+<link href="__CSS__/yangbanjian.css" type="text/css" rel="stylesheet"><!--当前页面独立css文件-->
+<script src="__JS__/taocan.js" type="text/javascript"><!--当前页面独立js文件--></script>
+</head>
+<style>
+.ainput{width: 80%;
+float: left;margin:10px 0;}
+.atitle{float: left;
+width: 20%;line-height: 31px;font-size:14px;}
+.input{width: 60px;
+float: left;}
+.inputs{
+float: left;width:87%}
+
+.yzm{width: 50%;}
+.abutton{float: left;
+width: 100%;
+margin-top: 15px;
+}
+.closeform{margin-left: 15px}
+.lyimg{width:10%;;height:30px;}
+</style>
+<body>
+<include file="Common/header" />
+  <!--header end-->
+  <!--主体内容 start-->
+  <div class="sc-view-container">
+<div class="cs-view-wrap clearfix">
+    <section class="sc-floor-row section-1 clearfix">
+        <a href="{:U('/index/index')}" class="last"></a>
+        <span class="jz-top-icon"></span>
+        <h3 class="clearfix">
+            <p class="chi-ti detailtitle">接龙：{$finfo.title}</p>
+        </h3>
+    </section>
+    <section class="sc-floor-row section-1 clearfix">
+<form action="{:U('/story/insert')}" method="post">
+	    <div class="atitle">标题：</div>
+	    <div class="ainput"><input class="inputs" style="height: 30px;" type="text" name="title">
+	    <!-- <a href="http://room.sitrue.cn/bj/wx/h5ly/str/{$str}/sid/{$sid}/fid/{$fid}/local/title"><img class="lyimg" src="__PUBLIC__/wx/images/ly.jpg"></a> -->
+	    </div>
+	    <div class="atitle">内容：</div>
+	   <div class="ainput"> 
+		<textarea name="content" id="content" class="ckeditor inputs"  rows="7">{$content}</textarea><a href="http://room.sitrue.cn/bj/wx/h5ly/str/{$str}/sid/{$sid}/fid/{$fid}/local/content"><img class="lyimg" src="__PUBLIC__/wx/images/ly.jpg"></a>
+		</div>	    
+	    <input type="hidden" name="str" id="str" value="{$str}">
+	    <input type="hidden" name="zid" id="zid" value="{$zid}">
+	    <input type="hidden" name="parent" id="parent" value="{$info.sid}">
+	    <input type="hidden" name="iszigs" id="iszigs" value="1">
+	    <input type="hidden" name="img" id="img" value="">
+	    <input type="hidden" name="category" id="category" value="{$info.category_id}">
+	    <input type="hidden" name="level" id="level" value="{$info.level}">
+	    <input type="hidden" name="ordernum" id="ordernum" value="0">
+	    <div class="abutton">
+	    <input class="abuttons" type="submit" value="提交">
+	    <input class="abuttons closeform" type="button" value="关闭">
+	    </div>
+	    
+     </form>
+    </section>
+
+  </div>
+  <!--主体内容 end-->

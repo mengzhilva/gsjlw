@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>community</title>
+</head>
+<body>
+<select name="city" id="">
+    <volist name="cityname" id="cityname">
+    <option value="{$cityname.id}">{$cityname.name}</option>
+    </volist>
+</select>
+<input type="text">
+<input type="button" value="立即查找">
+<br>
+<hr>
+小区数{$communitycount}个&nbsp;&nbsp;&nbsp;&nbsp;案例数{$casedecoratecount}个&nbsp;&nbsp;&nbsp;&nbsp;<a href="">小区团购</a>&nbsp;&nbsp;&nbsp;&nbsp;已有?位业主成功申请管家服务
+<hr>
+{$onelist.id}:{$onelist.name}:{$onelist.address}:{$onelist.image}<br>
+{$onegroupbuy.id}:{$onegroupbuy.name}:{$onegroupbuy.picurl}<br>
+<volist name="onecase" id="onecase">
+    {$onecase.id}:{$onecase.cid}:{$onecase.name}:{$onecase.image}<br>
+</volist>
+</body>
+</html>
