@@ -1,0 +1,58 @@
+.m-15{ margin-top:20px;}
+.sc-view-container {}
+.section-1 { margin-top:7px; text-align:center; position:relative; background:#fff; min-height:65px; padding:25px 0 14px 0;}
+.section-1 .last { width:2em; height:3em; background:url(images/last.png) no-repeat; background-size:90% 90%; float:left; position:relative; left:5.0625%; top:0.3rem; display:block;}
+.section-1 .jz-top-icon{ display:inline-block; width:4em; height:4em; float:left; position:relative; left:8.0625%;}
+.section-1 .jz-top-icon{ background:url(images/wuyin.png) no-repeat; background-size:90% 90%;}
+/*.zuqunlogo { position:absolute; left:11.3125%; top:1rem; border:1px solid red;}*/
+.section-1 h3 { font-size:24px; color:#2f2725; /*position:relative; top:8px;*/ height:45px; line-height:45px;}
+.section-1 .eng-ti { font-size:21px; color:#2f2725; margin-top:5px;}
+.zoom-blue{ color:#2486ae!important;}
+/*//轮播图*/
+.imgs .gstitle{font-weight:bold;font-size:14px;}
+.imgs .xsname{margin:10px;}
+.imgs li{padding:0px 15px;}
+.index-slide .scroll_wrap{overflow:hidden; position:relative;}
+.index-slide .scroll_wrap li{position:relative;display:block;width:100%;float:left;padding:10px 20px 10px 10px;}
+.index-slide .scroll_wrap li a{display:block;margin:0 auto;position:relative;}
+.index-slide .scroll_wrap .xsname{font-weight:bold;margin:10px}
+.index-banner-wrap .pre{display:block;width:16px;height:50px;float:left;margin-top: 50%%;}
+.index-banner-wrap .next{display:block;width:16px;height:50px;float:right;margin-top: -50%;}
+.index-classify{ clear:both;margin:15px auto; padding-bottom:10px;	width: 100%; ;height: auto;margin: 15px auto;}
+.index-classify li{ float:left;text-align:center; width:7.5em; height:auto; margin-left:;border-bottom:1px solid #eee;width:100%;text-align:left;padding:15px;}
+.index-classify h2{ font-size:1.4em; padding:6px 0 15px 0;}
+.index-classify .gstitle{font-weight:bold;font-size:14px;}
+.index-classify .xsimg{width:70px;height:90px;float:left;}
+.index-classify .xsname{width:30%;float:left;margin-left:30px;font-size:14px;}
+.index-classify .gscontent{margin-top:10px;width:100%;float:left;}
+.index-classify .xscontent{margin-top:10px;width:65%;float:left;margin-left:20px;}
+.index-classify .xz{color:#999;}
+.index-classify .ljyd{width:60%;height:30px;background:green;display:block;line-height:30px;text-align:center;color:#fff;font-size:16px;}
+.book .simptitle{display:block;width:100%;height:50px;background:#eee;margin-top:10px;text-align:left;line-height:50px;padding-left:15px;font-size:14px;}
+.book .simptitlemore{display:block;width:100%;height:50px;background:#eee;margin-top:10px;text-align:center;line-height:50px;padding-left:15px;font-size:14px;}
+.book .xsdescription{margin-top:10px;color:#444;}
+.booklist{display:inline-block;padding-bottom:0px}
+.booklist li a {display:block;background:url(images/next.png) right no-repeat;}
+.bookdetail{display:inline-block;padding-bottom:0px;line-height: 24px;font-size:16px;padding-left:10px;padding-right:5px;}
+.detailtitle{font-size:16px !important;;}
+/*底部浮动条*/
+
+
+.zoom-bottom-fiexd{ height:50px; background:rgba(0,0,0,0.5); position:fixed; bottom:0; left:0; width:100%; display:table; vertical-align:middle;}
+.zoom-bottom-fiexd .z-b-f-l{ display:table-cell; color:#fff; vertical-align:middle; width:30%; text-align:center; font-size:18px;}
+.zoom-bottom-fiexd .z-b-f-l .free-lf{ background-color:green; padding:4px 10px; font-size:1.0em;}
+.zoom-bottom-fiexd .z-b-f-r{ display:table-cell; color:#fff; vertical-align:middle; width:30%; text-align:center; }
+.zoom-bottom-fiexd .z-b-f-r .free-lf{ background-color:#ec5307; padding:4px 10px; font-size:1.0em;}
+.zoom-bottom-fiexd .z-b-f-r .next{font-size:1.2em;}
+.zoom-bottom-fiexd .z-b-f-r .free-lf:hover{ color:#fff;}
+
+/*梁礼成样板间详情样式 end*/
+
+@media (min-width: 300px) and (max-width: 480px) {
+	.zs-zoom-d-h2{ font-size:1.6em; font-weight:700; color:#000; text-align:center; padding:20px 0;}
+	.z-d-h3{ font-size:1.5em; color:#424242; padding-bottom:10px; line-height:1.3;}
+	.z-d-yellow-t{ background-color:#e76018; color:#fff; font-size:2em; padding:10px 20px; margin-bottom:30px; position:relative;}
+	.topbg .icon ul li span { position:absolute; color:#cc9966; font-size:1em; font-weight:700; top:22%; width:100%; text-align:center;}
+	.nobg { font-size:1.6em; text-align:center; line-height:80px; height:80px; color:#2486ae; font-family:"Microsoft Yahei"; font-weight:bold;}
+	.blue { background:#2486ae; font-size:1.6em; text-align:center; line-height:80px; height:80px; color:#fff; font-family:"Microsoft Yahei"; font-weight:bold;} 
+}

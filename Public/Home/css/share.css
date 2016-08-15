@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*百度分享样式开始*/
+.top-share-cl .s-font{line-height:3em;}
+.fx{float:right}
+.share-wenzi{ float:left}
+.bdshare-button-style0-16 a, .bdshare-button-style0-16 .bds_more{
+	display:inline-block; 
+	background:url(images/share-icon.png) no-repeat center center !important;
+	background-repeat:no-repeat; 
+	cursor:pointer; 
+	vertical-align:middle; 
+	background-size:50% 50%; 
+	width:40px !important; 
+	height:49px !important;
+	margin-top: 0px!important; 
+}
+
+
+/*百度分享样式结束*/

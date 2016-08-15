@@ -1,0 +1,51 @@
+.sc-view-container { padding-top:7px;}
+.section-1 { margin-top:7px; text-align:center; position:relative; background:#fff; padding:25px 0 14px 0;}
+.zuqunlogo { width:71px; height:71px; position:absolute; left:66px; top:10px;}
+.section-1 .chi-ti { font-size:26px; color:#2f2725; height:40px; line-height:40px;}
+.section-1 .eng-ti { font-size:21px; color:#2f2725; margin-top:5px; display:none; }
+.section-1 .jz-top-icon1{ display:inline-block; width:4em; height:4em; float:left; position:relative; left:8.0625%;}
+.section-1 .jz-top-icon1{ background:url(images/zuqun-bg1.png) no-repeat; background-size:90% 90%;}
+
+.section-2 .illusion a { font-size:6px; color:#fff; width:60px; height:20px; line-height:20px; display:block; position:absolute; background:#fa4c06; text-align:center;}
+.section-2 .price { text-align:center;  position:relative;font-family: arial; font-weight:bold; padding:36px 0; width:100%;}
+.section-2 .price .uparrow { width:13px; height:25px; float:left; margin-left:20%;}
+.section-2 .price .pricestyle { font-size:1.5rem; float:left;}
+.section-2 .price a { display:block; width:19.375%; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; font-size:0.8rem; float:left; margin-left:5%; color:#fff;}
+
+.section-3 .illusion a.illu-01 { font-size:6px; position:absolute; top:518px; color:red; left:223px;}
+.section-3 .illusion a.illu-02 { font-size:6px;  position:absolute; top:759px; left:300px; color:red;}
+
+.section-3 .price { text-align:center;  position:relative;font-family: arial; font-weight:bold; padding:30px 0; width:100%;}
+.section-3 .price .uparrow { width:13px; height:25px; float:left; margin-left:20%;}
+.section-3 .price .pricestyle { font-size:1.5rem; float:left;}
+.section-3 .price a { display:block; width:19.375%; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; font-size:0.8rem; float:left; margin-left:5%; color:#fff;}
+
+.section-4 .illusion a.illu-01 { font-size:6px; position:absolute; top:518px; color:red; left:223px;}
+.section-4 .illusion a.illu-02 { font-size:6px;  position:absolute; top:759px; left:300px; color:red;}
+
+.section-4 .price { text-align:center;  position:relative;font-family: arial; font-weight:bold; padding:30px 0; width:100%;}
+.section-4 .price .uparrow { width:13px; height:25px; float:left; margin-left:20%;}
+.section-4 .price .pricestyle { font-size:1.5rem; float:left;}
+.section-4 .price a { display:block; width:19.375%; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; font-size:0.8rem; float:left; margin-left:5%; color:#fff;}
+
+
+.section-5 .illusion a.illu-01 { font-size:6px; position:absolute; top:518px; color:red; left:223px;}
+.section-5 .illusion a.illu-02 { font-size:6px;  position:absolute; top:759px; left:300px; color:red;}
+
+.section-5 .price { text-align:center;  position:relative;font-family: arial; font-weight:bold; padding:30px 0; width:100%;}
+.section-5 .price .uparrow { width:13px; height:25px; float:left; margin-left:20%;}
+.section-5 .price .pricestyle { font-size:1.5rem; float:left;}
+.section-5 .price a { display:block; width:19.375%; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; font-size:0.8rem; float:left; margin-left:5%; color:#fff;}
+
+
+
+.section-6 .illusion a.illu-01 { font-size:6px; position:absolute; top:518px; color:red; left:223px;}
+.section-6 .illusion a.illu-02 { font-size:6px;  position:absolute; top:759px; left:300px; color:red;}
+
+.section-6 .price { text-align:center;  position:relative;font-family: arial; font-weight:bold; padding:15px 0; width:100%;}
+.section-6 .price .uparrow { width:13px; height:25px; float:left; margin-left:20%;}
+.section-6 .price .pricestyle { font-size:1.5rem; float:left;}
+.section-6 .price a { display:block; width:19.375%; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; font-size:0.8rem; float:left; margin-left:5%; color:#fff;}
+
+
+.section-1 .last{ left:5.0625% !important}

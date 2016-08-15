@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+
+/* CSS index */
+.index-classify{ clear:both;margin:15px auto; padding-bottom:10px;	width: ;height: auto;margin: 15px auto;}
+.index-classify li{ float:left;text-align:center; width:7.5em; height:auto; margin-left:;border-bottom:1px solid #eee;width:100%;text-align:left;padding:15px 0 15px 0px;}
+.index-classify h2{ font-size:1.4em; padding:6px 0 15px 0;}
+.index-classify .gstitle{font-weight:bold;}
+.index-classify .xsimg{width:70px;height:90px;float:left;}
+.index-classify .xsname{width:30%;height:20px;float:left;margin-left:15px;font-size:14px;}
+.index-classify .gscontent{margin-top:10px;width:100%;float:left;}
+.index-classify .xscontent{margin-top:10px;width:70%;float:left;margin-left:30px;}
+.index-classify .write-line-box{ display:block; border:1px solid #fff; padding:2px; border-radius:100%;}
+.clfy-icon-01,.clfy-icon-02,.clfy-icon-03,.clfy-icon-04{ display:block; width:7em; height:7em; border-radius:100%; -webkit-transition:all 0.2s ease-out; -moz-transition:all 0.2s ease-out; -o-transition:all 0.2s ease-out; transition:all 0.2s ease-out;}
+.clfy-icon-01:hover,.clfy-icon-02:hover,.clfy-icon-03:hover,.clfy-icon-04:hover{ background-color:rgba(227,84,5,0.7); -webkit-transform:scale(1.05); -moz-transform:scale(1.05); -o-transform:scale(1.05); transform:scale(1.05);}
+.clfy-icon-01{ background:rgba(169,169,169,0.7) url(images/clfy-icon1.png) no-repeat center center; background-size:80% 80%;}
+.clfy-icon-02{ background:rgba(169,169,169,0.7) url(images/clfy-icon2.png) no-repeat center center; background-size:80% 80%;}
+.clfy-icon-03{ background:rgba(169,169,169,0.7) url(images/clfy-icon3.png) no-repeat center center; background-size:80% 80%;}
+.clfy-icon-04{ background:rgba(169,169,169,0.7) url(images/clfy-icon4.png) no-repeat center center; background-size:80% 80%;}
+.i-fg-line{ clear:both; border-bottom:1px solid #b1b1b1; box-shadow:0 1px 0 #fff; position:relative; margin-bottom:6em;}
+.i-fg-line .i-fg-title{ font-size:2em; position:absolute; width:90%; bottom:-2em; left:50%; margin-left:-45%; text-align:center;}
+.i-fg-line .i-fg-title strong{ font-weight:700;}
+.i-fg-line .sub-tn{ position:absolute; top:4em; left:0; text-align:center; width:100%; font-size:1.2em;} 
+.ifg-icon01,.ifg-icon02,.ifg-icon03{ display:block; width:5em; height:5em; border:1px solid #8a8a8c; border-radius:100%; position:absolute; top:-3.5em; left:50%; margin-left:-2.5em;}
+.ifg-icon01{ background:url(images/ifg-icon1.png) no-repeat center 3px; background-size:70% 70%;}
+.ifg-icon02{ background:url(images/ifg-icon2.png) no-repeat 1.2em 2px; background-size:70% 70%;}
+.ifg-icon03{ background:url(images/ifg-icon3.png) no-repeat center 2px; background-size:70% 70%;}
+
+
+.i-ybj-contanier{ /*margin:0 15px; */overflow:hidden; clear:both; /*box-shadow:-2px 5px 5px #ccc;*/ position:relative;}
+.i-ybj-contanier .ybj-text{ padding:0.5em 1.5em; width:100%; background:rgba(0,0,0,0.6); position:absolute; left:0; bottom:0em; color:#fff; display:table;}
+.i-ybj-contanier .ybj-text .ybj-text-l{ font-size:1.2em; color:#fff; width:60%; display:table-cell; vertical-align:middle;line-height: 18px;}
+.i-ybj-contanier .ybj-text .ybj-text-l .ybj-text-l-n{ color:#fff; font-weight:700; display:block; font-size:1.2em; padding-bottom:5px;}
+.i-ybj-contanier .ybj-text .ybj-text-r{ width:40%; line-height:2em; font-size:1.5em; text-align:right; display:table-cell; vertical-align:middle;}
+.i-ybj-contanier .ybj-text .ybj-text-l span{
+	line-height: 18px;
+	padding-bottom: 7px;
+	display: block;
+}
+.zoom-box{ padding:5em 0 3em 0;}
+
+.i-sc-kj-img{ position:relative;}
+.i-sc-kj-img .kj-text{ padding:1em 1.5em; width:100%; background:rgba(0,0,0,0.6); position:absolute; left:0; bottom:0em; color:#fff; display:table;line-height:20px;padding-bottom: 25px;}
+.i-sc-kj-img .kj-text-i{ font-size:1.5em; font-weight:700; background:url(images/kt-icon.png) no-repeat center left; background-size:1.5em 1.5em; padding-left:2em;}
+
+
+/**/
+.i-sc-kj-row{ clear:both; height:6em; background-color:#aaabab; border-top:5px solid #FFF; border-bottom:5px solid #FFF; overflow:hidden;}
+.i-sc-kj-row .kj-clum-l,.i-sc-kj-clum .kj-clum-2{ display:block; float:left; overflow:hidden;}
+.i-sc-kj-row .kj-clum-l{ width:35%; float:left;}
+.i-sc-kj-row .kj-clum-2{ width:30%; height:100%; float:left;}
+.i-sc-kj-row .kj-clum-l img{height:6.2em;}
+.i-sc-kj-row .kj-cl-t{ border-left:5px solid #FFF; border-right:5px solid #FFF; height:6.2em; font-size:1.3em; font-weight:700; text-align:center; line-height:3.0em;}
+.i-sc-kj-row .kj-cl-t strong{ padding-top:10px; display:block;}
+.i-sc-kj-row .kj-cl-t p{ font-size:0.5em; font-weight:400; display:none; }
+
+/**/
+.i-sc-tuijian-row{ clear:both; display:table; width:100%; border:none; border-collapse:collapse;}
+.i-sc-tuijian-row .tuijian-h3{background-color:#aaabab; width:20%; font-size:1.5em; line-height:1.5; display:table-cell; vertical-align:middle; text-align:center; }
+.i-sc-tuijian-row .tuijian-ul{background-color:#fff; width:80%; display:table-cell; vertical-align:middle; position:relative;} 
+.i-sc-tuijian-row .tuijian-ul li{ height:3em; line-height:3em; border-left:5px solid #fff; border-bottom:5px solid #fff;  font-size:1.5em; vertical-align:top; clear:both;}
+.i-sc-tuijian-row .tuijian-ul li .tuijian-n{background-color:#aaabab; height:100%; line-height:2.7em; float:left;width:4em; text-align:center; vertical-align:middle;}
+.i-sc-tuijian-row .tuijian-ul li .tuijian-n:hover{ background-color:#e35504; color:#fff;}
+.i-sc-tuijian-row .tuijian-ul li:last-child { border-bottom:none;}
+.i-sc-tuijian-row .tuijian-ul li .tuijian-yuan{ vertical-align:middle; padding-left:5px;} 
+
+/**/
+.desr-face-wrap{ padding:2em 0;}
+.desr-face-wrap .desr-face-img-c{ width:17em; height:17em; padding:10px; margin:10px auto; border:1px solid #333; border-radius:100%; overflow:hidden;}
+.desr-face-wrap .desr-face-img{ width:15.2em; height:15.2em; border-radius:100%; overflow:hidden; display:block; }
+.desr-face-wrap .desr-face-name{ text-align:center; font-size:2em; margin-bottom:1.5em;}
+.desr-face-wrap .desr-face-youhui{text-align:center; font-size:1.5em; margin-bottom:1.5em;}
+.desr-face-wrap .der-more{ text-align:right; padding-right:20px;}
+
+
+/*保障*/
+.baozhuang-contanier{ padding:2em 0; clear:both; border-top:1px solid #c0bebd; border-bottom:1px solid #c0bebd; margin-bottom:20px;}
+.baozhuang-contanier .baozhuang-list{}
+.baozhuang-contanier .baozhuang-list li{ width:25%; float:left; text-align:center;}
+.baozhuang-contanier .baozhuang-list li figure{ display:block; width:5em; height:5em; margin:0 auto;}
+.baozhuang-contanier .baozhuang-list li h2{ padding:10px 0; font-size:1.2em;}

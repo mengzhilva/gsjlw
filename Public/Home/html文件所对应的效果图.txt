@@ -1,0 +1,31 @@
+
+
+
+-------------------所有的页面都在  template  文件夹里分类分包放着----------------
+
+index.html--------wap站首页
+
+
+目录一、【族群样板间】相关页面：template/yangbanjian
+
+yangbanjian.html ------族群样板间
+
+
+目录二、【整体家装】相关页面：template/jiazhuang
+
+
+taocan.html ------传统套餐
+
+
+
+
+
+
+目录三、【xxxxx】相关页面：template/xxxxxx
+
+
+
+目录四、【xxxxx】相关页面：template/xxxxxx
+
+
+目录五、【xxxxx】相关页面：template/xxxxxx

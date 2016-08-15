@@ -1,0 +1,54 @@
+.m-15{ margin-top:20px;}
+/*头部标题*/
+.section-1 .jz-top-icon{ background:url(images/case-logo.png) no-repeat left 2px; background-size:70% 70%;}
+.section-1 .jz-top-icon-s{ background:url(images/ser-bi.png) no-repeat left 2px; background-size:70% 70%;}
+.section-1 .case-h3 .chi-ti{ font-size:24px; height:45px; line-height:45px;padding-right:18%;}
+.section-1 .case-h3 .eng-ti{ font-size:14px; padding-right:15%; display:none; }
+
+/*案例列表*/
+.case-nav { width:101%; margin-bottom:30px; position:relative;}
+.case-nav li { float:left; width:24.60375%; background:#2f2725; color:#fff; margin-right:1px; line-height:40px; text-align:center; font-size:14px; cursor:pointer; /*position:relative;*/}
+.case-nav li .fg-down{ display:block; width:100%; height:100%;}
+.case-nav li .down { position:absolute; border-style:solid; border-width:7px; border-color:#fff #000 #000 #000; height:0; width:0; font-size:0; right:4%; top:22px;}
+.case-nav li .up { position:absolute; border-style:solid; border-width:7px; border-color:#000 #000 #fff #000; height:0; width:0; font-size:0; right:4%; top:6px;}
+.case-nav li .pdown { position:absolute; width:100%; z-index:999; height:auto; overflow:hidden; display:none;}
+.case-nav li .pdown li { height:40px; line-height:40px; border-top:1px solid #2f2725; width:100%; background:rgba(255,255,255,0.8);}
+.case-nav li .pdown li a { height:40px; line-height:40px; color:#221815; font-size:15.rem; display:block;}
+.case-nav li .pdown li a:hover,.casenav-active { background-color:#e35504; color:#fff!important;}
+.case-nav li .pdown li.last-btm { height:0; position:relative; border-bottom:3px solid #2f2725;}
+.case-nav li .pdown li.last-btm b {position:relative; border-style:solid; border-width:5px; border-color:transparent transparent #35332f transparent; height:0; width:0; font-size:0; top:-30px;}
+/*.case-nav .list1 .pdown li,.case-nav .list4 .pdown li{ font-size:0; zoom:1;}
+.case-nav .list1 .pdown li:after,.case-nav .list4 .pdown li:after{content:'.';display:block;visibility:hidden;clear:both;height:0px; overflow:hidden;}
+.case-nav .list1 .pdown li a,.case-nav .list4 .pdown li a{ display:inline-block!important; width:20%; font-size:14px;}
+.case-nav .list4{}
+.case-nav .list4 .pdown li{ display:table; vertical-align:middle; padding-top:5px;}
+.case-nav .list4 .pdown li .list4-t-l{ width:20%; display:table-cell; vertical-align:middle; font-size:18px; font-weight:700; color:#221815;}
+.case-nav .list4 .pdown li .list4-t-r{ width:80%; display:table-cell; vertical-align:middle; font-size:0; color:#221815; text-align:left;}
+.case-nav .list4 .pdown li .list4-t-r a{ text-align:center; width:25%; font-size:14px;}*/
+
+
+.i-sc-kt-img{ position:relative;}
+.i-sc-kt-img .kt-img-c{ display:inline-block; width:3em; height:3em; vertical-align:middle;}
+.i-sc-kt-img .kt-text{ padding:1em 1.5em; width:100%; background:rgba(0,0,0,0.6); position:absolute; left:0; bottom:0em; color:#fff; display:block;}
+.i-sc-kt-img .kt-text-i{ display:inline-block; vertical-align:middle; font-size:1.5em; font-weight:700; background-size:1.5em 1.5em; padding-left:1em; line-height:2em;}
+
+.case-row{ border-bottom:1px solid #adadac; margin-bottom:20px;}
+.case-row .case-name{ padding:5px 1.5em; color:#666;}
+.case-row .case-name .c-tn{font-size:1.6em;}
+.case-row .case-name .c-tt{font-size:1.6em;}
+.case-row .case-name .c-tt .c-sub-t{ font-size:14px!important;}
+
+/*2015.1.30*/
+ .scroll{width:100%; position:relative;}
+ .scroll_box{overflow:hidden;visibility:hidden;position:relative;}
+ .scroll_wrap{overflow:hidden; position:relative;}
+ .scroll_wrap li{position:relative;display:block;width:100%;float:left;}
+ .scroll_wrap li a{display:block;margin:0 auto;position:relative;}
+ .designer-detail { position:relative; padding:10px 0 20px; width:100%;}
+ 
+ .position-bar { background: rgba(0,0,0,0.6);padding: 1.2em 1.5em; position:absolute; top:40%; left:0; width:100%; z-index:999;}
+ .position-bar span{font-size: 1.2em; color:#fff;font-weight: 700; float:left; height:30px; line-height:30px;}
+ .position-bar a { float:right; width:16%; height:30px; line-height:30px; color:#2f2725; font-size:1em; text-align:center; display:block; background:#ea5404; }
+ .rightbg { position:absolute; right:0; width:30%; background:url(images/rightbg.png) no-repeat; height:37px; line-height:37px; z-index:999; text-align:center; color:#fff; top:80%; font-size:1em;}
+ .rightbg span{ height:37px; line-height:37px; background: rgba(63,58,57,0.7); display:block; margin-left:20px;}
+

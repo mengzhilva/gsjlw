@@ -1,0 +1,74 @@
+.m-15{ margin-top:20px;}
+.sc-view-container {}
+.section-1 { margin-top:7px; text-align:center; position:relative; background:#fff; min-height:65px; padding:25px 0 14px 0;}
+.section-1 .last { width:2em; height:3em; background:url(images/last.png) no-repeat; background-size:90% 90%; float:left; position:relative; left:5.0625%; top:0.3rem; display:block;}
+.section-1 .jz-top-icon{ display:inline-block; width:4em; height:4em; float:left; position:relative; left:8.0625%;}
+.section-1 .jz-top-icon{ background:url(images/designer-logo.png) no-repeat; background-size:90% 90%;}
+/*.zuqunlogo { position:absolute; left:11.3125%; top:1rem; border:1px solid red;}*/
+.section-1 .chi-ti { font-size:26px; color:#2f2725;}
+.section-1 .eng-ti { font-size:16px; color:#2f2725; margin-top:5px; display:none; }
+
+.designer-1 { width:100%;}
+.designer-1 .designer-wrapper img { width:33.90625%; height:auto; margin:2em auto 0 auto;}
+.designer-1 .designer-wrapper p { width:20%; margin:0.5em auto 0.5em auto; font-size:1.6em; color:#221815; text-align:center;}
+.designer-ul { margin:0 0 0 4.21875%; width:95%;}
+.designer-ul li { width:31.5%; float:left; margin-right:4px; text-align:center; font-size:1.6em; background:#2f2725; height:50px; line-height:50px; color:#fff;box-shadow: -5px 0 0 transparent inset,0px 0 0 transparent inset,0 3px 10px #000,0 0 0 yellow inset;}
+.designer-ul li a{ color:#ffffff}
+.designer-big { width:100%; position:relative;}
+.designer-big img { width:91%; margin:20px auto;box-shadow: -5px 0 0 transparent inset,0px 0 0 transparent inset,0 3px 10px #000,0 0 0 yellow inset;}
+.bookit { width:100%; height:3rem; line-height:3rem; position:absolute; z-index:999; left:0; top:60%;}
+.bookit .bg{ background:#000; filter:alpha(opacity:60);opacity:0.6; height:100%;position:absolute; width:100%; left:0; top:0; z-index:0; height:3rem; line-height:3rem;}
+.bookit .book-p { position:relative; z-index:100; height:3rem; line-height:3rem;}
+.bookit .book-p p{ font-size:1.4em; color:#fff; margin-left:1em; float:left; height:3rem; line-height:3rem;}
+.bookit .book-p a { display:block; width:5em; height:1.5rem; line-height:1.5rem; text-align:center; background:#ea5404; color:#2f2725; float:left; position:absolute; right:5%; top:0.8rem;}
+.designer-intro { padding:0 5%; margin-bottom:3rem;}
+.designer-intro h3 { font-size:1.6rem;}
+.designer-intro p { font-size:1.0rem; margin-top:1rem; line-height:20px;}
+.zuopin-list { width:91%; margin:20px auto 0 auto;}
+.zuopin-list ul li { width:46.7%; height:auto; float:left; margin:0 5px 20px 0;box-shadow: -5px 0 0 transparent inset,0px 0 0 transparent inset,0 3px 10px #000,0 0 0 yellow inset;}
+.zuopin-list ul li p { width:100%; background:#ea5404; height:20px; line-height:20px; font-size:0.8rem;}
+.zuopin-list ul { width:100%;}
+.zuopin-list ul li p .mianji { float:left; margin-left:5%;}
+.zuopin-list ul li p .name { float:right; margin-right:5%;}
+.more { width:91%; margin:0 auto 70px auto;}
+.more a { display:block; width:100%; height:4rem; line-height:4rem; background:#ea5404; text-align:center; font-size:1.6rem; color:#fff;;box-shadow: -5px 0 0 transparent inset,0px 0 0 transparent inset,0 3px 10px #000,0 0 0 yellow inset;}
+
+/*设计师列表*/
+.designer-nav { width:101%; margin-bottom:30px;}
+.designer-nav li { float:left; width:24.60375%; background:#000; color:#fff; margin-right:1px; line-height:40px; text-align:center; font-size:0.7rem; cursor:pointer; position:relative;}
+.designer-nav li .down { position:absolute; border-style:solid; border-width:7px; border-color:#fff #000 #000 #000; height:0; width:0; font-size:0; right:4%; top:22px;}
+.designer-nav li .up { position:absolute; border-style:solid; border-width:7px; border-color:#000 #000 #fff #000; height:0; width:0; font-size:0; right:4%; top:6px;}
+
+.designer-nav li .pdown { position:absolute; width:100%; z-index:999; height:0; overflow:hidden;}
+.designer-nav li .pdown li { height:40px; line-height:40px; border-top:1px solid #2f2725; width:100%;/* background:#75726e;*/}
+.designer-nav li .pdown li:hover{ background-color:#666;}
+.designer-nav li .pdown li a { height:40px; line-height:40px; color:#221815; font-size:15.rem; display:block;}
+.designer-nav li .pdown li.last-btm { height:0; position:relative; border-bottom:3px solid #27201f;}
+/*.designer-nav li .pdown li.last-btm b {position:relative; border-style:solid; border-width:5px; border-color:#75726e #75726e #35332f #75726e; height:0; width:0; font-size:0; top:-35px;}*/
+.designer-list  { width:90%; margin:0 auto;}
+.designer-list .list-wrap { margin:10px 0; border-bottom:1px solid #b0b2ab; padding-bottom:10px;}
+.designer-list .list-wrap dt { float:left; background:#fff; width:23.4375%; min-height:50px; padding:1.4em 0;box-shadow: -5px 0 0 transparent inset,0px 0 0 transparent inset,0 3px 10px #000,0 0 0 yellow inset;}
+.designer-list .list-wrap dt img { width:100%; margin:0 auto; height:auto; padding:3px; overflow:hidden;}
+.designer-list .list-wrap dd { margin-bottom:0.5rem;}
+.designer-list .list-wrap dd span { font-size:0.8rem;}
+.designer-list .list-wrap dd.list-top { margin-top:15px;}
+.designer-list .list-wrap dd { width:70%; float:left; margin-left:10px;}
+.designer-list .list-wrap dd .designer-name { font-size:1.4rem; float:left;}
+.designer-list .list-wrap dd img { width:6.2034%; height:auto; float:left; margin-left:5px;}
+.designer-list .list-wrap dd .tips { font-size:0.8rem; float:left; margin-left:5px;}
+.designer-list .list-wrap dd.touxian { font-size:1.2rem; padding:5px 0; display:none; }
+.designer-list .list-wrap dd.jieshao span { margin-right:5px;}
+.pdown li a:hover,.casenav-active { background-color:#e35504; color:#fff!important;}
+.pdown li {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #2f2725;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+}
+.last-btm {
+    border-bottom: 3px solid #2f2725;
+    height: 0;
+    position: relative;
+}
+.designer-nav li .pdown li.last-btm b {position:relative; border-style:solid; border-width:5px; border-color:transparent transparent #35332f transparent; height:0; width:0; font-size:0; top:-30px;}
